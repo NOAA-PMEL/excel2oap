@@ -739,13 +739,14 @@ public class PoiReader2 {
         maybeAdd(var,"samplingInstrument",parts.get(PHX_Sampling_instrument));
         maybeAdd(var,"analyzingInstrument",parts.get(PHX_Analyzing_instrument));
         maybeAdd(var,"phscale",parts.get(PHX_pH_scale));
+        maybeAdd(var,"temperatureMeasure",parts.get(PHX_Temperature_of_measurement));
         maybeAdd(var,"detailedInfo",parts.get(PHX_Detailed_sampling_and_analyzing_information));
         maybeAdd(var,"replicate",parts.get(PHX_Field_replicate_information));
         Element standard = new Element("standard");
         maybeAdd(standard,"description",parts.get(PHX_Standardization_technique_description));
         maybeAdd(standard,"frequency",parts.get(PHX_Frequency_of_standardization));
-        maybeAdd(standard,"stadardphvalues",parts.get(PHX_pH_values_of_the_standards));
-        maybeAdd(standard,"termperatureStandardization",parts.get(PHX_Temperature_of_standardization));
+        maybeAdd(standard,"standardphvalues",parts.get(PHX_pH_values_of_the_standards));
+        maybeAdd(standard,"temperatureStandardization",parts.get(PHX_Temperature_of_standardization));
         var.addContent(standard);
         maybeAdd(var,"temperatureCorrectionMethod",parts.get(PHX_Temperature_correction_method));
         maybeAdd(var,"phReportTemperature",parts.get(PHX_at_what_temperature_was_pH_reported));
@@ -845,7 +846,7 @@ public class PoiReader2 {
         Element standard = new Element("standard");
         maybeAdd(standard,"description",parts.get(pCO2AX_Standardization_technique_description));
         maybeAdd(standard,"frequency",parts.get(pCO2AX_Frequency_of_standardization));
-        Element standardGas = new Element("standardGas");
+        Element standardGas = new Element("standardgas");
             maybeAdd(standardGas,"manufacturer",parts.get(pCO2AX_Manufacturer_of_standard_gas));
             maybeAdd(standardGas,"concentration",parts.get(pCO2AX_Concentrations_of_standard_gas));
             maybeAdd(standardGas,"uncertainty",parts.get(pCO2AX_Uncertainties_of_standard_gas));
