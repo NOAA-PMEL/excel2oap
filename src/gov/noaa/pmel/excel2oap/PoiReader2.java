@@ -391,7 +391,7 @@ public class PoiReader2 {
         NonNullHashMap<String, String> parts = new NonNullHashMap<>();
         OadsRow row = rows.get(gotRow);
         do {
-            Matcher rowMatch = pattern.matcher(row.name);
+            Matcher rowMatch = pattern.matcher(row.name); // XXX This should be checking against 'whichOne'
             if ( !rowMatch.matches()) {
                 String s = "Problem!  Row doesn't match " + whichItem + ". " + row;
                 throw new IllegalStateException(s);
@@ -560,10 +560,16 @@ public class PoiReader2 {
     }
     @SuppressWarnings("unused") // used by reflection
     private static void add_PLATFORM(SDIMetadata sdi, Map<String, String> parts) {
+        String platformName = parts.get(OadsSpreadSheetKeys.PlatformX_name);
+        String platformId = parts.get(OadsSpreadSheetKeys.PlatformX_ID);
+        if ( (StringUtils.emptyOrNull(platformName) || "none".equalsIgnoreCase(platformName)) && 
+             (StringUtils.emptyOrNull(platformId) || "none".equalsIgnoreCase(platformId))) {
+            return;
+        }
         Platform platform = new Platform();
-        platform.setPlatformName(parts.get(OadsSpreadSheetKeys.PlatformX_name));
-        platform.setPlatformId(parts.get(OadsSpreadSheetKeys.PlatformX_ID));
-        platform.setPlatformType(parts.get(OadsSpreadSheetKeys.PlatformX_type));
+        platform.setPlatformName(platformName);
+        platform.setPlatformId(platformId);
+        platform.setPlatformTypeStr(parts.get(OadsSpreadSheetKeys.PlatformX_type));
         platform.setPlatformOwner(parts.get(OadsSpreadSheetKeys.PlatformX_owner));
         platform.setPlatformCountry(parts.get(OadsSpreadSheetKeys.PlatformX_country));
         sdi.setPlatform(platform);
@@ -575,20 +581,20 @@ public class PoiReader2 {
         v.setVarUnit(parts.get(VarX_Variable_unit));
         return v;
     }
-    private static DataVar buildDataVar(Variable baseVar, Map<String, String> parts) {
-        DataVar dataVar = new DataVar(baseVar).toBuilder()
-            .observeType(parts.get(VarX_Observation_type))
-            // .measureMethod(parts.get(VarX_Measured_or_calculated)) // XXX needs in-situs
-            .methodDescription(parts.get(VarX_Detailed_sampling_and_analyzing_information))
-            .methodReference(parts.get(VarX_Method_reference))
-            .replication(parts.get(VarX_Field_replicate_information))
-            .researcher(Person.personBuilder()
-                            .firstName(parts.get(VarX_Researcher_Name))
-                            .organization(parts.get(VarX_Researcher_Institution))
-                            .build())
-            .build();
-        return dataVar;
-    }
+//    private static DataVar buildDataVar(Variable baseVar, Map<String, String> parts) {
+//        DataVar dataVar = new DataVar(baseVar).toBuilder()
+//            .observeType(parts.get(VarX_Observation_type))
+//            // .measureMethod(parts.get(VarX_Measured_or_calculated)) // XXX needs in-situs
+//            .methodDescription(parts.get(VarX_Detailed_sampling_and_analyzing_information))
+//            .methodReference(parts.get(VarX_Method_reference))
+//            .replication(parts.get(VarX_Field_replicate_information))
+//            .researcher(Person.personBuilder()
+//                            .firstName(parts.get(VarX_Researcher_Name))
+//                            .organization(parts.get(VarX_Researcher_Institution))
+//                            .build())
+//            .build();
+//        return dataVar;
+//    }
     private Map<String, String> getSingularItem(ElementType type) {
         Collection<Map<String, String>> c = metaItems.get(type);
         if ( c == null || c.isEmpty()) {
