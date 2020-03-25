@@ -920,7 +920,7 @@ public class PoiReader2 {
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
-        var.addContent(new Element("fullname").addContent("pCO2 (fCO2) discreet"));
+        var.addContent(new Element("fullname").addContent("pCO2 (fCO2) discrete"));
         maybeAdd(var,"abbrev",parts.get(pCO2DX_Variable_abbreviation_in_data_files));
         maybeAdd(var,"observationType",parts.get(pCO2DX_Observation_type));
         maybeAdd(var,"insitu",parts.get(pCO2DX_In_situ_observation_X_manipulation_condition_X_response_variable));
@@ -1089,7 +1089,10 @@ public class PoiReader2 {
      * 
      */
     private static void usage() {
-        System.out.println("usage: excel2oap [excel_file]");
+        System.out.println("Translate OADS Metadata Submission Excel Spreadsheet to OAP XML v0.");
+        System.out.println("usage: excel2oap [excel_file] [output_file]");
+        System.out.println("       If not specified, input and output will be from/to Standard.in/out.");
+        System.out.println("       To read from Standard.in and output to a file, use '-' as input file name.");
     }
 
     private void addOtherStuff(Document doc) {
@@ -1120,10 +1123,11 @@ public class PoiReader2 {
      * @param args
      */
     public static void main(String[] args) {
-//        if ( args.length < 1 ) {
-//            usage();
-//            System.exit(1);
-//        }
+        if ( args.length == 1 &&
+             ( args[0].contains("-h") || args[0].equals("-?"))) {
+            usage();
+            System.exit(1);
+        }
         File inputFile = null;
         String outFileName = null;
         File outputFile = null;
