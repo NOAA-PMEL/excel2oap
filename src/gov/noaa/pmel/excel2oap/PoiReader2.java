@@ -5,11 +5,13 @@ package gov.noaa.pmel.excel2oap;
 
 import static gov.noaa.pmel.excel2oap.OadsSpreadSheetKeys.*;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,9 +33,17 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -41,10 +51,14 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.DOMBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+import org.xml.sax.InputSource;
+
+import com.example.OoXmlStrictConverter;
 
 import gov.noaa.pmel.excel2oap.OadsSpreadSheetKeys.ElementType;
 import gov.noaa.pmel.sdimetadata.Coverage;
 import gov.noaa.pmel.sdimetadata.MiscInfo;
+import gov.noaa.pmel.sdimetadata.MiscInfo.MiscInfoBuilder;
 import gov.noaa.pmel.sdimetadata.SDIMetadata;
 import gov.noaa.pmel.sdimetadata.instrument.Instrument;
 import gov.noaa.pmel.sdimetadata.person.Investigator;
@@ -53,7 +67,6 @@ import gov.noaa.pmel.sdimetadata.person.Submitter;
 import gov.noaa.pmel.sdimetadata.platform.Platform;
 import gov.noaa.pmel.sdimetadata.util.Datestamp;
 import gov.noaa.pmel.sdimetadata.util.NumericString;
-import gov.noaa.pmel.sdimetadata.variable.DataVar;
 import gov.noaa.pmel.sdimetadata.variable.Variable;
 import gov.noaa.pmel.sdimetadata.xml.OcadsWriter;
 import gov.noaa.pmel.tws.util.StringUtils;
@@ -61,6 +74,8 @@ import gov.noaa.pmel.tws.util.StringUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.poi.poifs.filesystem.FileMagic;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -71,6 +86,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.xmlbeans.impl.values.XmlValueOutOfRangeException;
 
 /**
  * @author kamb
@@ -78,6 +95,7 @@ import org.apache.poi.util.IOUtils;
  */
 public class PoiReader2 {
     
+    private static final Logger logger = LogManager.getLogger(PoiReader2.class);
 
     static class OadsRow {
         int num;
@@ -173,7 +191,7 @@ public class PoiReader2 {
         SDIMetadata sdi = processRows(rows);
         Document doc = writeSdiMetadata(sdi);
         addOtherStuff(doc);
-        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
+        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat().setEncoding("UTF-8"));
         xout.output(doc, outputXmlStream);
     }
     
@@ -197,7 +215,7 @@ public class PoiReader2 {
             switch (fm) {
                 case OLE2:
                 case OOXML:
-                    rows = extractExcelRows(bufIn);
+                    rows = extractExcelRows(inCopy);
                     break;
                 case UNKNOWN:
                     rows = tryDelimited(inCopy);
@@ -209,11 +227,52 @@ public class PoiReader2 {
         return rows;
     }
         
+    // 
+    // Strict format processing from OAPDashboard/ExcelFileReader
+    // 
+    static final int MAX_PEEK = 8192 * 2;
+    static final String STRICT_NS_1 = "http://purl.oclc.org/ooxml/spreadsheetml/main";
+    private static final CharSequence VAR_FIRST_LINE_OPENING_LC = "variable abbreviation";
+
     private static List<OadsRow> extractExcelRows(InputStream inStream) throws Exception, IOException {
         List<OadsRow> rows = new ArrayList<>();
         DataFormatter df = new DataFormatter();
-        try ( Workbook wb = WorkbookFactory.create(inStream); ) {
-            Sheet sheet = wb.getSheetAt(0);
+        InputStream useStream = inStream.markSupported() ? inStream : new BufferedInputStream(inStream);
+        Workbook workbook;
+//        try {
+            // Strict format processing from OAPDashboard/ExcelFileReader
+            int available = useStream.available() - 64;
+            int maxMark = Math.min(available, MAX_PEEK);
+            useStream.mark(maxMark);
+            boolean strict = checkForStrict(useStream);
+            useStream.reset();
+            if ( ! strict ) {
+                workbook = WorkbookFactory.create(useStream);
+            } else {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                try {
+                    OoXmlStrictConverter.Transform(useStream, baos);
+//                    File looseFile = File.createTempFile("sdis_loose_", ".xlsx");
+//                    OoXmlStrictConverter.Transform(strictFile.getAbsolutePath(), looseFile.getAbsolutePath());
+                    byte[] bytes = baos.toByteArray();
+//                    try ( FileOutputStream fos = new FileOutputStream("loose.xlsx")) {
+//                    fos.write(bytes);
+//                    fos.flush();
+//                    }
+                    ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                    useStream = bais.markSupported() ? bais : new BufferedInputStream(bais);
+                    workbook = WorkbookFactory.create(useStream);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                    throw new IllegalStateException("Failed to create ExcelFileReader:" + e2);
+                } finally {
+                    try { useStream.close(); }
+                    catch (Throwable t) {
+                        // ignore
+                    }
+                }
+            }
+            Sheet sheet = workbook.getSheetAt(0);
             int rowNum = 0;
             for (Row row : sheet) {
                 rowNum += 1;
@@ -223,25 +282,29 @@ public class PoiReader2 {
                     numCell = row.getCell(0);
                     itemNo = (int)numCell.getNumericCellValue(); 
                 } catch (Exception ex) {
-                    System.err.println("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
+                    logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
                     continue;
                 }
                 Cell nameCell = row.getCell(1);
                 if ( nameCell == null) {
-                    System.err.println("Null name cell at row: "+ rowNum + "[#"+itemNo+"]");
+                    logger.info("Null name cell at row: "+ rowNum + "[#"+itemNo+"]");
                     continue;
                 }
                 String rowName = nameCell.getStringCellValue();
+                logger.debug(rowName + ":");
                 Cell vcell = row.getCell(2);
                 String rowValue = "";
 //                vcell.setCellType(CellType.STRING);
                 if ( vcell != null ) {
+                    try {
                     if ( vcell.getCellType().equals(CellType.STRING)) {
                         rowValue = vcell.getStringCellValue();
                     } else if ( DateUtil.isCellDateFormatted(vcell) && 
                                 rowName.toLowerCase().indexOf("date") >= 0 ) {
                         Date d = vcell.getDateCellValue();
                         rowValue = d != null ? formatDate(d) : "";
+                        String altVal = df.formatCellValue(vcell);
+                        logger.debug("(alt:"+altVal+")");
                     } else if ( vcell.getCellType().equals(CellType.NUMERIC)) {
                         rowValue = df.formatCellValue(vcell);
 //                        BigDecimal bd = new BigDecimal(vcell.getNumericCellValue());
@@ -252,30 +315,107 @@ public class PoiReader2 {
                     } else if ( vcell.getCellType().equals(CellType.BOOLEAN)) {
                         rowValue = String.valueOf(vcell.getBooleanCellValue());
                     }
+                    // org.apache.xmlbeans.impl.values.XmlValueOutOfRangeException: 
+                    // string value 'd' is not a valid enumeration value for ST_CellType in namespace 
+                    // http://schemas.openxmlformats.org/spreadsheetml/2006/main
+                    } catch (XmlValueOutOfRangeException ex) {
+                        logger.info(ex);
+                        XSSFCell xsc = (XSSFCell)vcell;
+                        rowValue = xsc.getRawValue();
+                        if ( ex.getMessage().contains("string value 'd' is not a valid enumeration value")) {
+                            String[] parts = rowValue.split("[/ -]");
+                            if ( parts.length == 3) {
+                                rowValue = parts[1] + "/" + parts[2] + "/" + parts[0];
+                            }
+                        }
+                    }
+                    logger.debug(rowValue);
                 }
                 OadsRow orow = new OadsRow(itemNo,
                                            row.getCell(1).getStringCellValue(), 
                                            rowValue);
-//                System.out.println(rowNum + ": " + orow);
+//                logger.debug(rowNum + ": " + orow);
                 rows.add(orow);
             }
-        }
+//        }
         return rows;
     }
     
+    /**
+     * @param inStream
+     * @return
+     * @throws IOException 
+     * @throws XMLStreamException 
+     */
+    // Strict format processing from OAPDashboard/ExcelFileReader
+    private static boolean checkForStrict(InputStream inStream) throws IOException {
+        boolean isStrict = false;
+        boolean stop = false;
+        XMLInputFactory XIF = XMLInputFactory.newInstance();
+        ZipInputStream zis = new ZipInputStream(inStream);
+        ZipEntry ze;
+        while( !isStrict && !stop && (ze = zis.getNextEntry()) != null) {
+            FilterInputStream filterIs = new FilterInputStream(zis) {
+                @Override
+                public void close() throws IOException {
+                }
+            };
+            String zeName = ze.getName();
+//            logger.debug("ZipEntry " + zeName);
+            if ( "xl/workbook.xml".equals(zeName)) {
+//                logger.info("Processing workbook.xml, then stopping.");
+                stop = true;
+            }
+            if(isXml(ze.getName())) {
+                try {
+                    XMLEventReader xer = XIF.createXMLEventReader(filterIs);
+                    while(xer.hasNext()) {
+                        XMLEvent xe = xer.nextEvent();
+                        if ( xe.isStartElement()) {
+                            StartElement se = xe.asStartElement();
+                            QName qn = se.getName();
+                            String ns = qn.getNamespaceURI();
+                            if ( STRICT_NS_1.equals(ns)) {
+                                isStrict = true;
+                                break;
+                            }
+                        }
+                    }
+                } catch (XMLStreamException xsx) {
+                    throw new IOException("Exception parsing document XML:"+xsx.getMessage(), xsx);
+                }
+            }
+        }
+//        logger.info("Found strict: " + isStrict);
+        return isStrict;
+    }
+    private static boolean isXml(final String fileName) {
+        if ( ! StringUtils.emptyOrNull(fileName)) {
+            int pos = fileName.lastIndexOf(".");
+            if(pos != -1) {
+                String ext = fileName.substring(pos + 1).toLowerCase();
+                return ext.equals("xml") || ext.equals("vml") || ext.equals("rels");
+            }
+        }
+        return false;
+    }
+
     private static List<OadsRow> tryDelimited(InputStream inStream) throws Exception, IOException {
         List<OadsRow> rows = new ArrayList<>();
 //        byte[] peak = IOUtils.peekFirstNBytes(inStream, 512);
-            byte[] bytes = IOUtils.peekFirstNBytes(inStream, 4096);
+        int available = inStream.available();
+        int peakLength = available > 0 ? Math.min(available, 8192) : 8192;
+            byte[] bytes = IOUtils.peekFirstNBytes(inStream, peakLength);
             String peak = new String(bytes, Charset.forName("UTF8"));
-            char spacer = lookForSpacer(peak);
+            char spacer = lookForDelimiter(peak);
             CSVFormat format = CSVFormat.EXCEL.withIgnoreSurroundingSpaces()
                     .withIgnoreEmptyLines()
                     .withQuote('"')
 //                        .withTrailingDelimiter()
 //                        .withCommentMarker('#')
                     .withDelimiter(spacer);
-    		try ( InputStreamReader isr = new InputStreamReader(inStream);
+//            String charset = "CP1252";
+    		try ( InputStreamReader isr = new InputStreamReader(inStream, Charset.defaultCharset());
     		        CSVParser dataParser = new CSVParser(isr, format); ) {
                 int rowNum = 0;
                 for (CSVRecord record : dataParser) {
@@ -285,12 +425,12 @@ public class PoiReader2 {
                     try {
                         itemNo = Integer.parseInt(numCell);
                     } catch (Exception ex) {
-                        System.err.println("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
+                        logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
                         continue;
                     }
                     String rowName = record.get(1);
                     if ( rowName == null) {
-                        System.err.println("Null name cell at row: "+ rowNum + "[#"+itemNo+"]");
+                        logger.info("Null name cell at row: "+ rowNum + "[#"+itemNo+"]");
                         continue;
                     }
                     String vcell = record.get(2);
@@ -298,7 +438,7 @@ public class PoiReader2 {
                     OadsRow orow = new OadsRow(itemNo,
                                                rowName,
                                                rowValue);
-//                    System.out.println(rowNum + ": " + orow);
+//                    logger.debug(rowNum + ": " + orow);
                     rows.add(orow);
                 }
     		} catch (Exception ex) {
@@ -311,7 +451,7 @@ public class PoiReader2 {
      * @param peak
      * @return
      */
-    private static char lookForSpacer(String peak) {
+    private static char lookForDelimiter(String peak) {
         SortedMap<Integer, Character> sort = new TreeMap<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -340,8 +480,9 @@ public class PoiReader2 {
         return new Integer(count);
     }
 
+    // default format month-day-year
     private static String formatDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         String dateStr = sdf.format(date);
         return dateStr;
     }
@@ -353,24 +494,24 @@ public class PoiReader2 {
             String rowName = row.name.trim();
             String rowValue = row.value.trim();
             if ( StringUtils.emptyOrNull(rowValue)) { 
-//                System.out.println("Skipping empty value for " + row.name);
+//                logger.debug("Skipping empty value for " + row.name);
                 continue; 
             }
             Matcher multiLineMatcher = multiLinePattern.matcher(rowName);
             if ( multiLineMatcher.matches()) {
                 Pattern matchedPattern = multiLinePattern;
                 String which = multiLineMatcher.group(ITEM_GROUPS.WHICH.position);
-//                System.out.println("multiLineMatch: "+ multiLineMatcher);
-//                for (ITEM_GROUPS groups : ITEM_GROUPS.values()) { System.out.print(groups+":"+multiLineMatcher.group(groups.position)+" "); } System.out.println();
+//                logger.debug("multiLineMatch: "+ multiLineMatcher);
+//                for (ITEM_GROUPS groups : ITEM_GROUPS.values()) { logger.debug(groups+":"+multiLineMatcher.group(groups.position)+" "); } logger.debug();
                 Matcher multiItemMatcher = multiItemPattern.matcher(rowName);
                 if ( multiItemMatcher.matches()) {
-//                    for (ITEM_GROUPS groups : ITEM_GROUPS.values()) { System.out.print(groups+":"+multiItemMatcher.group(groups.position)+" "); } System.out.println();
+//                    for (ITEM_GROUPS groups : ITEM_GROUPS.values()) { logger.debug(groups+":"+multiItemMatcher.group(groups.position)+" "); } logger.debug();
                     which = multiItemMatcher.group(ITEM_GROUPS.WHICH.position);
                     matchedPattern = multiItemPattern;
                 }
                 curRow = processMultiLineItem(which, matchedPattern, sdi, rows, curRow);
             } else {
-//                System.out.println("Putting simple field: "+ row);
+//                logger.debug("Putting simple field: "+ row);
                 generalFields.put(rowName, rowValue);
             }
         }
@@ -390,6 +531,7 @@ public class PoiReader2 {
         String type = null;
         NonNullHashMap<String, String> parts = new NonNullHashMap<>();
         OadsRow row = rows.get(gotRow);
+        boolean isVarProcessing = whichItem.startsWith("Var");
         do {
             Matcher rowMatch = pattern.matcher(row.name); // XXX This should be checking against 'whichOne'
             if ( !rowMatch.matches()) {
@@ -399,7 +541,11 @@ public class PoiReader2 {
             type = rowMatch.group(ITEM_GROUPS.TYPE.position);
             String remainder = especiallyClean(rowMatch.group(ITEM_GROUPS.REMAINDER.position)).trim();
             parts.put(remainder, row.value);
-        } while ( ++gotRow < rows.size() && (row=rows.get(gotRow)).name.startsWith(whichItem));
+        } while ( ++gotRow < rows.size() && 
+                  ((isVarProcessing && 
+                          ! ((row=rows.get(gotRow)).name.toLowerCase().contains(VAR_FIRST_LINE_OPENING_LC)) &&
+                          ! StringUtils.emptyOrNull(row.name)) ||
+                   (!isVarProcessing && (row=rows.get(gotRow)).name.startsWith(whichItem))));
         
         addMetadataItem(ElementType.fromSsRowName(type), sdi, parts);
         return gotRow - 1; // roll back from last checked row.
@@ -413,7 +559,7 @@ public class PoiReader2 {
     private Map<ElementType, Collection<Map<String, String>>> metaItems = 
                         new HashMap<ElementType, Collection<Map<String,String>>>();
     private void addMetadataItem(ElementType type, SDIMetadata sdi, NonNullHashMap<String, String> parts) {
-//        System.out.println("Add " + type + " item from " + parts);
+//        logger.debug("Add " + type + " item from " + parts);
         try {
             Method m = PoiReader2.class.getDeclaredMethod("add_"+type.name(), SDIMetadata.class, Map.class);
             m.invoke(null, sdi, parts);
@@ -441,7 +587,7 @@ public class PoiReader2 {
     private static void addMiscInfo(SDIMetadata sdi, NonNullHashMap<String, String> generalFields) {
         Datestamp startDatestamp = tryDatestamp(generalFields.get(r_Start_date));
         Datestamp endDatestamp = tryDatestamp(generalFields.get(r_End_date));
-        MiscInfo mi = new MiscInfo().toBuilder()
+        MiscInfoBuilder mib = new MiscInfo().toBuilder()
                 .datasetId(generalFields.get(r_EXPOCODE))
                 .datasetName(generalFields.get(r_Cruise_ID))
                 .sectionName(generalFields.get(r_Section))
@@ -458,8 +604,13 @@ public class PoiReader2 {
                 .addReference(generalFields.get(r_References))
                 .addInfo(generalFields.get(r_Supplemental_information))
                 .startDatestamp(startDatestamp)
-                .endDatestamp(endDatestamp)
-                .build();
+                .endDatestamp(endDatestamp);
+        String submissionDateStr = generalFields.get(r_Submission_Date);
+        if ( !StringUtils.emptyOrNull(submissionDateStr)) {
+            Datestamp submissionDate = tryDatestamp(submissionDateStr);
+            mib.history(new ArrayList<Datestamp>() {{ add(submissionDate); }});
+        }
+        MiscInfo mi = mib.build();
         sdi.setMiscInfo(mi);
     }
 
@@ -501,15 +652,23 @@ public class PoiReader2 {
         if ( ! StringUtils.emptyOrNull(string)) {
             String[] parts = string.split("[/ -]");
             if ( parts.length == 3 ) {
-//                String p0 = parts[0];
-//                String p1 = parts[1];
-//                String p2 = parts[2];
-//                int i0 = Integer.parseInt(p0);
-//                int i1 = Integer.parseInt(p1);
-//                int i2 = Integer.parseInt(p2);
-                ds.setYear(Integer.valueOf(parts[0]));
-                ds.setMonth(Integer.valueOf(parts[1]));
-                ds.setDay(Integer.valueOf(parts[2]));
+                String p0 = parts[0];
+                String p1 = parts[1];
+                String p2 = parts[2];
+                int i0 = Integer.parseInt(p0);
+                int i1 = Integer.parseInt(p1);
+                int i2 = Integer.parseInt(p2);
+                if ( i2 < 1000 ) {
+                    if ( i2 < 42 ) { // because that's the answer
+                        i2 += 2000;
+                    } else {
+                        i2 += 1900;
+                    }
+                }
+                // assume month day year
+                ds.setMonth(i0);
+                ds.setDay(i1);
+                ds.setYear(i2);
             } else {
                 System.err.println("Excel2Oap: Cannot parse date string:" + string);
             }
@@ -603,9 +762,16 @@ public class PoiReader2 {
         return c.iterator().next();
     }
 
-    private void maybeAdd(Element var, String childName, String childContent) {
-        if ( StringUtils.emptyOrNull(childContent) && _omitEmptyElements ) { return ; }
+    private static boolean addIfNotNull(Element var, String childName, String childContent) {
+        if ( StringUtils.emptyOrNull(childContent)) { return false; }
         var.addContent(new Element(childName).addContent(childContent));
+        return true;
+    }
+    
+    private boolean maybeAdd(Element var, String childName, String childContent) {
+        if ( StringUtils.emptyOrNull(childContent) && _omitEmptyElements ) { return false; }
+        var.addContent(new Element(childName).addContent(childContent));
+        return true;
     }
     
     /*
@@ -669,9 +835,15 @@ public class PoiReader2 {
         standard.addContent(crm);
         var.addContent(standard);
         Element poison = new Element("poison");
-        maybeAdd(poison,"poisonName",parts.get(DICX_Poison_used_to_kill_the_sample));
-        maybeAdd(poison,"volume",parts.get(DICX_Poison_volume));
-        maybeAdd(poison,"correction",parts.get(DICX_Poisoning_correction_description));
+        if ( ! addIfNotNull(poison,"poisonName",parts.get(DICX_Poison_used_to_kill_the_sample))) {
+            maybeAdd(poison,"poisonName",parts.get(DICX_Poison_used_to_kill_the_sample_ALT));
+        }
+        if ( ! addIfNotNull(poison,"volume",parts.get(DICX_Poison_volume))) {
+            maybeAdd(poison,"volume",parts.get(DICX_Poison_volume_ALT));
+        }
+        if ( ! addIfNotNull(poison,"correction",parts.get(DICX_Poisoning_correction_description))) {
+            maybeAdd(poison,"correction",parts.get(DICX_Poisoning_correction_description_ALT)); 
+        }
         var.addContent(poison);
         maybeAdd(var,"uncertainty",parts.get(DICX_Uncertainty));
         maybeAdd(var,"flag",parts.get(DICX_Data_quality_flag_description));
@@ -714,9 +886,15 @@ public class PoiReader2 {
         standard.addContent(crm);
         var.addContent(standard);
         Element poison = new Element("poison");
-        maybeAdd(poison,"poisonName",parts.get(TAX_Poison_used_to_kill_the_sample));
-        maybeAdd(poison,"volume",parts.get(TAX_Poison_volume));
-        maybeAdd(poison,"correction",parts.get(TAX_Poisoning_correction_description));
+        if ( ! addIfNotNull(poison,"poisonName",parts.get(TAX_Poison_used_to_kill_the_sample))) {
+            maybeAdd(poison,"poisonName",parts.get(TAX_Poison_used_to_kill_the_sample_ALT));
+        }
+        if ( ! addIfNotNull(poison,"volume",parts.get(TAX_Poison_volume))) {
+            maybeAdd(poison,"volume",parts.get(TAX_Poison_volume_ALT));
+        }
+        if ( ! addIfNotNull(poison,"correction",parts.get(TAX_Poisoning_correction_description))) {
+            maybeAdd(poison,"correction",parts.get(TAX_Poisoning_correction_description_ALT)); 
+        }
         var.addContent(poison);
         maybeAdd(var,"uncertainty",parts.get(TAX_Uncertainty));
         maybeAdd(var,"flag",parts.get(TAX_Data_quality_flag_description));
@@ -1062,8 +1240,13 @@ public class PoiReader2 {
         // we are interested in making it namespace aware.
         factory.setNamespaceAware(true);
         DocumentBuilder dombuilder = factory.newDocumentBuilder();
+        
+        InputSource insource = new InputSource(is);
+//        Charset defaultCs = Charset.defaultCharset();
+//        logger.debug("Default charset: " + defaultCs.displayName() + "("+defaultCs.name()+")");
+        insource.setEncoding("UTF-8");
  
-        org.w3c.dom.Document w3cDocument = dombuilder.parse(is);
+        org.w3c.dom.Document w3cDocument = dombuilder.parse(insource);
  
         // the DOMBuilder uses the DefaultJDOMFactory to create the JDOM2 objects.
         DOMBuilder jdomBuilder = new DOMBuilder();
@@ -1111,7 +1294,7 @@ public class PoiReader2 {
      */
     private Document writeSdiMetadata(SDIMetadata sdi) throws Exception {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        OutputStreamWriter os = new OutputStreamWriter(baos);
+        OutputStreamWriter os = new OutputStreamWriter(baos,"UTF-8");
         OcadsWriter oc = new OcadsWriter(_omitEmptyElements);
         oc.writeSDIMetadata(sdi, os);
         InputStream is = new ByteArrayInputStream(baos.toByteArray());

@@ -131,6 +131,9 @@ public class OadsSpreadSheetKeys {
 	public static final String DICX_Poison_used_to_kill_the_sample = "Poison used to kill the sample";
 	public static final String DICX_Poison_volume = "Poison volume";
 	public static final String DICX_Poisoning_correction_description = "Poisoning correction description";
+	public static final String DICX_Poison_used_to_kill_the_sample_ALT =  "How were the samples preserved (HgCl2, or others)";
+	public static final String DICX_Poison_volume_ALT = "Concentration and amount of the preservative added";
+	public static final String DICX_Poisoning_correction_description_ALT = "Preservative correction description";
 	public static final String DICX_Uncertainty = VarX_Uncertainty ;
 	public static final String DICX_Data_quality_flag_description = VarX_Data_quality_flag_description ;
 	public static final String DICX_Method_reference = VarX_Method_reference ;
@@ -159,6 +162,9 @@ public class OadsSpreadSheetKeys {
 	public static final String TAX_Poison_used_to_kill_the_sample = DICX_Poison_used_to_kill_the_sample ;
 	public static final String TAX_Poison_volume = DICX_Poison_volume ;
 	public static final String TAX_Poisoning_correction_description = DICX_Poisoning_correction_description ;
+	public static final String TAX_Poison_used_to_kill_the_sample_ALT =  DICX_Poison_used_to_kill_the_sample_ALT;
+	public static final String TAX_Poison_volume_ALT = DICX_Poison_volume_ALT;
+	public static final String TAX_Poisoning_correction_description_ALT = DICX_Poisoning_correction_description_ALT;
 	public static final String TAX_Magnitude_of_blank_correction = "Magnitude of blank correction";
 	public static final String TAX_Uncertainty = VarX_Uncertainty ;
 	public static final String TAX_Data_quality_flag_description = VarX_Data_quality_flag_description ;
