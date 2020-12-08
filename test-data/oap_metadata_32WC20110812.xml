@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <datasubmitter>
+    <name>Catherine E. Cosca</name>
+    <organization>NOAA/PMEL</organization>
+    <deliverypoint1>7600 Sand Point Way NE</deliverypoint1>
+    <deliverypoint2 />
+    <phone>206-526-6183</phone>
+    <email>Cathy.Cosca@noaa.gov</email>
+  </datasubmitter>
+  <title>Underway fCO2 measurements from the 2011 West Coast Ocean Acidification Cruise (WCOA2011) aboard the R/V Wecoma</title>
+  <abstract>This cruise represents the first dedicated West Coast Ocean Acidification cruise, which took place August 12-30, 2011 aboard the R/V Wecoma.  Ninety-five stations were occupied from northern Washington to southern California along thirteen transect lines.  At all stations, CTD casts were conducted, and discrete water samples were collected in Niskin bottles.  Underway measurements of pCO2 were collected during the duration of the cruise.  The cruise was designed to obtain a synoptic snapshot of key carbon, physical, and biogeochemical parameters as they relate to ocean acidification (OA) in the coastal realm. During the cruise, some of the same transect lines were occupied as during the 2007 West Coast Carbon cruise, as well as many CalCOFI stations. This effort was conducted in support of the coastal monitoring and research objectives of the NOAA Ocean Acidification Program (OAP).</abstract>
+  <purpose>The major objectives of the cruise were:
+1) To characterize ocean acidification (OA) conditions on the U.S. West Coast;
+2) To conduct inter-calibration measurements near other OA observing assets, including gliders and moorings, in the study area, allowing inter-calibration of these autonomous assets with high-quality, ship-based measurements;
+3) To provide calibration data needed to develop predictive models for aragonite saturation state, pH, and other important OA indicators in the California Current System, based on widely measured parameters such as salinity, temperature, and oxygen concentration;
+4) To examine relationships between processes leading to OA and hypoxia in coastal ecosystems;
+5) To conduct biological measurements in conjunction with physical and chemical OA measurements; and
+6) To provide scientific information on OA conditions and trends for resource management and decision support.</purpose>
+  <researchProject>none</researchProject>
+  <expocode>32WC20110812</expocode>
+  <cruiseID>WCOA2011</cruiseID>
+  <section>West Coast Ocean Acidification Cruise (WCOA)</section>
+  <reference>Pierrot, D.; Neill, C.; Sullivan, K.; Castle, R.; Wanninkhof, R.; Luger, H.; Johannessen, T.; Olsen, A.; Feely, R.A.; and Cosca, C.E. (2009). Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines. Deep-Sea Res., II, v. 56, pp. 512-522.
+
+Feely, R.A., R. Wanninkhof, H.B. Milburn, C.E. Cosca, M. Stapp, and P.P. Murphy,  A new automated underway system for making high precision pCO2 measurements onboard research ships, Analytica Chim. Acta, 377, 185-191, 1998.
+
+Wanninkhof and Thoning,  Measurement of fugacity of Carbon Dioxide in surface water and air using continuous sampling methods, Marine Chemistry, 44, 189-205, 1993.</reference>
+  <citation>Alin, Simone R.; Feely, Richard A.; Juranek, Lauren W.; Cosca, Catherine E.</citation>
+  <suppleInfo>http://www.pmel.noaa.gov/co2/story/West+Coast+cruise+2011</suppleInfo>
+  <startdate>2011-08-12</startdate>
+  <enddate>2011-08-30</enddate>
+  <westbd>-127.552</westbd>
+  <eastbd>-117.771</eastbd>
+  <northbd>46.1261</northbd>
+  <southbd>31.9502</southbd>
+  <spatialReference>WGS 84</spatialReference>
+  <geographicName>U.S. West Coast, California Current System</geographicName>
+  <fundingAgency>
+    <title>West Coast OA Cruise</title>
+  </fundingAgency>
+  <Platform>
+    <PlatformName>Wecoma</PlatformName>
+    <PlatformID>32WC</PlatformID>
+    <PlatformType>Research vessel</PlatformType>
+    <PlatformOwner>National Science Foundation</PlatformOwner>
+    <PlatformCountry>United States of America</PlatformCountry>
+  </Platform>
+  <variable>
+    <fullname>pCO2 (fCO2) autonomous</fullname>
+    <abbrev>fCO2W@SST</abbrev>
+    <observationType>Surface underway</observationType>
+    <insitu>In situ observation</insitu>
+    <unit>uatm</unit>
+    <measured>Calculated</measured>
+    <samplingInstrument>Seawater pump</samplingInstrument>
+    <analyzingInstrument>Neill Underway pCO2 measuring system (developed by Craig Neill, precursor to General Oceanics 8050).  PMEL system ID:  PMEL2</analyzingInstrument>
+    <detailedInfo>The sampling and analyzing methods of the Neill/General Oceanics Underway pCO2 systems are described in detail in: 
+Pierrot, D.; Neill, C.; Sullivan, K.; Castle, R.; Wanninkhof, R.; Luger, H.; Johannessen, T.; Olsen, A.; Feely, R.A.; and Cosca, C.E. (2009). Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines. Deep-Sea Res., II, v. 56, pp. 512-522.</detailedInfo>
+    <standardization>
+      <description>The system runs a full cycle in approximately 5 hours.  The cycle starts with 4 standard gases, then measures 90 surface water samples interspersed with 5 atmospheric samples every 30 minutes.  Each new gas is flushed through the Licor Analyzer for 4 minutes prior to a 10 second reading from the analyzer during which the sample cell is open to the atmosphere.  Subsequent samples of the same gas are flushed through the Licor Analyzer for 30 seconds prior to a stop-flow measurement.</description>
+      <frequency>Every 5 hours</frequency>
+    </standardization>
+    <poison />
+    <uncertainty>± 0.01°C</uncertainty>
+    <flag>WOCE quality control flags are used: 2 = good value, 3 = questionable value, 4 = bad value</flag>
+    <methodReference>Pierrot, D.; Neill, C.; Sullivan, K.; Castle, R.; Wanninkhof, R.; Luger, H.; Johannessen, T.; Olsen, A.; Feely, R.A.; and Cosca, C.E. (2009). Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines. Deep-Sea Res., II, v. 56, pp. 512-522.</methodReference>
+    <researcherName>Simone R. Alin</researcherName>
+    <researcherInstitution>Pacific Marine Environmental Laboratory, National Oceanic and Atmospheric Administration</researcherInstitution>
+    <internal>4</internal>
+    <gasDetector>
+      <manufacture>Standard gases are supplied by NOAA’s Earth System Research Laboratory, Global Monitoring Division, in Boulder, CO, and are directly traceable to the WMO scale.</manufacture>
+      <model>Licor 6262, IRG3-1285</model>
+      <resolution>0.2 µatm</resolution>
+      <uncertainty>0.3 µatm for equilibrator measurements, 0.2 µatm for atmospheric measurements</uncertainty>
+    </gasDetector>
+    <waterVaporCorrection>Details of the data reduction are described in Pierrot, et.al. (2009).</waterVaporCorrection>
+    <temperatureCorrection>Details of the data reduction are described in Pierrot, et.al. (2009).</temperatureCorrection>
+    <co2ReportTemperature>In situ sea surface temperature</co2ReportTemperature>
+    <intakeLocation>Bow</intakeLocation>
+    <intakeDepth>3 meters</intakeDepth>
+    <equilibrator>
+      <equilibratorType>Shower head</equilibratorType>
+      <equilibratorVolume>~0.5 L</equilibratorVolume>
+      <vented>Vented</vented>
+      <waterFlowRate>Vented</waterFlowRate>
+      <gasFlowRate>~0.8 L/m</gasFlowRate>
+      <temperatureEquilibratorMethod>Hart Scientific model 1521 digital thermometer, serial number A68850, with an NIST traceable model 5610 thermistor probe, serial number A690607.  Accurate to ± 0.01°C.</temperatureEquilibratorMethod>
+      <pressureEquilibratorMethod>Setra 239 differential pressure transducer, accurate to ± 0.15 hPa.  The equilibrator was passively vented to a secondary equilibrator, and the Licor sample output was vented to the laboratory when CO2 measurements were made, thus equilibrator headspace pressure was assumed to be laboratory pressure.  Pressure in the laboratory was measured with a GE Druck barometer, serial number 3054512, with an accuracy of  ± 0.01 %fs.</pressureEquilibratorMethod>
+    </equilibrator>
+  </variable>
+  <variable>
+    <fullname>Sea surface temperature</fullname>
+    <abbrev>SST(TSG)_C</abbrev>
+    <observationType>Surface underway</observationType>
+    <insitu>In-situ observation</insitu>
+    <unit>degrees Celsius</unit>
+    <measured>Measured</measured>
+    <samplingInstrument>Seawater pump</samplingInstrument>
+    <analyzingInstrument>Thermosalinograhs onboard the research vessel</analyzingInstrument>
+    <poison />
+    <researcherName>Simone R. Alin</researcherName>
+    <researcherInstitution>Pacific Marine Environmental Laboratory, National Oceanic and Atmospheric Administration</researcherInstitution>
+    <internal>0</internal>
+  </variable>
+  <variable>
+    <fullname>Sea surface salinity</fullname>
+    <abbrev>SAL(TSG)_PERMIL</abbrev>
+    <observationType>Surface underway</observationType>
+    <insitu>In-situ observation</insitu>
+    <measured>Measured</measured>
+    <samplingInstrument>Seawater pump</samplingInstrument>
+    <analyzingInstrument>Thermosalinograhs onboard the research vessel</analyzingInstrument>
+    <poison />
+    <researcherName>Simone R. Alin</researcherName>
+    <researcherInstitution>Pacific Marine Environmental Laboratory, National Oceanic and Atmospheric Administration</researcherInstitution>
+    <internal>0</internal>
+  </variable>
+</metadata>

@@ -1,0 +1,534 @@
+"Instructions: Please try not to change the order of Rows No. 1 through No. 410, as the information will be read by a computer computer program later on. Starting from No. 411, please first append the additional variable sections, then the non-measured variable sections, then the additional principal investigator sections (if there are more than three PIs), and then the platform sections (if there are more than 3 platforms).  Please do not use special characters. "																	
+No	Metadata element name	Your input	Help reference no.	Questions for Jan	Tasks for Julian												
+1	Submission Date		1														
+2	Accession no. of related data sets	0145160	2														
+3	Investigator-1 name	Simone R. Alin	3.1														
+4	Investigator-1 institution	NOAA Pacific Marine Environmental Laboratory	3.2														
+5	Investigator-1 address	"7600 Sand Point Way NE, Building 3, Seattle, WA 98115"	3.3														
+6	Investigator-1 phone	206-526-6819	3.4														
+7	Investigator-1 email	simone.r.alin@noaa.gov	3.5														
+8	Investigator-1 researcher ID		3.6														
+9	"Investigator-1 ID type  (ORCID, Researcher ID, etc.)"		3.7														
+10	Investigator-2 name	Jan Newton	3.1														
+11	Investigator-2 institution	University of Washington Applied Physics Laboratory	3.2														
+12	Investigator-2 address	"1013 NE 40th Street, Box 355640, Seattle, WA 98105-6698"	3.3														
+13	Investigator-2 phone	206-543-9152	3.4														
+14	Investigator-2 email	janewton@uw.edu	3.5														
+15	Investigator-2 researcher ID		3.6														
+16	"Investigator-2 ID type  (ORCID, Researcher ID, etc.)"		3.7														
+17	Investigator-3 name	Richard A. Feely	3.1														
+18	Investigator-3 institution	NOAA Pacific Marine Environmental Laboratory	3.2														
+19	Investigator-3 address	"7600 Sand Point Way NE, Building 3, Seattle, WA 98115"	3.3														
+20	Investigator-3 phone	206-526-6214	3.4														
+21	Investigator-3 email	Richard.A.Feely@noaa.gov	3.5														
+22	Investigator-3 researcher ID		3.6														
+23	"Investigator-3 ID type  (ORCID, Researcher ID, etc.)"		3.7														
+24	Data submitter name	Julian Herndon	4.1														
+25	Data submitter institution	NOAA Pacific Marine Environmental Laboratory	4.2														
+26	Data submitter address	"7600 Sand Point Way NE, Building 3, Seattle, WA 98115"	4.3														
+27	Data submitter phone	206-526-6256	4.4														
+28	Data submitter email	Julian.Herndon@noaa.gov	4.5														
+29	Data submitter researcher ID		4.6														
+30	"Data submitter ID type  (ORCID, Researcher ID, etc.)"		4.7														
+31	Title	"Inorganic carbon, oxygen, nutrient and CTD measurements from the University of Washington's Puget Sound Regional Synthesis Model (PRISM) Program Puget Sound cruise in Washington marine waters from 02/04/2008 to 02/08/2008."	5		"See red text.  Some info on ""Julian - README"" tab in case not self-explanatory."												
+32	Abstract	"This UW PRISM Puget Sound cruise took place from 02/04/2008 to 02/08/2008 aboard the R/V Thomas G. Thompson.  42 time-series stations were occupied in the Salish Sea in Washington State marine waters.  The cruise was designed to obtain a synoptic snapshot of key carbon, physical, and other biogeochemical parameters as they relate to ocean acidification (OA) in Washington's estuarine and coastal environments.  At all sampling stations, CTD casts were conducted to measure temperature, conductivity, pressure, and oxygen concentrations using CTD and oxygen sensors. Discrete water samples were collected throughout the water column at all stations in Niskin bottles.  Laboratory analyses were run to measure dissolved inorganic carbon (DIC), oxygen, and nutrient concentrations and total alkalinity.  More information--including a map of stations occupied during this cruise (and other Salish cruises), full-resolution CTD downcast data for all stations sampled, chlorophyll and phaeopigment concentrations, and other sensor data--can be found at nvs.nanoos.org/CruiseSalish by exploring the Map, Data, and Plots tabs. This effort was conducted in support of the estuarine and coastal monitoring and research objectives of the UW PRISM program and conforms to monitoring guidelines of the Global Ocean Acidification Observing Network (goa-on.org) and the U.S. National Oceanic and Atmospheric Administration's Ocean Acidification Program.  The official R/V Thomas G. Thompson code for this cruise is TN216.  
+
+Data Use Policy: Data from UW/PRISM/NANOOS/WOAC/NOAA/PMEL cruises in Washington waters (hereafter “Salish cruises”) are made freely available to the public and the scientific community in the belief that their wide dissemination will lead to greater understanding and new scientific and policy insights. The availability of these data does not constitute publication of the data or permission to use the data, or information contained in them, for publication or commercial use.  The investigators sharing these data rely on the ethics and integrity of the user to ensure that the institutions and investigators involved in producing Salish cruises data sets receive fair credit for their work.  If the data are obtained for potential use in a publication or presentation, the investigators should be informed at the outset of the nature of this work. If these data are essential to the work, or if an important result or conclusion depends on these data, co-authorship may be appropriate.  This should be discussed at an early stage in the work.  Manuscripts using these data should be sent to all investigators listed in the metadata for review before they are submitted for publication so that we can ensure that the quality and limitations of the data are accurately represented.  "	6	"Jan - I tried to make this as generalized as possible to make metadata preparation both accurate for a given cruise and easy to propagate.  
+
+Also, I modeled the Data Use Policy statement after some I found on NOAA/ESRL's atmospheric CO2 and NASA's Megacities Project web sites."	"See red text.  Some info on ""Julian - README"" tab in case not self-explanatory."												
+33	Purpose	"The major objectives of the cruise were:
+1) To characterize ocean acidification (OA) conditions in the Salish Sea and adjoining coastal waters;
+2) To conduct inter-calibration measurements near other OA observing assets, including moorings, in the study area, allowing inter-calibration of these autonomous assets with high-quality, ship-based measurements;
+3) To provide calibration data needed to develop and validate predictive models for aragonite saturation state, pH, and other important OA indicators in the Salish Sea and adjoining coastal waters, based on widely measured parameters such as salinity, temperature, and oxygen concentration;
+4) To examine relationships between processes leading to OA and hypoxia in estuarine and coastal ecosystems;
+5) To conduct biological measurements in conjunction with physical and chemical OA measurements; and
+6) To provide scientific information on OA conditions and trends for resource management and decision support."	7														
+34	Start date	2/4/08	8.1		See red text.												
+35	End date	2/8/08	8.2		See red text.												
+36	Westbd longitude	-123.2305	9.1		See red text.												
+37	Eastbd longitude	-122.3057	9.2														
+38	Northbd latitude	48.4018	9.3														
+39	Southbd latitude	47.1652	9.4														
+40	Spatial reference system	WGS 84	10														
+41	Geographic names	"Salish Sea, Puget Sound, Strait of Juan de Fuca, U.S. West Coast, California Current System, Washington"	11	"Not all will apply to each data set, but for sake of simplicity, I'd suggest we just leave this in all.  Okay with you?"													
+42	Location of organism collection		12														
+43	Funding agency name	"UW PRISM, NOAA"	13.1														
+44	Funding project title	Not applicable	13.2														
+45	Funding project ID (Grant no.)	Not applicable	13.3														
+46	Research projects	"PRISM: The Puget Sound Regional Synthesis Model of University of Washington
+NOAA PMEL-CO2: The U.S. National Oceanic and Atmospheric Administration's Pacific Marine Environmental Laboratory"	14	"Jan - I'm not sure what's supposed to go here, but let me know if you have any text that you would like entered here for any/all cruises…"													
+47	Platform-1 name	R/V Thomas G. Thompson	15.1														
+48	Platform-1 ID	3250	15.2		"Not sure where to get this info.  Let's either paste in what I found or leave blank, unless you know what this is about."												
+49	Platform-1 type	"Global Class, T-AGOR-23"	15.3														
+50	Platform-1 owner	U.S. Navy Office of Naval Research	15.4														
+51	Platform-1 country	U.S.A.	15.5														
+52	Platform-2 name		15.1														
+53	Platform-2 ID		15.2														
+54	Platform-2 type		15.3														
+55	Platform-2 owner		15.4														
+56	Platform-2 country		15.5														
+57	Platform-3 name		15.1														
+58	Platform-3 ID		15.2														
+59	Platform-3 type		15.3														
+60	Platform-3 owner		15.4														
+61	Platform-3 country		15.5														
+62	EXPOCODE	325020080402	16														
+63	Cruise ID	TN216	17														
+64	Section	Puget Sound	18														
+65	Author list for citation	"Simone R. Alin, Jan Newton, Richard A. Feely, Mark Warner, Corinne Bassin"	19														
+66	References		20														
+67	Supplemental information	http://nvs.nanoos.org/CruiseSalish	21														
+68	DIC: Variable abbreviation in data files	DIC_umol_kg	22.1														
+69	DIC: Observation type	Discrete measurements from samples collected on CTD casts	22.2														
+70	DIC: In-situ observation / manipulation condition / response variable	In-situ observation	22.3														
+71	DIC: Manipulation method	Not applicable	22.4														
+72	DIC: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	22.5														
+73	DIC: Measured or calculated	Measured	22.6														
+74	DIC: Calculation method and parameters	Not applicable	22.7														
+75	DIC: Sampling instrument	Niskin bottle	22.8														
+76	DIC: Analyzing instrument	"Two systems consisting of a coulometer (UIC Inc.) coupled with a Dissolved Inorganic Carbon Extractor (DICE) inlet system. DICE was developed by Esa Peltola and Denis Pierrot of NOAA/AOML and Dana Greeley of  NOAA/PMEL to modernize a carbon extractor called SOMMA (Johnson et al. 1985, 1987, 1993, and 1999; Johnson 1992)"	22.9	"Jan - Since we've run most of the samples at PMEL, I'm thinking maybe we just don't submit any of the FHL DIC data, since it was a whole 'nother type of instrumentation, etc.  Thoughts? (CAB1034 FHL did all but bio stations, also one TN cruise) - at least two, maybe three different DIC systems"													
+77	DIC: Detailed sampling and analyzing information	"PLEASE NOTE: DIC may be referred to as TCO2, TCARBN, or C(sub)T in other data sets.  All of these abbreviations refer to the total dissolved inorganic carbon concentration (i.e., the combined concentration of dissolved CO2, bicarbonate ion, and carbonate ion).
+
+Samples for DIC measurements were drawn according to procedures outlined in the 2007 PICES Special Publication, Guide to Best Practices for Ocean CO2 Measurements, from Niskin bottles into ~0.5 L borosilicate glass flasks using silicone tubing. The flasks were rinsed once and filled from the bottom with care not to entrain any bubbles, overflowing by at least one-half volume. The sample tube was pinched off and withdrawn, creating a small headspace, and 0.2 mL of saturated HgCl2 solution was added as a preservative. The sample bottles were then sealed with glass stoppers lightly covered with Apiezon-L grease. DIC samples were collected from variety of depths with approximately 10% of these samples taken as duplicates.  Sample bottles were inverted several times to ensure mixing of the HgCl2 throughout the sample.
+
+The accuracy of the DICE measurement is determined with the use of standards (Certified Reference Materials (CRMs), consisting of filtered and UV-irradiated seawater) supplied by Dr. Andrew Dickson of Scripps Institution of Oceanography (SIO). The CRM accuracy is determined manometrically on land in San Diego. DIC data reported to the Ocean Carbon and Acidification Data Portal have been corrected to the appropriate certified batch value.  Sample seawater from XXXX Niskin bottles was analyzed for DIC for this cruise."	22.10														
+78	DIC: Field replicate information	"Duplicate samples were collected from approximately 10% of the Niskins sampled, as a check of our precision.  These replicate samples were interspersed throughout the station analysis for quality assurance and integrity of the coulometer cell solutions. The average absolute difference from the mean of these replicates is 0.75 µmol/kg.  No systematic differences between the replicates were observed."	22.11														
+79	DIC: Standardization technique description	"Each coulometer was calibrated by injecting aliquots of pure CO2 (99.999%) by means of an 8-port valve (Wilke et al., 1993) outfitted with two calibrated sample loops of different sizes (~1ml and ~2ml). The instruments were each separately calibrated at the beginning of each cell with a minimum of two sets of these gas loop injections and then again at the end of each cell to ensure no drift during the life of the cell. "	22.12.1														
+80	DIC: Frequency of standardization	"1) Gas loops were run at the beginning and end of each cell; 
+2) CRM’s supplied by Dr. A. Dickson of SIO, were measured near the beginning; and 
+3) Duplicate samples were typically run throughout the life of the cell solution."	22.12.2														
+81	DIC: CRM manufacturer	Dr. Andrew Dickson (Scripps Institution of Oceanography)	22.12.3.1														
+82	DIC: Batch number	Various	22.12.3.2														
+83	DIC: Poison used to kill the sample	Mercuric Chloride Solution	22.13.1														
+84	DIC: Poison volume	0.12 ml	22.13.2														
+85	DIC Poisoning correction description	The DIC values were corrected for dilution by 0.12 ml of saturated HgCl2 used for sample preservation. The total water volume of the sample bottles was 302.55 ml. The correction factor used for dilution was 1.0004. 	22.13.3														
+86	DIC: Uncertainty	±0.1%	22.14														
+87	DIC: Data quality flag description	"DIC_QC, WOCE quality control flags are used: 2 = good value, 3 = questionable value, 4 = bad value, 5 = value not reported, 6 = mean of replicate measurements, 9 = sample not drawn."	22.15														
+88	DIC: Method reference (citation)	"Dickson, A.G., C.L. Sabine, and J.R. Christian (eds.). 2007. Guide to best practices for ocean CO2 measurements. PICES Special Publication 3, 191 pp.
+
+Johnson, K.M., A.E. King, and J. McN. Sieburth. 1985. Coulometric DIC analyses for marine studies: An introduction. Mar. Chem., 16, 61–82.
+
+Johnson, K.M., P.J. Williams, L. Brandstrom, and J. McN. Sieburth. 1987. Coulometric total carbon analysis for marine studies: Automation and calibration. Mar. Chem., 21, 117–133.
+
+Johnson, K.M. 1992. Operator’s manual: Single operator multiparameter metabolic analyzer (SOMMA) for total carbon dioxide (CT) with coulometric detection. Brookhaven National Laboratory, Brookhaven, N.Y., 70 pp.
+
+Johnson, K.M., K.D. Wills, D.B. Butler, W.K. Johnson, and C.S. Wong. 1993. Coulometric total carbon dioxide analysis for marine studies: Maximizing the performance of an automated continuous gas extraction system and coulometric detector. Mar. Chem., 44, 167–189.
+
+Johnson, K.M., Kortzinger, A.; Mintrop, L.; Duinker, J.C.; and Wallace, D.W.R. 1999. Coulometric total carbon dioxide analysis for marine studies: Measurement and internal consistency of underway surface TCO2 concentrations. Marine Chemistry 67(1):123-144.
+"	22.16														
+89	DIC: Researcher Name	Dana Greeley	22.17.1														
+90	DIC: Researcher Institution	"Pacific Marine Environmental Laboratory, National Oceanic and Atmospheric Administration"	22.17.2														
+91	TA: Variable abbreviation in data files	TA_umol_kg	23.1														
+92	TA: Observation type	Discrete measurements from samples collected on CTD casts	23.2														
+93	TA: In-situ observation / manipulation condition / response variable	In-situ observation	23.3														
+94	TA: Manipulation method	Not applicable	23.4														
+95	TA: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	23.5														
+96	TA: Measured or calculated	Measured	23.6														
+97	TA: Calculation method and parameters	Not applicable	23.7														
+98	TA: Sampling instrument	Niskin bottle	23.8														
+99	TA: Analyzing instrument	"Custom instrument, built at PMEL and modeled after an earlier generation of those made in Dr. Andrew Dickson's laboratory at Scripps Oceanographic Institution."	23.9	"Need to update metadata for TA systems from FHL for relevant cruises (was Moose copy of Dickson system, but now more like Dickson system now after refurb)"	"Please select the appropriate answer for each data set, based on when we got the new TA systems."												
+100	TA: Type of titration	"Two-stage, potentiometric, open-cell titration using coulometrically analyzed hydrochloric acid."	23.10		Please make sure this info is all correct as applied to the new systems.												
+101	TA: Cell type (open or closed)	Open	23.11														
+102	TA: Curve fitting method	Non-linear least squares	23.12		Please make sure this info is all correct as applied to the new systems.												
+103	TA: Detailed sampling and analyzing information	"Seawater total alkalinity (TA) was measured by acidimetric titration.  The specific method used was based upon the open-cell method described by Dickson et al (2003). This method involves first acidifying the sample to reduce the sample pH of just over 3.5 followed by bubbling CO2-free air through the sample to facilitate removal of the CO2 evolved by the acid addition.  After removal of the carbonate species from solution, the titration proceeds until a pH of just below 3.0 is attained, and the equivalence point evaluated from titration points in the pH region 3.0–3.5 using a non-linear least squares procedure that corrects for the reactions with sulfate and fluoride ions (Dickson et al. 2003).  Titration progress is monitored by measuring the electromotive force (E) of a combination glass-reference electrode.
+Samples were drawn from the Niskin-type bottles into cleaned 250-ml borosilicate glass bottles using Tygon tubing with silicone ends.  Bottles were rinsed twice and filled from the bottom, overflowing half a volume and taking care not to entrain any bubbles.  The sample tube was closed off and withdrawn from the sample bottle, creating a 5 ml headspace.  Samples were preserved by poisoning with 0.12 ml of a saturated HgCl2 solution.  Sample bottles were sealed with glass stoppers lightly coated with Apiezon-L grease, and were stored at room temperature (21-25 °C) for a maximum of 12 hours prior to analysis. 
+Titrations were carried out in water-jacketed, 250-ml beakers.  The beakers were kept at 24.0 ± 0.2 °C with water from a constant temperature bath.   Prior to analysis, samples were placed in the water bath to bring them to the same temperature as the reaction beakers.  Seawater samples were dispensed into the water-jacketed beaker using a fixed-volume glass syringe. A Metrohm Dosimat 765 was used to deliver acid to the sample beaker in increments of 0.040 ml.  The acid titrant used was 0.1 mol/kg HCl prepared in 0.6 mol/kg NaCl background to approximate the ionic strength of seawater (0.7 mol/kg).  
+Instrument control and data acquisition was with custom software developed in Andrew Dickson's laboratory at Scripps Institution of Oceanography and modified by a former employee of the NOAA/PMEL Carbon Group using the National Instruments LabView programming environment. Typical titrations were completed in 10-14 minutes and required 20-24 acid additions to reach a pH of 3.0. 838 values were reported to the database."	23.13		Please make sure this info is all correct as applied to the new systems.												
+104	TA: Field replicate information	Duplicate samples were collected from approximately 10% of the Niskins sampled as a check of our precision.	23.14														
+105	TA: Standardization technique description	Analytical accuracy was assessed by routine analysis of Certified Reference Materials (CRMs). CRMs were analyzed approximately every 10 to 24 samples.  The average offset for samples run on our analytical systems is <2 µmol/kg.	23.15.1														
+106	TA: Frequency of standardization	"All values were directly measured with reference to Certified Reference Material (Dickson, SIO)"	23.15.2														
+107	TA: CRM manufacturer	Dr. Andrew Dickson (Scripps Institution of Oceanography)	23.15.3.1														
+108	TA: Batch Number	Various	23.15.3.2														
+109	TA: Poison used to kill the sample	Mercuric Chloride Solution	23.16.1														
+110	TA: Poison volume	0.12-0.24 ml	23.16.2														
+111	TA: Poisoning correction description	The TA values were corrected for dilution by 0.12-0.24 ml of saturated HgCl2 used for sample preservation.	23.16.3														
+112	TA: Magnitude of blank correction	Not applicable	23.17														
+113	TA: Uncertainty	The precision of this method is better than 0.1% and accuracy is 0.1%.	23.18														
+114	TA: Data quality flag description	"TA_QC, WOCE quality control flags are used: 2 = good value, 3 = questionable value, 4 = bad value, 5 = value not reported, 6 = mean of replicate measurements, 9 = sample not drawn."	23.19														
+115	TA: Method reference (citation)	"• Bates, R.G. Determination of pH. Theory and Practice. A Wiley-Interscience Publication, Second Edition. 
+• Dickson A.G. (1981). An exact definition of total alkalinity, and a procedure for the estimation of alkalinity and total inorganic carbon from titration data. Deep-Sea Res. 28, 609-623.
+• Dickson A.G. (1992). The development of the alkalinity concept in marine chemistry. Marine chemistry 40:1-21-2, 49-63.
+• Dickson, A. G., Afghan, J. D. & Anderson, G. C. (2003). Reference materials for oceanic CO2 analysis: A method for the certification of total alkalinity. Marine Chemistry 80, 185–197
+• Gran G. (1952). Determination of the equivalence point in potentiometric titrations. Part II. The analyst, 77, 661-671.
+• Wolf-Gladrow, D.A. et al. (2007). Total alkalinity: The explicit conservative expression and its application to biogeochemical process."	23.20														
+116	TA: Researcher Name	Morgan Ostendorf	23.21.1														
+117	TA: Researcher Institution	"Pacific Marine Environmental Laboratory, National Oceanic and Atmospheric Administration"	23.21.2														
+118	pH: Variable abbreviation in data files		24.1														
+119	pH: Observation type		24.2														
+120	pH: In-situ observation / manipulation condition / response variable		24.3														
+121	pH: Manipulation method		24.4														
+122	pH: Measured or calculated		24.5														
+123	pH: Calculation method and parameters		24.6														
+124	pH: Sampling instrument		24.7														
+125	pH: Analyzing instrument		24.8														
+126	pH: pH scale		24.9														
+127	pH: Temperature of measurement		24.10														
+128	pH: Detailed sampling and analyzing information		24.11														
+129	pH: Field replicate information		24.12														
+130	pH: Standardization technique description		24.13.1														
+131	pH: Frequency of standardization		24.13.2														
+132	pH: pH values of the standards		24.13.3														
+133	pH: Temperature of standardization		24.13.4														
+134	pH: Temperature correction method		24.14														
+135	pH: at what temperature was pH reported		24.15														
+136	pH: Uncertainty		24.16														
+137	pH: Data quality flag description		24.17														
+138	pH: Method reference (citation)		24.18														
+139	pH: Researcher Name		24.19.1														
+140	pH: Researcher Institution		24.19.2														
+141	pCO2A: Variable abbreviation in data files		25.1														
+142	pCO2A: Observation type		25.2														
+143	pCO2A: In-situ observation / manipulation condition / response variable		25.3														
+144	pCO2A: Manipulation method		25.4														
+145	pCO2A: Variable unit		25.5														
+146	pCO2A: Measured or calculated		25.6														
+147	pCO2A: Calculation method and parameters		25.7														
+148	pCO2A: Sampling instrument		25.8														
+149	pCO2A: Location of seawater intake		25.9														
+150	pCO2A: Depth of seawater intake		25.10														
+151	pCO2A: Analyzing instrument		25.11														
+152	pCO2A: Detailed sampling and analyzing information		25.12														
+153	pCO2A: Equilbrator type		25.13.1														
+154	pCO2A: Equilibrator volume (L)		25.13.2														
+155	pCO2A: Vented or not		25.13.3														
+156	pCO2A: Water flow rate (L/min)		25.13.4														
+157	pCO2A: Headspace gas flow rate (L/min)		25.13.5														
+158	pCO2A: How was temperature inside the equilibrator measured .		25.13.6														
+159	pCO2A: How was pressure inside the equilibrator measured.		25.13.7														
+160	pCO2A: Drying method for CO2 gas		25.14														
+161	pCO2A: Manufacturer of the gas detector		25.15.1														
+162	pCO2A: Model of the gas detector		25.15.2														
+163	pCO2A: Resolution of the gas detector		25.15.3														
+164	pCO2A: Uncertainty of the gas detector		25.15.4														
+165	pCO2A: Standardization technique description		25.16.1														
+166	pCO2A: Frequency of standardization		25.16.2														
+167	pCO2A: Manufacturer of standard gas		25.16.3.1														
+168	pCO2A: Concentrations of standard gas		25.16.3.2														
+169	pCO2A: Uncertainties of standard gas		25.16.3.3														
+170	pCO2A: Water vapor correction method		25.17														
+171	pCO2A: Temperature correction method		25.18														
+172	pCO2A: at what temperature was pCO2 reported		25.19														
+173	pCO2A: Uncertainty		25.20														
+174	pCO2A: Data quality flag description		25.21														
+175	pCO2A: Method reference (citation)		25.22														
+176	pCO2A: Researcher Name		25.23.1														
+177	pCO2A: Researcher Institution		25.23.2														
+178	pCO2D: Variable abbreviation in data files		26.1														
+179	pCO2D: Observation type		26.2														
+180	pCO2D: In-situ observation / manipulation condition / response variable		26.3														
+181	pCO2D: Manipulation method		26.4														
+182	pCO2D: Variable unit		26.5														
+183	pCO2D: Measured or calculated		26.6														
+184	pCO2D: Calculation method and parameters		26.7														
+185	pCO2D: Sampling instrument		26.8														
+186	pCO2D: Analyzing instrument		26.9														
+187	pCO2D: Storage method		26.10														
+188	pCO2D: Seawater volume (mL)		26.11														
+189	pCO2D: Headspace volume (mL)		26.12														
+190	pCO2D: Temperature of measurement		26.13														
+191	pCO2D: Detailed sampling and analyzing information		26.14														
+192	pCO2D: Field replicate information		26.15														
+193	pCO2D: Manufacturer of the gas detector		26.16.1														
+194	pCO2D: Model of the gas detector		26.16.2														
+195	pCO2D: Resolution of the gas detector		26.16.3														
+196	pCO2D: Uncertainty of the gas detector		26.16.4														
+197	pCO2D: Standardization technique description		26.17.1														
+198	pCO2D: Frequency of standardization		26.17.2														
+199	pCO2D: Temperature of standardization		26.17.3														
+200	pCO2D: Manufacturer of standard gas		26.17.4.1														
+201	pCO2D: Concentrations of standard gas		26.17.4.2														
+202	pCO2D: Uncertainties of standard gas		26.17.4.3														
+203	pCO2D: Water vapor correction method		26.18														
+204	pCO2D: Temperature correction method		26.19														
+205	pCO2D: at what temperature was pCO2 reported		26.20														
+206	pCO2D: Uncertainty		26.21														
+207	pCO2D: Data quality flag description		26.22														
+208	pCO2D: Method reference (citation)		26.23														
+209	pCO2D: Researcher Name		26.24.1														
+210	pCO2D: Researcher Institution		26.24.2														
+211	Var1: Variable abbreviation in data files	PRESS_DB	27.1														
+212	Var1: Full variable name	CTD pressure	27.2														
+213	Var1: Observation type	Water column profile	27.4														
+214	Var1: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+215	Var1: Variable unit	dbars (=decibars)	27.7														
+216	Var1: Measured or calculated	Measured	27.8														
+217	Var1: Calculation method and parameters	Not applicable	27.9														
+218	Var1: Sampling instrument	Sea-Bird Scientific SBE 9plus CTD	27.10	Or is it the 911plus? (I.e. with the 11plus deck box)													
+219	Var1: Analyzing instrument		27.11														
+220	Var1: Duration (for settlement/colonization methods)		27.12														
+221	Var1: Detailed sampling and analyzing information	This file contains the up cast data collected using the CTD package and any additional sensors attached to a rosette cage deployed on a research vessel. The up cast data correspond to when the bottles on the rosette cage were fired and water samples were collected. All up casts during the cruise are contained in this file and are sorted by station.  CTD data were processed using Sea-Bird's proprietary data processing software.	27.13	"Can we provide more details <= here on the sampling and data processing methods, Jan?  Also, is this accurate?  It's taken from the Salish Cruise app metadata file mostly, but a few details from Sea-Bird web site (e.g. the last sentence)."													
+222	Var1: Field replicate information		27.14														
+223	Var1: Uncertainty	Pressure: initial accuracy =  +/- 0.015% of full scale range; typical stability = 0.02% of full scale per year; master clock error contribution = Pressure 0.3 dbar (for 6800 meter depth-rated sensor)	27.15	"What's the depth rating on your sensor, Jan?"													
+224	Var1: Data quality flag description	No data flags were applied to CTD data	27.16														
+225	Var1: Method reference (citation)	Sea-Bird Scientific web site: http://www.seabird.com/sbe911plus-ctd	27.17														
+226	Var1: Biological subject		27.18														
+227	Var1: Species Identification code		27.19														
+228	Var1: Life stage of the biological subject		27.20														
+229	Var1: Researcher Name	Jan Newton	27.21.1	"Could you confirm when John started being involved with the PRISM/NANOOS/WOAC cruises in the ""cruise info"" tab?"	"For any cruises where John is not among the PIs (like the earlier cruises in this series, I believe), just delete"												
+230	Var1: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+231	Var2: Variable abbreviation in data files	CTD_TMP_deg_C	27.1														
+232	Var2: Full variable name	"CTD temperature, ITS-90 scale"	27.2	Jan - do you know if ITS-90 applies for all cruise data from 2008 on?													
+233	Var2: Observation type	Water column profile	27.4														
+234	Var2: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+235	Var2: Variable unit	"degrees celsius, ITS-90 scale"	27.7														
+236	Var2: Measured or calculated	Measured	27.8														
+237	Var2: Calculation method and parameters		27.9														
+238	Var2: Sampling instrument	Sea-Bird Scientific SBE 9plus CTD	27.10	Is this instrument name correct?													
+239	Var2: Analyzing instrument		27.11														
+240	Var2: Duration (for settlement/colonization methods)		27.12														
+241	Var2: Detailed sampling and analyzing information	This file contains the up cast data collected using the CTD package and any additional sensors attached to a rosette cage deployed on a research vessel. The up cast data correspond to when the bottles on the rosette cage were fired and water samples were collected. All up casts during the cruise are contained in this file and are sorted by station.  CTD data were processed using Sea-Bird's proprietary data processing software.	27.13	"Can we provide more details <= here on the sampling and data processing methods, Jan?  Also, is this accurate?  It's taken from the Salish Cruise app metadata file mostly, but a few details from Sea-Bird web site (e.g. the last sentence)."													
+242	Var2: Field replicate information		27.14														
+243	Var2: Uncertainty	Temperature: initial accuracy = +/- 0.001 degrees Celsius; typical stability = 0.0002 degrees Celsius per month; master clock error contribution = 0.00016 degrees Celsius	27.15														
+244	Var2: Data quality flag description	No data flags were applied to CTD data	27.16														
+245	Var2: Method reference (citation)	Sea-Bird Scientific web site: http://www.seabird.com/sbe911plus-ctd	27.17														
+246	Var2: Biological subject		27.18														
+247	Var2: Species Identification code		27.19														
+248	Var2: Life stage of the biological subject		27.20														
+249	Var2: Researcher Name	Jan Newton	27.21.1	"Could you confirm when John started being involved with the PRISM/NANOOS/WOAC cruises in the ""cruise info"" tab?"	"For any cruises where John is not among the PIs (like the earlier cruises in this series, I believe), just delete"												
+250	Var2: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+251	Var3: Variable abbreviation in data files	CTD_SAL_PSU_PSS-78	27.1														
+252	Var3: Full variable name	CTD salinity	27.2														
+253	Var3: Observation type	Water column profile	27.4														
+254	Var3: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+255	Var3: Variable unit	1978 Practical Salinity Scale	27.7	Jan - do you know if PSS-78 applies for all cruise data from 2008 on?													
+256	Var3: Measured or calculated	Calculated from conductivity measurements.	27.8														
+257	Var3: Calculation method and parameters		27.9														
+258	Var3: Sampling instrument	Sea-Bird Scientific SBE 4 Conductivity Sensor	27.10														
+259	Var3: Analyzing instrument		27.11														
+260	Var3: Duration (for settlement/colonization methods)		27.12														
+261	Var3: Detailed sampling and analyzing information	This file contains the up cast data collected using the CTD package and any additional sensors attached to a rosette cage deployed on a research vessel. The up cast data correspond to when the bottles on the rosette cage were fired and water samples were collected. All up casts during the cruise are contained in this file and are sorted by station.  CTD data were processed using Sea-Bird's proprietary data processing software.	27.13	"Can we provide more details <= here on the sampling and data processing methods, Jan?  Also, is this accurate?  It's taken from the Salish Cruise app metadata file mostly, but a few details from Sea-Bird web site (e.g. the last sentence)."													
+262	Var3: Field replicate information		27.14														
+263	Var3: Uncertainty	Conductivity: initial accuracy = +/- 0.0003 S/m; typical stability = 0.0003 S/m per month; master clock error contribution = 0.00005 S/m	27.15														
+264	Var3: Data quality flag description	No data flags were applied to CTD data	27.16														
+265	Var3: Method reference (citation)	Sea-Bird Scientific web site: http://www.seabird.com/sbe911plus-ctd	27.17														
+266	Var3: Biological subject		27.18														
+267	Var3: Species Identification code		27.19														
+268	Var3: Life stage of the biological subject		27.20														
+269	Var3: Researcher Name	Jan Newton	27.21.1	"Could you confirm when John started being involved with the PRISM/NANOOS/WOAC cruises in the ""cruise info"" tab?"	"For any cruises where John is not among the PIs (like the earlier cruises in this series, I believe), just delete"												
+270	Var3: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+271	Var4: Variable abbreviation in data files	PHOSPHATE_umol_kg	27.1														
+272	Var4: Full variable name	phosphate (PO4)	27.2														
+273	Var4: Observation type	Discrete measurements from samples collected in Niskin bottles on CTD casts	27.4														
+274	Var4: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+275	Var4: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+276	Var4: Measured or calculated	Measured	27.8														
+277	Var4: Calculation method and parameters		27.9														
+278	Var4: Sampling instrument	Niskin bottle	27.10														
+279	Var4: Analyzing instrument	Seal Analytical AA3	27.11														
+280	Var4: Duration (for settlement/colonization methods)		27.12														
+281	Var4: Detailed sampling and analyzing information	"From the Niskin bottle, seawater was drawn into 60 mL HDPE sample bottles to rinse the bottle and cap twice.  Plungers were removed from 60 mL syringes with Nalgene filters attached (surfactant-free cellulose, 25 mm, 0.45 micron pore size) and rinsed twice with seawater from the Niskin.  The syringe was filled with sample water from the Niskin.  The plunger was inserted, the syringe inverted, and the filter removed to remove the air bubble.  With the filter re-attached, about 5 mL of of sample water was filtered into sample bottle to rinse and then discarded.  45-50 mL of sample was filtered into sample bottle, such that it was less than 2/3 full.  The cap was secured and the bottle frozen upright in a -10 degree Celsius freezer until analyzed.  Analyses and calibration followed the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3 (UNESCO 1994)."	27.13														
+282	Var4: Field replicate information	No replicate samples were collected or analyzed.	27.14														
+283	Var4: Uncertainty	"Accreditation codes and detection limits: EPA 365.5_1.4_1997, NELAC Code WM920270, MDLs 0.014uM, 0.0004mg/L (from https://www.ocean.washington.edu/story/Marine+Chemistry+Laboratory)."	27.15	Jan - do you think this is the best info to include here?  I am not totally familiar with all these things…													
+284	Var4: Data quality flag description	"Data have not been quality controlled after laboratory analysis.  Laboratory quality assurance procedures were followed, as detailed in UNESCO (1994)."	27.16														
+285	Var4: Method reference (citation)	UNESCO (1994). Protocols for the joint global ocean flux study (JGOFS) core measurements. Vol. 29.  	27.17														
+286	Var4: Biological subject		27.18														
+287	Var4: Species Identification code		27.19														
+288	Var4: Life stage of the biological subject		27.20														
+289	Var4: Researcher Name	Kathy Krogsland 	27.21.1														
+290	Var4: Researcher Institution	University of Washington School of Oceanography	27.21.2														
+291	Var5: Variable abbreviation in data files	SILICATE_umol_kg	27.1														
+292	Var5: Full variable name	Orthosilicic acid (Si(OH)4)	27.2														
+293	Var5: Observation type	Discrete measurements from samples collected in Niskin bottles on CTD casts	27.4														
+294	Var5: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+295	Var5: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+296	Var5: Measured or calculated	Measured	27.8														
+297	Var5: Calculation method and parameters		27.9														
+298	Var5: Sampling instrument	Niskin bottle	27.10														
+299	Var5: Analyzing instrument	Seal Analytical AA3	27.11														
+300	Var5: Duration (for settlement/colonization methods)		27.12														
+301	Var5: Detailed sampling and analyzing information	"From the Niskin bottle, seawater was drawn into 60 mL HDPE sample bottles to rinse the bottle and cap twice.  Plungers were removed from 60 mL syringes with Nalgene filters attached (surfactant-free cellulose, 25 mm, 0.45 micron pore size) and rinsed twice with seawater from the Niskin.  The syringe was filled with sample water from the Niskin.  The plunger was inserted, the syringe inverted, and the filter removed to remove the air bubble.  With the filter re-attached, about 5 mL of of sample water was filtered into sample bottle to rinse and then discarded.  45-50 mL of sample was filtered into sample bottle, such that it was less than 2/3 full.  The cap was secured and the bottle frozen upright in a -10 degree Celsius freezer until analyzed.  Analyses and calibration followed the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3 (UNESCO 1994)."	27.13														
+302	Var5: Field replicate information	No replicate samples were collected or analyzed.	27.14														
+303	Var5: Uncertainty	"Accreditation codes and detection limits: EPA 366, NELAC Code WM920240, MDLs 0.23uM, 0.0063mg/L (from https://www.ocean.washington.edu/story/Marine+Chemistry+Laboratory)."	27.15	Jan - do you think this is the best info to include here?  I am not totally familiar with all these things…													
+304	Var5: Data quality flag description	"Data have not been quality controlled after laboratory analysis.  Laboratory quality assurance procedures were followed, as detailed in UNESCO (1994)."	27.16														
+305	Var5: Method reference (citation)	UNESCO (1994). Protocols for the joint global ocean flux study (JGOFS) core measurements. Vol. 29.  	27.17														
+306	Var5: Biological subject		27.18														
+307	Var5: Species Identification code		27.19														
+308	Var5: Life stage of the biological subject		27.20														
+309	Var5: Researcher Name	Kathy Krogsland 	27.21.1														
+310	Var5: Researcher Institution	University of Washington School of Oceanography	27.21.2														
+311	Var6: Variable abbreviation in data files	NITRATE_umol_kg	27.1														
+312	Var6: Full variable name	nitrate (NO3)	27.2														
+313	Var6: Observation type	Discrete measurements from samples collected in Niskin bottles on CTD casts	27.4														
+314	Var6: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+315	Var6: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+316	Var6: Measured or calculated	Measured	27.8														
+317	Var6: Calculation method and parameters		27.9														
+318	Var6: Sampling instrument	Niskin bottle	27.10														
+319	Var6: Analyzing instrument	Analyses and calibration follow the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3.	27.11														
+320	Var6: Duration (for settlement/colonization methods)		27.12														
+321	Var6: Detailed sampling and analyzing information	"From the Niskin bottle, seawater was drawn into 60 mL HDPE sample bottles to rinse the bottle and cap twice.  Plungers were removed from 60 mL syringes with Nalgene filters attached (surfactant-free cellulose, 25 mm, 0.45 micron pore size) and rinsed twice with seawater from the Niskin.  The syringe was filled with sample water from the Niskin.  The plunger was inserted, the syringe inverted, and the filter removed to remove the air bubble.  With the filter re-attached, about 5 mL of of sample water was filtered into sample bottle to rinse and then discarded.  45-50 mL of sample was filtered into sample bottle, such that it was less than 2/3 full.  The cap was secured and the bottle frozen upright in a -10 degree Celsius freezer until analyzed.  Analyses and calibration followed the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3 (UNESCO 1994)."	27.13														
+322	Var6: Field replicate information	No replicate samples were collected or analyzed.	27.14														
+323	Var6: Uncertainty	"Accreditation codes and detection limits: EPA 353.4_2_1997, NELAC Code 10068209, MDLs 0.288uM, 0.0040mg/L (from https://www.ocean.washington.edu/story/Marine+Chemistry+Laboratory)."	27.15	Jan - do you think this is the best info to include here?  I am not totally familiar with all these things…													
+324	Var6: Data quality flag description	"Data have not been quality controlled after laboratory analysis.  Laboratory quality assurance procedures were followed, as detailed in UNESCO (1994)."	27.16														
+325	Var6: Method reference (citation)	UNESCO (1994). Protocols for the joint global ocean flux study (JGOFS) core measurements. Vol. 29.  	27.17														
+326	Var6: Biological subject		27.18														
+327	Var6: Species Identification code		27.19														
+328	Var6: Life stage of the biological subject		27.20														
+329	Var6: Researcher Name	Kathy Krogsland 	27.21.1														
+330	Var6: Researcher Institution	University of Washington School of Oceanography	27.21.2														
+331	Var7: Variable abbreviation in data files	NITRITE_umol_kg	27.1														
+332	Var7: Full variable name	nitrite (NO2)	27.2														
+333	Var7: Observation type	Discrete measurements from samples collected in Niskin bottles on CTD casts	27.4														
+334	Var7: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+335	Var7: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+336	Var7: Measured or calculated	Measured	27.8														
+337	Var7: Calculation method and parameters	We converted nutrient concentrations provided in µmol/L at analytical temperatures (22 degrees Celsius) to µmol/kg units by dividing nutrient concentrations in µmol/L by the density of the sample seawater at the CTD salinity value and analytical temperature.	27.9														
+338	Var7: Sampling instrument	Niskin bottle	27.10														
+339	Var7: Analyzing instrument	Seal Analytical AA3	27.11														
+340	Var7: Duration (for settlement/colonization methods)		27.12														
+341	Var7: Detailed sampling and analyzing information	"From the Niskin bottle, seawater was drawn into 60 mL HDPE sample bottles to rinse the bottle and cap twice.  Plungers were removed from 60 mL syringes with Nalgene filters attached (surfactant-free cellulose, 25 mm, 0.45 micron pore size) and rinsed twice with seawater from the Niskin.  The syringe was filled with sample water from the Niskin.  The plunger was inserted, the syringe inverted, and the filter removed to remove the air bubble.  With the filter re-attached, about 5 mL of of sample water was filtered into sample bottle to rinse and then discarded.  45-50 mL of sample was filtered into sample bottle, such that it was less than 2/3 full.  The cap was secured and the bottle frozen upright in a -10 degree Celsius freezer until analyzed.  Analyses and calibration followed the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3 (UNESCO 1994)."	27.13														
+342	Var7: Field replicate information	No replicate samples were collected or analyzed.	27.14														
+343	Var7: Uncertainty	"Accreditation codes and detection limits: EPA 353.4_2_1997, NELAC Code 10068209, MDLs 0.011uM, 0.0002mg/L (from https://www.ocean.washington.edu/story/Marine+Chemistry+Laboratory)."	27.15	Jan - do you think this is the best info to include here?  I am not totally familiar with all these things…													
+344	Var7: Data quality flag description	"Data have not been quality controlled after laboratory analysis.  Laboratory quality assurance procedures were followed, as detailed in UNESCO (1994)."	27.16														
+345	Var7: Method reference (citation)	UNESCO (1994). Protocols for the joint global ocean flux study (JGOFS) core measurements. Vol. 29.  	27.17														
+346	Var7: Biological subject		27.18														
+347	Var7: Species Identification code		27.19														
+348	Var7: Life stage of the biological subject		27.20														
+349	Var7: Researcher Name	Kathy Krogsland 	27.21.1														
+350	Var7: Researcher Institution	University of Washington School of Oceanography	27.21.2														
+351	Var8: Variable abbreviation in data files	AMMONIA_umol_kg	27.1														
+352	Var8: Full variable name	ammonia (NH3)	27.2														
+353	Var8: Observation type	Discrete measurements from samples collected in Niskin bottles on CTD casts	27.4														
+354	Var8: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+355	Var8: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+356	Var8: Measured or calculated	Measured	27.8														
+357	Var8: Calculation method and parameters		27.9														
+358	Var8: Sampling instrument	Niskin bottle	27.10														
+359	Var8: Analyzing instrument	Seal Analytical AA3	27.11														
+360	Var8: Duration (for settlement/colonization methods)		27.12														
+361	Var8: Detailed sampling and analyzing information	"From the Niskin bottle, seawater was drawn into 60 mL HDPE sample bottles to rinse the bottle and cap twice.  Plungers were removed from 60 mL syringes with Nalgene filters attached (surfactant-free cellulose, 25 mm, 0.45 micron pore size) and rinsed twice with seawater from the Niskin.  The syringe was filled with sample water from the Niskin.  The plunger was inserted, the syringe inverted, and the filter removed to remove the air bubble.  With the filter re-attached, about 5 mL of of sample water was filtered into sample bottle to rinse and then discarded.  45-50 mL of sample was filtered into sample bottle, such that it was less than 2/3 full.  The cap was secured and the bottle frozen upright in a -10 degree Celsius freezer until analyzed.  Analyses and calibration followed the protocols of the WOCE Hydrographic Program using a Seal Analytical AA3 (UNESCO 1994)."	27.13														
+362	Var8: Field replicate information	No replicate samples were collected or analyzed.	27.14														
+363	Var8: Uncertainty	"Accreditation codes and detection limits: EPA 349, NELAC Code WM920220, MDLs 0.047uM, 0.0007mg/L (from https://www.ocean.washington.edu/story/Marine+Chemistry+Laboratory)."	27.15	Jan - do you think this is the best info to include here?  I am not totally familiar with all these things…													
+364	Var8: Data quality flag description	"Data have not been quality controlled after laboratory analysis.  Laboratory quality assurance procedures were followed, as detailed in UNESCO (1994)."	27.16														
+365	Var8: Method reference (citation)	UNESCO (1994). Protocols for the joint global ocean flux study (JGOFS) core measurements. Vol. 29.  	27.17														
+366	Var8: Biological subject		27.18														
+367	Var8: Species Identification code		27.19														
+368	Var8: Life stage of the biological subject		27.20														
+369	Var8: Researcher Name	Kathy Krogsland 	27.21.1														
+370	Var8: Researcher Institution	University of Washington School of Oceanography	27.21.2														
+371	Var9: Variable abbreviation in data files	CTD_OXY_mg_L	27.1														
+372	Var9: Full variable name	uncorrected oxygen concentration from CTD-O2 sensor	27.2														
+373	Var9: Observation type	Water column profile	27.4														
+374	Var9: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+375	Var9: Variable unit	milligrams per liter (mg/L)	27.7														
+376	Var9: Measured or calculated	Measured	27.8														
+377	Var9: Calculation method and parameters	Not applicable	27.9														
+378	Var9: Sampling instrument	Sea-Bird Scientific SBE43 Dissolved Oxygen Sensor	27.10	Has it always been an SBE43?													
+379	Var9: Analyzing instrument		27.11														
+380	Var9: Duration (for settlement/colonization methods)		27.12														
+381	Var9: Detailed sampling and analyzing information	This file contains the up cast data collected using the CTD package and any additional sensors attached to a rosette cage deployed on a research vessel. The up cast data correspond to when the bottles on the rosette cage were fired and water samples were collected. All up casts during the cruise are contained in this file and are sorted by station.  CTD data were processed using Sea-Bird's proprietary data processing software.	27.13	"I'm assuming different words would apply here for data processing.  Yes?  If so, please provide if possible."													
+382	Var9: Field replicate information		27.14														
+383	Var9: Uncertainty	Initial accuracy = +/- 2% of saturation; typical stability = 0.5% per 1000 hours of deployed time (clean membrane)	27.15														
+384	Var9: Data quality flag description	"CTD_OXY_flag, WOCE quality control flags are used: 2 = good value, 3 = questionable value, 4 = bad value, 5 = value not reported, 6 = mean of replicate measurements, 9 = sample not drawn."	27.16														
+385	Var9: Method reference (citation)	Sea-Bird Scientific web site: http://www.seabird.com/sbe43-dissolved-oxygen-sensor	27.17														
+386	Var9: Biological subject		27.18														
+387	Var9: Species Identification code		27.19														
+388	Var9: Life stage of the biological subject		27.20														
+389	Var9: Researcher Name	Jan Newton	27.21.1														
+390	Var9: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+391	Var10: Variable abbreviation in data files	BOT_OXY_avg_mg_L	27.1														
+392	Var10: Full variable name	oxygen concentration in discrete bottle samples	27.2														
+393	Var10: Observation type	Water column profile	27.4														
+394	Var10: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+395	Var10: Variable unit	milligrams per liter (mg/L)	27.7														
+396	Var10: Measured or calculated	Measured	27.8														
+397	Var10: Calculation method and parameters		27.9	Jan?  I don't have the Winkler calcs handy.  Reference?													
+398	Var10: Sampling instrument	Niskin bottle	27.10														
+399	Var10: Analyzing instrument	Custom system built to analyze dissolved oxygen concentration by Winkler titration with colorimetric endpoint detection	27.11	"Please correct as needed (or is it ""Brinkman Dosimat automated titrator""?)"													
+400	Var10: Duration (for settlement/colonization methods)		27.12														
+401	Var10: Detailed sampling and analyzing information	"The analysis method is based upon the Carpenter (1965) whole flask titration of iodine, which is produced by an equivalent amount of dissolved oxygen. An automated titrator (Brinkman Dosimat) uses an amperometric end-point detection as described by Culberson and Huang (1987) and modified for IBM-PC computers by Knapp et al. (1990). The nominal 125-ml iodine flasks are used for sampling are pre-calibrated so their volumes are precisely known.  Samples were titrated within a few hours of being collected. 633 discrete oxygen samples were run to validate sensor O2 observations on the CTD package. "	27.13	"I don't necessarily think this is right, but this is from Burke's section in our WCOA 2013 metadata file.  Please edit or replace, as appropriate."													
+402	Var10: Field replicate information	We collected and analyzed duplicate samples from approximately 10% of the Niskins sampled.	27.14	Edit as needed.  This is what we do for DIC/TA typically.													
+403	Var10: Uncertainty		27.15	Please provide.													
+404	Var10: Data quality flag description	"BOT_OXY_flag, WOCE quality control flags are used: 2 = good value, 3 = questionable value, 4 = bad value, 5 = value not reported, 6 = mean of replicate measurements, 9 = sample not drawn."	27.16	I added these.													
+405	Var10: Method reference (citation)		27.17	Please provide.													
+406	Var10: Biological subject		27.18	YAY!  DONE with the hard part.													
+407	Var10: Species Identification code		27.19														
+408	Var10: Life stage of the biological subject		27.20														
+409	Var10: Researcher Name	Jan Newton	27.21.1														
+410	Var10: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+411	Var11: Variable abbreviation in data files	CTD_OXY_corr_umol_kg	27.1														
+412	Var11: Full variable name	Dissolved oxygen concentration measured by CTD sensors and corrected for an offset from bottle oxygen values	27.2														
+413	Var11: Observation type	Water column profile	27.4														
+414	Var11: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+415	Var11: Variable unit	micromoles per kilogram of seawater (umol/kg-SW)	27.7														
+416	Var11: Measured or calculated	Calculated from bottle and SBE 43 sensor dissolved oxygen measurements.	27.8														
+417	Var11: Calculation method and parameters	"First, all CTD and bottle dissolved oxygen (O2) data were converted from original units (typically milligrams O2 per liter seawater [mg/L] but occasionally milliliters O2 per liter seawater [mL/L]) to micromoles O2 per kilogram of seawater (hereafter umol/kg).
+
+In cases where CTD oxygen data were provided in mL/L, we converted them to mg/L for consistency in the submitted data set using this conversion:
+(O2 in mg/L) = (O2 in mL/L) / 1.42903
+
+To convert from units of mg/L to umol/kg, we used the potential density (= [1000 + sigma theta], which is “the density calculated with in situ salinity, potential temperature, and pressure = 0, minus 1000 kg/m^3” as in http://www.oc.nps.edu/nom/day1/parta.html).  The potential density is hereafter abbreviated as rhoTheta.
+
+Corrections were done as follows (Garcia and Gordon, 1992):
+(O2 in umol/kg) = ((O2 in mg/L) x 44.6596 x 1000)/(rhoTheta x 1.42903)
+
+We note that Garcia and Gordon use rhoTheta in units of kg/L, hence the conversion factor of 1000 in our equations above.
+
+Next, the converted CTD and bottle O2 data (i.e., Var9 and Var10, after conversion to umol/kg units, we refer to as CTD_O2 and BOT_O2) were plotted together, with CTD_O2 on the x-axis and BOT_O2 on the y-axis.  We eliminated strong outliers after close inspection of each outlying data point in the context of the depth profiles at each station.  With the remaining data points, we generated a linear regression equation and used this relationship to correct the CTD_O2 data for the offset and slope differences from BOT_O2 values.  In other words, while we had bottle O2 data for only a subset of all Niskin bottle samples, we generated the bottle-O2-equivalent value for ALL samples by applying the regression relationship to the uncorrected but unit-converted CTD_O2 data. Thus, CTD_OXY_corr_umol_kg is the corrected CTD oxygen value, in units of umol/kg.
+
+The equations used for specific cruises are included below:
+Feb 2008 cruise: CTD_OXY_corr_umol_kg (= BOT_O2) = 1.0218 x CTD_O2 + 1.8714
+Aug 2008 cruise: CTD_OXY_corr_umol_kg (= BOT_O2) = 0.9176 x CTD_O2 + 5.6326
+Sept 2009 cruise: CTD_OXY_corr_umol_kg (= BOT_O2) = 0.9968 x CTD_O2 + 12.058
+Oct 2010 cruise: CTD_OXY_corr_umol_kg (= BOT_O2) = 1.0408 x CTD_O2 - 0.1491
+Oct 2011 cruise: CTD_OXY_corr_umol_kg (= BOT_O2) = 1.1068 x CTD_O2 - 1.0869
+"	27.9		"ONCE WE HAVE GENERATED THESE RELATIONSHIPS FOR OTHER CRUISES, WE NEED TO ADD THEM HERE – I think we just leave all in and add to the list in future metadata versions, to keep it consistent and less complicated."												
+418	Var11: Sampling instrument	SBE 43 sensor details described under Var9 above.	27.10														
+419	Var11: Analyzing instrument	Winkler bottle oxygen details described under Var10 above.	27.11														
+420	Var11: Duration (for settlement/colonization methods)		27.12														
+421	Var11: Detailed sampling and analyzing information	Described in sections above.	27.13														
+422	Var11: Field replicate information		27.14														
+423	Var11: Uncertainty		27.15														
+424	Var11: Data quality flag description	Apply CTD_OXY_flag information described in section Var9 above.	27.16														
+425	Var11: Method reference (citation)	"Garcia, H.E. and L.I. Gordon (1992): Oxygen solubility in sea water: better fitting equations. Limnol. Oceanogr., 37(6), 1307-1312. "	27.17														
+426	Var11: Biological subject		27.18														
+427	Var11: Species Identification code		27.19														
+428	Var11: Life stage of the biological subject		27.20														
+429	Var11: Researcher Name	Simone Alin	27.21.1														
+430	Var11: Researcher Institution	NOAA Pacific Marine Environmental Laboratory	27.21.2														
+431	Var12: Variable abbreviation in data files	CTD_DEN_kg_m3	27.1	"This is potential density = (1000 + sigma theta), right? Or is it actual density? I would like to include this so that people can recreate my oxygen corrections if needed."													
+432	Var12: Full variable name	"this column contains DENSITY ANOMALY data, also known as SIGMA THETA values, and is related to POTENTIAL DENSITY by this equation: potential density = sigma theta + 1000."	27.2	"Obviously I need to correct this if it's actually density (plain old sigma, yes?)"													
+433	Var12: Observation type	Water column profile	27.4														
+434	Var12: In-situ observation / manipulation condition / response variable	In-situ observation	27.5														
+435	Var12: Variable unit	kilograms per meter cubed (kg/m3)	27.7														
+436	Var12: Measured or calculated	Calculated 	27.8														
+437	Var12: Calculation method and parameters	Calculated within Sea-Bird Scientific's SeaSAVE or SBE Data Processing software using TEOS-10 equations for cruises after 2013 and EOS-80 equations prior to 2013 (per web site: http://www.seabird.com/software/sbe-data-processing).	27.9														
+438	Var12: Sampling instrument		27.10														
+439	Var12: Analyzing instrument		27.11														
+440	Var12: Duration (for settlement/colonization methods)		27.12														
+441	Var12: Detailed sampling and analyzing information		27.13														
+442	Var12: Field replicate information		27.14														
+443	Var12: Uncertainty		27.15														
+444	Var12: Data quality flag description		27.16														
+445	Var12: Method reference (citation)	REFS I MAY INCLUDE DEPENDING ON JAN'S ANSWERS: http://www.oc.nps.edu/nom/day1/parta.html AND http://www.seabird.com/software/sbe-data-processing	27.17														
+446	Var12: Biological subject		27.18														
+447	Var12: Species Identification code		27.19														
+448	Var12: Life stage of the biological subject		27.20														
+449	Var12: Researcher Name	Jan Newton	27.21.1														
+450	Var12: Researcher Institution	University of Washington Applied Physics Laboratory	27.21.2														
+451	Var13: Variable abbreviation in data files	Longitude	28.1														
+452	Var13: Full variable name	"Longitude, where a negative value denotes degrees W."	28.2														
+453	Var14: Variable abbreviation in data files	Latitude	28.1														
+454	Var14: Full variable name	"Latitude, where a positive value denotes degrees N."	28.2														
+455	Var15: Variable abbreviation in data files	Station	28.1														
+456	Var15: Full variable name	"Station number, corresponds to the numerical value after the P in PRISM Station numbers found at http://nvs.nanoos.org/CruiseSalish"	28.2														
+457	Var16: Variable abbreviation in data files	Niskin	28.1														
+458	Var16: Full variable name	Niskin bottle number on the sampling rosette during the cruise	28.2														
+459	Var17: Variable abbreviation in data files	Date	28.1														
+460	Var17: Full variable name	"Date, expressed in Coordinated Universal Time (UTC)."	28.2														
+461	Var18: Variable abbreviation in data files	Time	28.1														
+462	Var18: Full variable name	"Time, expressed in Coordinated Universal Time (UTC)."	28.2														
+463	Investigator-4 name	Mark Warner	3.1														
+464	Investigator-4 institution	University of Washington School of Oceanography	3.2														
+465	Investigator-4 address	"1492 NE Boat St., Seattle, WA 98105"	3.3														
+466	Investigator-4 phone	 206-543-0765	3.4														
+467	Investigator-4 email	 warner@uw.edu	3.5														
+468	Investigator-4 researcher ID		3.6														
+469	"Investigator-4 ID type  (ORCID, Researcher ID, etc.)"		3.7														
+470	Investigator-5 name		3.1														
+471	Investigator-5 institution		3.2														
+472	Investigator-5 address		3.3														
+473	Investigator-5 phone		3.4														
+474	Investigator-5 email		3.5														
+475	Investigator-5 researcher ID		3.6														
+476	"Investigator-5 ID type  (ORCID, Researcher ID, etc.)"		3.7														

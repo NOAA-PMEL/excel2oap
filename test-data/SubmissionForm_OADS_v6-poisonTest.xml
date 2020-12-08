@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <geographicName />
+  <platform>
+    <type>Unknown</type>
+  </platform>
+  <variable>
+    <fullname>Dissolved inorganic carbon</fullname>
+    <abbrev />
+    <observationType />
+    <insitu />
+    <manipulationMethod />
+    <unit />
+    <measured />
+    <calcMethod />
+    <samplingInstrument />
+    <analyzingInstrument />
+    <detailedInfo />
+    <replicate />
+    <standard>
+      <description />
+      <frequency />
+      <crm>
+        <manufacturer />
+        <batch />
+      </crm>
+    </standard>
+    <poison>
+      <poisonName>Poisonous stuff</poisonName>
+      <volume>Very voluminous</volume>
+      <correction>Correctly poisoned</correction>
+    </poison>
+    <uncertainty />
+    <flag />
+    <methodReference />
+    <researcherName />
+    <researcherInstitution />
+    <internal>1</internal>
+  </variable>
+</metadata>

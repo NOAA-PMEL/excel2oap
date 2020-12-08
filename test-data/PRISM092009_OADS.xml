@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <datasubmitter>
+    <name>Linus Kamb</name>
+    <organization>alized</organization>
+    <deliverypoint1>7600 Sand Point Way, second line, second line</deliverypoint1>
+    <deliverypoint2>second line</deliverypoint2>
+    <city>Seattle</city>
+    <administrativeArea>WA-Washington</administrativeArea>
+    <zip>98115</zip>
+    <phone>2065264356</phone>
+    <email>linus.kamb@noaa.gov</email>
+  </datasubmitter>
+  <title>Aptly</title>
+  <abstract>very</abstract>
+  <purpose>lacking</purpose>
+  <researchProject>Investigation of Otherworldliness</researchProject>
+  <expocode>PRISM092009</expocode>
+  <startdate>2009-09-29</startdate>
+  <enddate>2009-10-03</enddate>
+  <westbd>-123.135</westbd>
+  <eastbd>-122.302</eastbd>
+  <northbd>48.373</northbd>
+  <southbd>47.133</southbd>
+  <variable>
+    <fullname>inorganic_carbon_in_water</fullname>
+    <abbrev>DIC umol/kg</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>total_alkalinity</fullname>
+    <abbrev>TA umol/kg</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>pH_water</fullname>
+    <abbrev>pH</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>record no</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>cruise_name</fullname>
+    <abbrev>cruise</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>date</fullname>
+    <abbrev>Date</abbrev>
+    <unit>mm-dd-yy</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>time_of_day</fullname>
+    <abbrev>Time</abbrev>
+    <unit>hh:mm:ss</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>Matlab Datenum</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>longitude</fullname>
+    <abbrev>Longitude</abbrev>
+    <unit>deg E</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>latitude</fullname>
+    <abbrev>Latitude</abbrev>
+    <unit>deg N</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>station</fullname>
+    <abbrev>STATION</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>niskin</fullname>
+    <abbrev>NISKIN</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>sample ID</fullname>
+    <abbrev>stn_niskin</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>water_pressure</fullname>
+    <abbrev>PRESS (DB)</abbrev>
+    <unit>decibars</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>sample_depth</fullname>
+    <abbrev>DEPTH (M)</abbrev>
+    <unit>meters</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>water_temperature</fullname>
+    <abbrev>CTD TMP (deg C)</abbrev>
+    <unit>degrees C</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>water_salinity</fullname>
+    <abbrev>CTD SAL (psu, PSS-78)</abbrev>
+    <unit>PSU</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>water_density</fullname>
+    <abbrev>CTD DEN (kg/m3)</abbrev>
+    <unit>kg/m3</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD OXY (ml/l)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>oxygen_in_water</fullname>
+    <abbrev>CTD OXY (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>oxygen_in_water</fullname>
+    <abbrev>CTD OXY (mg/l)</abbrev>
+    <unit>mg/L</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>QC_flag</fullname>
+    <abbrev>CTD OXY flag</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>oxygen_in_water</fullname>
+    <abbrev>BOT OXY (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>BOT OXY (mg/l)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>QC_flag</fullname>
+    <abbrev>BOT OXY flag</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>BOT OXY comment</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD OXY (CORR TO BOT OXY) (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD OXY (CORR TO BOT OXY) (mg/l)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>nitrate_in_water</fullname>
+    <abbrev>NO3 (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>nitrate_in_water</fullname>
+    <abbrev>NO2 (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>ammonia_in_water</fullname>
+    <abbrev>NH4 (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>phosphate_in_water</fullname>
+    <abbrev>PO4 (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>silicate_in_water</fullname>
+    <abbrev>Si(OH)4 (umol/kg)</abbrev>
+    <unit>umol/kg</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD FLU (mg/m3)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>chlorophyll</fullname>
+    <abbrev>CHLA (mg/l)</abbrev>
+    <unit>mg/m3</unit>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>PHAEO (mg/l)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>PO4 for calcs  (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>Si(OH)4 for calcs (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>QC_flag</fullname>
+    <abbrev>TA QC</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>QC_flag</fullname>
+    <abbrev>DIC QC</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>DIC/TA comments</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>pCO2 (uatm)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CO2 (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>HCO3- (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CO3-- (umol/kg)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>Omega Ca</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>Omega Ar</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>Revelle factor</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>in-situ density of seawater (kg/m3)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>comments</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD Pot Temp (deg C)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD sigma-theta +1000 (kg/m3)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>CTD in situ density (kg/m3)</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>other</fullname>
+    <abbrev>OA sample bottle</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>sample num</fullname>
+    <abbrev>sample num</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+  <variable>
+    <fullname>WOCE_flag</fullname>
+    <abbrev>WOCE autocheck</abbrev>
+    <standard>
+      <crm />
+    </standard>
+    <poison />
+  </variable>
+</metadata>

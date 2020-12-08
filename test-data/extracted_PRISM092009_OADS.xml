@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+   <startdate>2009-09-29T09:44:01Z</startdate>
+   <enddate>2009-10-03T12:12:19Z</enddate>
+   <westbd>-123.135</westbd>
+   <eastbd>-122.302</eastbd>
+   <northbd>48.373</northbd>
+   <southbd>47.133</southbd>
+   <variable>
+      <fullname>inorganic_carbon_in_water</fullname>
+      <abbrev>DIC umol/kg</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>total_alkalinity</fullname>
+      <abbrev>TA umol/kg</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>pH_water</fullname>
+      <abbrev>pH</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>record no</abbrev>
+   </variable>
+   <variable>
+      <fullname>cruise_name</fullname>
+      <abbrev>cruise</abbrev>
+   </variable>
+   <variable>
+      <fullname>date</fullname>
+      <abbrev>Date</abbrev>
+      <unit>mm-dd-yy</unit>
+   </variable>
+   <variable>
+      <fullname>time_of_day</fullname>
+      <abbrev>Time</abbrev>
+      <unit>hh:mm:ss</unit>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>Matlab Datenum</abbrev>
+   </variable>
+   <variable>
+      <fullname>longitude</fullname>
+      <abbrev>Longitude</abbrev>
+      <unit>deg E</unit>
+   </variable>
+   <variable>
+      <fullname>latitude</fullname>
+      <abbrev>Latitude</abbrev>
+      <unit>deg N</unit>
+   </variable>
+   <variable>
+      <fullname>station</fullname>
+      <abbrev>STATION</abbrev>
+   </variable>
+   <variable>
+      <fullname>niskin</fullname>
+      <abbrev>NISKIN</abbrev>
+   </variable>
+   <variable>
+      <fullname>sample ID</fullname>
+      <abbrev>stn_niskin</abbrev>
+   </variable>
+   <variable>
+      <fullname>water_pressure</fullname>
+      <abbrev>PRESS (DB)</abbrev>
+      <unit>decibars</unit>
+   </variable>
+   <variable>
+      <fullname>sample_depth</fullname>
+      <abbrev>DEPTH (M)</abbrev>
+      <unit>meters</unit>
+   </variable>
+   <variable>
+      <fullname>water_temperature</fullname>
+      <abbrev>CTD TMP (deg C)</abbrev>
+      <unit>degrees C</unit>
+   </variable>
+   <variable>
+      <fullname>water_salinity</fullname>
+      <abbrev>CTD SAL (psu, PSS-78)</abbrev>
+      <unit>PSU</unit>
+   </variable>
+   <variable>
+      <fullname>water_density</fullname>
+      <abbrev>CTD DEN (kg/m3)</abbrev>
+      <unit>kg/m3</unit>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD OXY (ml/l)</abbrev>
+   </variable>
+   <variable>
+      <fullname>oxygen_in_water</fullname>
+      <abbrev>CTD OXY (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>oxygen_in_water</fullname>
+      <abbrev>CTD OXY (mg/l)</abbrev>
+      <unit>mg/L</unit>
+   </variable>
+   <variable>
+      <fullname>QC_flag</fullname>
+      <abbrev>CTD OXY flag</abbrev>
+   </variable>
+   <variable>
+      <fullname>oxygen_in_water</fullname>
+      <abbrev>BOT OXY (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>BOT OXY (mg/l)</abbrev>
+   </variable>
+   <variable>
+      <fullname>QC_flag</fullname>
+      <abbrev>BOT OXY flag</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>BOT OXY comment</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD OXY (CORR TO BOT OXY) (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD OXY (CORR TO BOT OXY) (mg/l)</abbrev>
+   </variable>
+   <variable>
+      <fullname>nitrate_in_water</fullname>
+      <abbrev>NO3 (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>nitrate_in_water</fullname>
+      <abbrev>NO2 (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>ammonia_in_water</fullname>
+      <abbrev>NH4 (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>phosphate_in_water</fullname>
+      <abbrev>PO4 (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>silicate_in_water</fullname>
+      <abbrev>Si(OH)4 (umol/kg)</abbrev>
+      <unit>umol/kg</unit>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD FLU (mg/m3)</abbrev>
+   </variable>
+   <variable>
+      <fullname>chlorophyll</fullname>
+      <abbrev>CHLA (mg/l)</abbrev>
+      <unit>mg/m3</unit>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>PHAEO (mg/l)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>PO4 for calcs  (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>Si(OH)4 for calcs (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>QC_flag</fullname>
+      <abbrev>TA QC</abbrev>
+   </variable>
+   <variable>
+      <fullname>QC_flag</fullname>
+      <abbrev>DIC QC</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>DIC/TA comments</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>pCO2 (uatm)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CO2 (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>HCO3- (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CO3-- (umol/kg)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>Omega Ca</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>Omega Ar</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>Revelle factor</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>in-situ density of seawater (kg/m3)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>comments</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD Pot Temp (deg C)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD sigma-theta +1000 (kg/m3)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>CTD in situ density (kg/m3)</abbrev>
+   </variable>
+   <variable>
+      <fullname>other</fullname>
+      <abbrev>OA sample bottle</abbrev>
+   </variable>
+   <variable>
+      <fullname>sample num</fullname>
+      <abbrev>sample num</abbrev>
+   </variable>
+   <variable>
+      <fullname>WOCE_flag</fullname>
+      <abbrev>WOCE autocheck</abbrev>
+   </variable>
+</metadata>
