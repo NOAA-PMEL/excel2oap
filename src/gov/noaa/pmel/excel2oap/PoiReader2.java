@@ -297,24 +297,24 @@ public class PoiReader2 {
 //                vcell.setCellType(CellType.STRING);
                 if ( vcell != null ) {
                     try {
-                    if ( vcell.getCellType().equals(CellType.STRING)) {
-                        rowValue = vcell.getStringCellValue();
-                    } else if ( DateUtil.isCellDateFormatted(vcell) && 
-                                rowName.toLowerCase().indexOf("date") >= 0 ) {
-                        Date d = vcell.getDateCellValue();
-                        rowValue = d != null ? formatDate(d) : "";
-                        String altVal = df.formatCellValue(vcell);
-                        logger.debug("(alt:"+altVal+")");
-                    } else if ( vcell.getCellType().equals(CellType.NUMERIC)) {
-                        rowValue = df.formatCellValue(vcell);
-//                        BigDecimal bd = new BigDecimal(vcell.getNumericCellValue());
-//                        double d = bd.doubleValue();
-//                        long l = (long)d;
-//                        if ( l != d )
-//                        rowValue = String.valueOf(d);
-                    } else if ( vcell.getCellType().equals(CellType.BOOLEAN)) {
-                        rowValue = String.valueOf(vcell.getBooleanCellValue());
-                    }
+                        if ( vcell.getCellType().equals(CellType.STRING)) {
+                            rowValue = vcell.getStringCellValue();
+                        } else if ( DateUtil.isCellDateFormatted(vcell) && 
+                                    rowName.toLowerCase().indexOf("date") >= 0 ) {
+                            Date d = vcell.getDateCellValue();
+                            rowValue = d != null ? formatDate(d) : "";
+                            String altVal = df.formatCellValue(vcell);
+                            logger.debug("(alt:"+altVal+")");
+                        } else if ( vcell.getCellType().equals(CellType.NUMERIC)) {
+                            rowValue = df.formatCellValue(vcell);
+    //                        BigDecimal bd = new BigDecimal(vcell.getNumericCellValue());
+    //                        double d = bd.doubleValue();
+    //                        long l = (long)d;
+    //                        if ( l != d )
+    //                        rowValue = String.valueOf(d);
+                        } else if ( vcell.getCellType().equals(CellType.BOOLEAN)) {
+                            rowValue = String.valueOf(vcell.getBooleanCellValue());
+                        }
                     // org.apache.xmlbeans.impl.values.XmlValueOutOfRangeException: 
                     // string value 'd' is not a valid enumeration value for ST_CellType in namespace 
                     // http://schemas.openxmlformats.org/spreadsheetml/2006/main
@@ -655,23 +655,44 @@ public class PoiReader2 {
                 String p0 = parts[0];
                 String p1 = parts[1];
                 String p2 = parts[2];
-                int i0 = Integer.parseInt(p0);
-                int i1 = Integer.parseInt(p1);
-                int i2 = Integer.parseInt(p2);
-                if ( i2 < 1000 ) {
-                    if ( i2 < 42 ) { // because that's the answer
-                        i2 += 2000;
-                    } else {
-                        i2 += 1900;
+                try {
+                    int i0 = Integer.parseInt(p0);
+                    int i1 = Integer.parseInt(p1);
+                    int i2 = Integer.parseInt(p2);
+                    if ( i2 < 1000 ) {
+                        if ( i2 < 42 ) { // because that's the answer
+                            i2 += 2000;
+                        } else {
+                            i2 += 1900;
+                        }
+                    }
+                    // assume month day year
+                    ds.setMonth(i0);
+                    ds.setDay(i1);
+                    ds.setYear(i2);
+                }
+                catch (Exception ex) {
+                    logger.info("Excel2Oap Exception parsing date string:"+ string + ":"+ex.toString());
+                    if ( ex instanceof NumberFormatException ) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("MMMMM d y");
+                        try {
+                            Date d = sdf.parse(string);
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(d);
+                            ds.setMonth(c.get(Calendar.MONTH)+1);
+                            ds.setDay(c.get(Calendar.DAY_OF_MONTH));
+                            ds.setYear(c.get(Calendar.YEAR));
+                        } catch (Exception e2) {
+                            logger.info("Final failure to parse date string " + string + ": " + e2.toString());
+                        }
                     }
                 }
-                // assume month day year
-                ds.setMonth(i0);
-                ds.setDay(i1);
-                ds.setYear(i2);
             } else {
-                System.err.println("Excel2Oap: Cannot parse date string:" + string);
+                logger.info("Excel2Oap: Cannot parse date string:" + string);
             }
+        }
+        if ( ds.getYear() == 0 ) {
+            logger.info("Unable to parse date string: "+ string);
         }
         return ds;
     }
