@@ -97,6 +97,7 @@ public class PoiReader2 {
     
     private static final Logger logger = LogManager.getLogger(PoiReader2.class);
 
+    private static String nbsp = String.valueOf((char) 160);
     static class OadsRow {
         int num;
         String name;
@@ -104,7 +105,14 @@ public class PoiReader2 {
         OadsRow(int rowNum, String rowName, String rowValue) {
             num = rowNum;
             name = rowName.trim();
-            value = rowValue != null ? rowValue.trim() : rowValue;
+            value = rowValue;
+            if ( rowValue != null ) {
+                if ( rowValue.contains(nbsp)) {
+                    logger.info("Found nbsp.");
+                    value = rowValue.replaceAll(nbsp, " ");
+                }
+                value = value.trim();
+            }
         }
         @Override
         public String toString() {
