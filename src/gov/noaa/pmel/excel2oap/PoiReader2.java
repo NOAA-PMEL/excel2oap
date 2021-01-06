@@ -595,12 +595,18 @@ public class PoiReader2 {
     private static void addMiscInfo(SDIMetadata sdi, NonNullHashMap<String, String> generalFields) {
         Datestamp startDatestamp = tryDatestamp(generalFields.get(r_Start_date));
         Datestamp endDatestamp = tryDatestamp(generalFields.get(r_End_date));
+        String fundingAgency = generalFields.get(r_Funding_agency_name) != "" ?
+                                generalFields.get(r_Funding_agency_name) :
+                                generalFields.get(r_Funding_agency_name_ALT);
+        String fundingProjectId = generalFields.get(r_Funding_project_ID) != "" ?
+                                   generalFields.get(r_Funding_project_ID) :
+                                   generalFields.get(r_Funding_project_ID_ALT);
         MiscInfoBuilder mib = new MiscInfo().toBuilder()
                 .datasetId(generalFields.get(r_EXPOCODE))
                 .datasetName(generalFields.get(r_Cruise_ID))
                 .sectionName(generalFields.get(r_Section))
-                .fundingAgency(generalFields.get(r_Funding_agency_name))
-                .fundingId(generalFields.get(r_Funding_project_ID))
+                .fundingAgency(fundingAgency)
+                .fundingId(fundingProjectId)
                 .fundingTitle(generalFields.get(r_Funding_project_title))
                 .researchProject(generalFields.get(r_Research_projects))
 //                .datasetDoi(generalFields.get(nothing))
@@ -1356,6 +1362,8 @@ public class PoiReader2 {
             String outfileName = shortname+".xml";
             File inParent = inputFile.getParentFile();
             outputFile = new File(inParent, outfileName);
+        } else if ( outFileName != null ) {
+            outputFile = new File(outFileName);
         }
         boolean preserveEmpty = args.length >= 3 ? getBoolean(args[2]) : true;
         try ( InputStream in = inputFile != null ? new FileInputStream(inputFile) : System.in;

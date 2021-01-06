@@ -329,8 +329,10 @@ public class OadsSpreadSheetKeys {
 	public static final String r_Geographic_names = "Geographic names";
 	public static final String r_Location_of_organism_collection = "Location of organism collection";
 	public static final String r_Funding_agency_name = "Funding agency name";
+	public static final String r_Funding_agency_name_ALT = "Funding Agency";
 	public static final String r_Funding_project_title = "Funding project title";
 	public static final String r_Funding_project_ID = "Funding project ID (Grant no.)";
+	public static final String r_Funding_project_ID_ALT = "Funding project ID";
 	public static final String r_Research_projects = "Research projects";
 	public static final String r_Platform1_name = "Platform-1 name";
 	public static final String r_Platform1_ID = "Platform-1 ID";
