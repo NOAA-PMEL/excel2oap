@@ -3,22 +3,21 @@
  */
 package gov.noaa.pmel.excel2oap;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author kamb
  *
  */
-public class NonNullHashMap<K, V> extends HashMap<String, String> {
+public class NonNullHashMap<K, V> extends TreeMap<String, String> {
 
     private static final long serialVersionUID = 8695661407529893952L;
 
-    public NonNullHashMap() { super(); }
+    public NonNullHashMap() { super(String.CASE_INSENSITIVE_ORDER); }
 
-    public NonNullHashMap(int initialCapacity) { super(initialCapacity); }
+//    public NonNullHashMap(int initialCapacity) { super(initialCapacity); }
 
-    public NonNullHashMap(Map<String, String> m) { super(m); }
+//    public NonNullHashMap(Map<String, String> m) { super(m); }
 
 //    @Override
     public String get(String key) {

@@ -137,7 +137,7 @@ public class PoiReader2 {
     };
     
     private final String multiItemDetectorRegex = buildLineStartDetector(multiItemFields, true);
-    private Pattern multiItemPattern = Pattern.compile(multiItemDetectorRegex);
+    private Pattern multiItemPattern = Pattern.compile(multiItemDetectorRegex, Pattern.CASE_INSENSITIVE);
     
     @SuppressWarnings("serial")
     private static List<String> all = new ArrayList<String>() 
@@ -146,7 +146,7 @@ public class PoiReader2 {
         addAll(Arrays.asList(multiLineFields));
     }};
     private final String multiLineDetectorRegex = buildLineStartDetector((String[]) all.toArray(new String[all.size()]), false);
-    private Pattern multiLinePattern = Pattern.compile(multiLineDetectorRegex);
+    private Pattern multiLinePattern = Pattern.compile(multiLineDetectorRegex, Pattern.CASE_INSENSITIVE);
     
     private enum ITEM_GROUPS {
         ALL(0),
