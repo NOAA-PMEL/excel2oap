@@ -661,7 +661,8 @@ public class PoiReader2 {
      * @param string
      * @return
      */
-    private static Datestamp tryDatestamp(String string) {
+    static Datestamp tryDatestamp(String string) {
+        logger.info("Trying datastamp for " + string);
         Datestamp ds = new Datestamp();
         if ( ! StringUtils.emptyOrNull(string)) {
             String[] parts = string.split("[/ -]");
@@ -673,17 +674,34 @@ public class PoiReader2 {
                     int i0 = Integer.parseInt(p0);
                     int i1 = Integer.parseInt(p1);
                     int i2 = Integer.parseInt(p2);
-                    if ( i2 < 1000 ) {
-                        if ( i2 < 42 ) { // because that's the answer
-                            i2 += 2000;
+                    int month, day, year = -1;
+                    month = day = year;
+                    if ( i0 > 12 ) { // assume not month
+                        if ( i0 > 31 ) { // assume year
+                            year = i0;   // then assume yyyy-mm-dd
+                            month = i1;
+                            day = i2;
                         } else {
-                            i2 += 1900;
+                            day = i0;  // else assume dd-mm-yyyy
+                            month = i1;
+                            year = i2;
+                        }
+                    } else { // assume mm-dd-yyyy
+                        month = i0;
+                        day = i1;
+                        year = i2;
+                    } 
+                    
+                    if ( year < 1000 ) {
+                        if ( year < 42 ) { // because that's the answer
+                            year += 2000;
+                        } else {
+                            year += 1900;
                         }
                     }
-                    // assume month day year
-                    ds.setMonth(i0);
-                    ds.setDay(i1);
-                    ds.setYear(i2);
+                    ds.setMonth(month);
+                    ds.setDay(day);
+                    ds.setYear(year);
                 }
                 catch (Exception ex) {
                     logger.info("Excel2Oap Exception parsing date string:"+ string + ":"+ex.toString());
