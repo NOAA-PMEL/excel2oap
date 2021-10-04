@@ -723,7 +723,7 @@ public class PoiReader2 {
                 logger.info("Excel2Oap: Cannot parse date string:" + string);
             }
         }
-        if ( ds.getYear() == 0 ) {
+        if ( ds.getYear() <= 0 ) {
             logger.info("Unable to parse date string: "+ string);
         }
         return ds;
