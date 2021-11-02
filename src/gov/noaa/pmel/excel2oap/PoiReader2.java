@@ -1075,7 +1075,7 @@ public class PoiReader2 {
         maybeAdd(equilibrator,"dryMethod",parts.get(pCO2AX_Drying_method_for_CO2_gas));
         var.addContent(equilibrator);
         Element gasDetector = new Element("gasDetector");
-         maybeAdd(gasDetector,"manufacturer",parts.get(pCO2AX_Manufacturer_of_standard_gas));
+         maybeAdd(gasDetector,"manufacturer",parts.get(pCO2AX_Manufacturer_of_gas_detector));
          maybeAdd(gasDetector,"model",parts.get(pCO2AX_Model_of_the_gas_detector));
          maybeAdd(gasDetector,"resolution",parts.get(pCO2AX_Resolution_of_the_gas_detector));
          maybeAdd(gasDetector,"uncertainty",parts.get(pCO2AX_Uncertainty_of_the_gas_detector));
