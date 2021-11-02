@@ -15,13 +15,13 @@ import gov.noaa.pmel.tws.util.StringUtils;
  * @author kamb
  *
  */
-public class NonNullHashMap<K, V> extends TreeMap<String, String> {
+public class ForceNullHashMap<K, V> extends TreeMap<String, String> {
 
-    private static final Logger logger = LogManager.getLogger(NonNullHashMap.class);
+    private static final Logger logger = LogManager.getLogger(ForceNullHashMap.class);
     
     private static final long serialVersionUID = 8695661407529893952L;
 
-    public NonNullHashMap() { super(String.CASE_INSENSITIVE_ORDER); }
+    public ForceNullHashMap() { super(String.CASE_INSENSITIVE_ORDER); }
 
 //    public NonNullHashMap(int initialCapacity) { super(initialCapacity); }
 
@@ -30,7 +30,7 @@ public class NonNullHashMap<K, V> extends TreeMap<String, String> {
     @Override
     public String get(Object key) {
         String v = containsKey(key) ? super.get(key) : lookForIt(key);
-        return v;
+        return StringUtils.emptyOrNull(v) ? null : v;
     }
     
     private String lookForIt(Object key) {
@@ -43,7 +43,7 @@ public class NonNullHashMap<K, V> extends TreeMap<String, String> {
                 return super.get(k);
             }
         }
-        return "";
+        return null;
     }
     
     @Override
