@@ -189,6 +189,7 @@ public abstract class BaseSpreadSheetHandler
                 row = rows.get(++gotRow);
             }
             endMatch = p2.matcher(row.name());
+            isVarProcessing = row.name().startsWith("Var");
         } while ( ! allDone && // gotRow < (rows.size()) && 
                   ((isVarProcessing && 
                           ! (row.name().toLowerCase().contains(VAR_FIRST_LINE_OPENING_LC)) &&
