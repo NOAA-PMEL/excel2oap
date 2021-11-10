@@ -59,6 +59,12 @@ public class Excel2OAP {
     public static OadsMetadataDocumentType ConvertExcelToOADS_doc(InputStream excelInputStream) throws Exception {
         return new Excel2OAP().convertToOADS_doc(excelInputStream);
     }
+    
+    @Deprecated
+    public static void ConvertExcelToOCADS_xml(InputStream excelInStream, OutputStream outputXmlStream) throws Exception {
+        new Excel2OAP().convert(excelInStream, outputXmlStream, XmlFlavor.OCADS);
+    }
+    
     public OadsMetadataDocumentType convertToOADS_doc(InputStream excelInStream) throws Exception {
         SSReader reader = new SpreadSheetReader();
         List<SsRow> rows = reader.extractFileRows(excelInStream);
