@@ -6,18 +6,23 @@ package gov.noaa.pmel.excel2oap;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 /**
  * @author kamb
  *
  */
 public abstract class SpreadSheetKeys {
 
+    private static final Logger logger = LogManager.getLogger(SpreadSheetKeys.class);
+    
     protected Map<String, Field> declaredFields;
     
     public String getKeyForName(String keyName) throws RuntimeException {
         String value = null;
         Field keyField = null;
-        System.out.print(this.getClass().getName() + " get " + keyName + " : ");
+        logger.trace(this.getClass().getName() + " get " + keyName + " : ");
         if ( ! declaredFields.containsKey(keyName)) {
             keyField = lookFor(keyName);
             if ( keyField == null ) {
@@ -28,7 +33,7 @@ public abstract class SpreadSheetKeys {
         }
         try {
             value = (String)keyField.get(this);
-            System.out.println(value);
+            logger.trace("\t-" + value);
             return value;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
@@ -40,13 +45,13 @@ public abstract class SpreadSheetKeys {
      * @return
      */
     private Field lookFor(String keyName) {
-        System.out.print("Looking for it ... ");
+        logger.trace("Looking for it ... ");
         Field found = null;
         String searchKey = keyName.toLowerCase();
         for (String key : declaredFields.keySet()) {
             if ( key.toLowerCase().startsWith(searchKey)) {
                 found = declaredFields.get(key);
-                System.out.println("found " + key + " : ");
+                logger.trace("\t- found " + key + " : ");
                 break;
             }
         }
@@ -66,7 +71,7 @@ public abstract class SpreadSheetKeys {
             Field replaced = fields.put(f.getName(), f);
             if ( replaced != null ) {
                 try {
-                    System.out.println("Field replaced for " + f.getName() + 
+                    logger.debug("Field replaced for " + f.getName() + 
                                        "["+replaced.get(this)+"] as: " +
                                         f.get(this));
                 } catch (Exception ex) {

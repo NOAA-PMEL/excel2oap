@@ -34,12 +34,12 @@ public class ForceNullHashMap<K, V> extends TreeMap<String, String> {
     }
     
     private String lookForIt(Object key) {
-        logger.debug("Looking for key: " + key);
+        logger.trace("Looking for key: " + key);
         String keyStr = (String)key;
         Set<String> keys = super.keySet();
         for (String k : keys) {
             if (k.toLowerCase().startsWith(keyStr.toLowerCase())) {
-                logger.debug("found match: " + k);
+                logger.trace("\t- found match: " + k);
                 return super.get(k);
             }
         }
