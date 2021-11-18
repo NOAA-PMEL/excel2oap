@@ -129,11 +129,13 @@ public class SpreadSheetReader implements SSReader {
             int rowNum = 0;
             for (Row row : sheet) {
                 rowNum += 1;
-                int itemNo;
+                int itemNo = -999;
                 Cell numCell = null;
                 try {
                     numCell = row.getCell(0);
-                    itemNo = (int)numCell.getNumericCellValue(); 
+                    if ( numCell != null ) {
+                        itemNo = (int)numCell.getNumericCellValue(); 
+                    }
                 } catch (IllegalStateException ex) {
                     logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
                     String rawValue = numCell.getStringCellValue();
@@ -151,7 +153,7 @@ public class SpreadSheetReader implements SSReader {
                     continue;
                 }
                 String rowName = nameCell.getStringCellValue();
-                logger.debug(rowName + ":");
+                logger.trace(rowName + ":");
                 Cell vcell = row.getCell(2);
                 String rowValue = "";
 //                vcell.setCellType(CellType.STRING);
@@ -164,7 +166,7 @@ public class SpreadSheetReader implements SSReader {
                             Date d = vcell.getDateCellValue();
                             rowValue = d != null ? formatDate(d) : "";
                             String altVal = df.formatCellValue(vcell);
-                            logger.debug("(alt:"+altVal+")");
+                            logger.trace("(alt:"+altVal+")");
                         } else if ( vcell.getCellType().equals(CellType.NUMERIC)) {
                             rowValue = df.formatCellValue(vcell);
     //                        BigDecimal bd = new BigDecimal(vcell.getNumericCellValue());
@@ -189,7 +191,7 @@ public class SpreadSheetReader implements SSReader {
                             }
                         }
                     }
-                    logger.debug(rowValue);
+                    logger.trace(rowValue);
                 }
                 SsRow orow = new SsRow(itemNo,
                                            row.getCell(1).getStringCellValue(), 
