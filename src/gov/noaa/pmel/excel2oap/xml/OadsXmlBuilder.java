@@ -321,11 +321,13 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
      * @return
      */
     public void add_INVESTIGATOR(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         PersonType investigator = buildPerson(parts);
         doc.addInvestigator(investigator);
     }
 
     public void add_DATA_SUBMITTER(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         PersonType submitter = buildPerson(parts);
         doc.dataSubmitter(submitter);
     }
@@ -340,6 +342,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
     }
     private void add_SingularPLATFORM(OadsMetadataDocumentTypeBuilder doc) {
         Map<String, String> parts = getPlatformParts();
+        if ( parts == null || parts.isEmpty()) { return; }
         String platformName = parts.get(ssKeys.getKeyForName(ssKeys.name_r_Platform1_name)); // XXX TODO: Mulitple platforms (And fundings)
         String platformId = parts.get(ssKeys.getKeyForName(ssKeys.name_r_Platform1_ID));
         if ( (StringUtils.emptyOrNull(platformName) || "none".equalsIgnoreCase(platformName)) && 
@@ -365,6 +368,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         doc.addPlatform(platform);
     }
     private void add_MultiPLATFORM(OadsMetadataDocumentTypeBuilder doc, Collection<Map<String, String>> platforms) {
+        if ( platforms == null || platforms.isEmpty()) { return; }
         for (Map<String, String> parts : platforms) {
             String platformName = parts.get(ssKeys.getKeyForName(ssKeys.name_PlatformX_name)); // XXX TODO: Mulitple platforms (And fundings)
             String platformId = parts.get(ssKeys.getKeyForName(ssKeys.name_PlatformX_ID));
@@ -404,44 +408,6 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         
     }
 
-    /*
-    protected void add_VAR(Document doc, Map<String, String> parts) {
-        add_VAR(doc, parts, "0");
-    }
-    protected void add_VAR(Document doc, Map<String, String> parts, String internal) {
-        Element root = doc.getRootElement();
-        Element var = new Element("variable");
-        fill_VAR(var, parts, internal);
-        root.addContent(var);
-    }
-    protected void fill_VAR(Element var, Map<String, String> parts) {
-        fill_VAR(var, parts, "0");
-    }
-    protected void fill_VAR(Element var, Map<String, String> parts, String internal) {
-		maybeAdd(var,"abbrev",parts.get(ssKeys.getKey(ssKeys.name_VarX_Variable_abbreviation_in_data_files)));
-		maybeAdd(var,"fullname",parts.get(ssKeys.getKey(ssKeys.name_VarX_Full_variable_name)));
-		maybeAdd(var,"observationType",parts.get(ssKeys.getKey(ssKeys.name_VarX_Observation_type)));
-		maybeAdd(var,"insitu",parts.get(ssKeys.getKey(ssKeys.name_VarX_In_situ_observation_X_manipulation_condition_X_response_variable)));
-		maybeAdd(var,"unit",parts.get(ssKeys.getKey(ssKeys.name_VarX_Variable_unit)));
-		maybeAdd(var,"measured",parts.get(ssKeys.getKey(ssKeys.name_VarX_Measured_or_calculated)));
-		maybeAdd(var,"calcMethod",parts.get(ssKeys.getKey(ssKeys.name_VarX_Calculation_method_and_parameters)));
-		maybeAdd(var,"samplingInstrument",parts.get(ssKeys.getKey(ssKeys.name_VarX_Sampling_instrument)));
-		maybeAdd(var,"analyzingInstrument",parts.get(ssKeys.getKey(ssKeys.name_VarX_Analyzing_instrument)));
-		maybeAdd(var,"duration",parts.get(ssKeys.getKey(ssKeys.name_VarX_Duration)));
-		maybeAdd(var,"detailedInfo",parts.get(ssKeys.getKey(ssKeys.name_VarX_Detailed_sampling_and_analyzing_information)));
-		maybeAdd(var,"replicate",parts.get(ssKeys.getKey(ssKeys.name_VarX_Field_replicate_information)));
-		maybeAdd(var,"uncertainty",parts.get(ssKeys.getKey(ssKeys.name_VarX_Uncertainty)));
-		maybeAdd(var,"flag",parts.get(ssKeys.getKey(ssKeys.name_VarX_Data_quality_flag_description)));
-		maybeAdd(var,"methodReference",parts.get(ssKeys.getKey(ssKeys.name_VarX_Method_reference)));
-		maybeAdd(var,"biologicalSubject",parts.get(ssKeys.getKey(ssKeys.name_VarX_Biological_subject)));
-		maybeAdd(var,"speciesID",parts.get(ssKeys.getKey(ssKeys.name_VarX_Species_Identification_code)));
-		maybeAdd(var,"lifeStage",parts.get(ssKeys.getKey(ssKeys.name_VarX_Life_Stage)));
-		maybeAdd(var,"researcherName",parts.get(ssKeys.getKey(ssKeys.name_VarX_Researcher_Name)));
-		maybeAdd(var,"researcherInstitution",parts.get(ssKeys.getKey(ssKeys.name_VarX_Researcher_Institution)));
-        maybeAdd(var,"internal",internal);
-    }
-    */
-    
     public void add_FUNDING(OadsMetadataDocumentTypeBuilder doc) {
         if ( multiItems.containsKey(ssKeys.getElementForKey("Funding"))) {
             _add_FUNDING_multiItem(doc, getSingularItem("Funding"));
@@ -450,6 +416,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         }
     }
     private void _add_FUNDING_multiItem(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         String fundingAgencyName = // parts.get(ssKeys.getKeyForName(ssKeys.name_FundingX_agency_name)) != "" ?
                                    parts.get(ssKeys.getKeyForName(ssKeys.name_FundingX_agency_name)) ; // :
                                    // parts.get(ssKeys.getKeyForName(ssKeys.name_FundingX_agency_name_ALT));
@@ -463,6 +430,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                        .build());
     }
     private void _add_FUNDING_simple(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         String fundingAgencyName = parts.get(ssKeys.getKeyForName(ssKeys.name_r_Funding_agency_name)) != "" ?
                                    parts.get(ssKeys.getKeyForName(ssKeys.name_r_Funding_agency_name)) :
                                    parts.get(ssKeys.getKeyForName(ssKeys.name_r_Funding_agency_name_ALT));

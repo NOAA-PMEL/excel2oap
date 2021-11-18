@@ -99,7 +99,6 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     /**
      * @param generalFields
      * @param sdi
-     */
     private void putGeneralFields(SDIMetadata sdi, NonNullHashMap<String, String> generalFields) {
         addMiscInfo(sdi, generalFields);
         addCoverage(sdi, generalFields);
@@ -168,7 +167,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
                 .build();
         sdi.setCoverage(coverage);
     }
-
+     */
 
     protected static boolean addIfNotNull(Element var, String childName, String childContent) {
         if ( StringUtils.emptyOrNull(childContent)) { return false; }
@@ -187,10 +186,13 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         List<Attribute> attrs = elem.getAttributes();
         List<Element> children = elem.getChildren();
                 
-        return ((children.size() == 0 && 
-                 attrs.size() == 0 &&
-                 StringUtils.emptyOrNull(elem.getTextTrim())) ||
-                (isEmpty(children)));
+        if ( ! StringUtils.emptyOrNull(elem.getTextTrim())) { 
+            return false;
+        }
+        if (children.size() == 0 && attrs.size() == 0) {
+            return true;
+        }
+        return isEmpty(children);
     }
               
     protected boolean isEmpty(List<Element> elems) {
@@ -213,10 +215,13 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         add_VAR(doc, parts, "0");
     }
     protected void add_VAR(Document doc, Map<String, String> parts, String internal) {
+        if ( parts == null || parts.isEmpty()) { return; }
         Element root = doc.getRootElement();
         Element var = new Element("variable");
         fill_VAR(var, parts, internal);
-        root.addContent(var);
+        if ( !isEmpty(var)) {                         
+            root.addContent(var);
+        }
     }
     protected void fill_VAR(Element var, Map<String, String> parts) {
         fill_VAR(var, parts, "0");
@@ -287,9 +292,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
    */
     public void add_DIC(Document doc) {
         Map<String, String> parts = getSingularItem(OcadsElementType.DIC.key());
-        if ( parts == null ) {
-            return;
-        }
+        if ( parts == null || parts.isEmpty()) { return; }
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
@@ -336,9 +339,8 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     }
     public void add_TA(Document doc) {
         Map<String, String> parts = getSingularItem(OcadsElementType.TA.key());
-        if ( parts == null ) {
-            return;
-        }
+        if ( parts == null || parts.isEmpty()) { return; }
+        
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
@@ -383,13 +385,14 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         maybeAdd(var,"researcherInstitution",parts.get(ocKeys.TAX_Researcher_Institution));
         var.addContent(new Element("internal").addContent("2"));
                                  
-        root.addContent(var);
+        if ( !isEmpty(var)) {                         
+            root.addContent(var);
+        }
     }
     public void add_PH(Document doc) {
         Map<String, String> parts = getSingularItem(OcadsElementType.PH.key());
-        if ( parts == null ) {
-            return;
-        }
+        if ( parts == null || parts.isEmpty()) { return; }
+
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
@@ -421,7 +424,9 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         maybeAdd(var,"researcherInstitution",parts.get(ocKeys.PHX_Researcher_Institution));
         var.addContent(new Element("internal").addContent("3"));
                                  
-        root.addContent(var);
+        if ( !isEmpty(var)) {                         
+            root.addContent(var);
+        }
     }
 /*   
    variable
@@ -472,9 +477,8 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
 */
     public void add_PCO2A(Document doc) {
         Map<String, String> parts = getSingularItem(OcadsElementType.PCO2A.key());
-        if ( parts == null ) {
-            return;
-        }
+        if ( parts == null || parts.isEmpty()) { return; }
+        
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
@@ -526,7 +530,9 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         maybeAdd(var,"researcherInstitution",parts.get(ocKeys.pCO2AX_Researcher_Institution));
         var.addContent(new Element("internal").addContent("4"));
                                  
-        root.addContent(var);
+        if ( !isEmpty(var)) {                         
+            root.addContent(var);
+        }
     }
     /*
    variable
@@ -572,9 +578,8 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
    */
     public void add_PCO2D(Document doc) {
         Map<String, String> parts = getSingularItem(OcadsElementType.PCO2D.key());
-        if ( parts == null ) {
-            return;
-        }
+        if ( parts == null || parts.isEmpty()) { return; }
+        
         Element root = doc.getRootElement();
         
         Element var = new Element("variable");
@@ -618,32 +623,10 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         maybeAdd(var,"researcherInstitution",parts.get(ocKeys.pCO2DX_Researcher_Institution));
         var.addContent(new Element("internal").addContent("5"));
                                  
-        root.addContent(var);
+        if ( !isEmpty(var)) {                         
+            root.addContent(var);
+        }
     }
-//    private void add_DIC(Document doc, Map<String, String> parts) {
-//        Variable var = buildSDIvariable(parts);
-//        var.setFullName("Dissolved inorganic carbon");
-//    }
-//    @SuppressWarnings("unused")
-//    private void add_TA(Document doc, Map<String, String> parts) {
-//        Variable var = buildSDIvariable(parts);
-//        var.setFullName("Total alkalinity");
-//    }
-//    @SuppressWarnings("unused")
-//    private void add_PH(Document doc, Map<String, String> parts) {
-//        Variable var = buildSDIvariable(parts);
-//        var.setFullName("pH");
-//    }
-//    @SuppressWarnings("unused")
-//    private void add_PCO2A(Document doc, Map<String, String> parts) {
-//        Variable var = buildSDIvariable(parts);
-//        var.setFullName("pCO2 (fCO2) autonomous");
-//    }
-//    @SuppressWarnings("unused")
-//    private void add_PCO2D(Document doc, Map<String, String> parts) {
-//        Variable var = buildSDIvariable(parts);
-//        var.setFullName("pCO2 (fCO2) discrete");
-//    }
     /* (non-Javadoc)
      * @see gov.noaa.pmel.excel2oap.ifc.XmlBuilder#buildXml(gov.noaa.pmel.excel2oap.ifc.SSParser)
      */
@@ -739,6 +722,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
      * @return
      */
     public void add_INVESTIGATOR(Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         Person person = Person.personBuilder()
                 .firstName(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_name)))
                 .organization(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_institution)))
@@ -753,6 +737,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     }
 
     public void add_DATA_SUBMITTER(Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         Person person = Person.personBuilder()
                 .firstName(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_name)))
                 .organization(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_institution)))
@@ -766,9 +751,11 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         sdi.setSubmitter(submitter);
     }
     public void add_FUNDING(Map<String, String> parts) {
-        
+        if ( parts == null || parts.isEmpty()) { return; }
+        // in addMiscInfo()  // XXX only supports 1
     }
     public void add_PLATFORM(Map<String, String> parts) {
+        if ( parts == null || parts.isEmpty()) { return; }
         String platformName = parts.get(ssKeys.getKeyForName(ssKeys.name_PlatformX_name));
         String platformId = parts.get(ssKeys.getKeyForName(ssKeys.name_PlatformX_ID));
         if ( (StringUtils.emptyOrNull(platformName) || "none".equalsIgnoreCase(platformName)) && 
@@ -910,7 +897,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
      * @return
      */
     protected static Datestamp tryDatestamp(String string) {
-        logger.info("Trying datastamp for " + string);
+        logger.debug("Trying datastamp for " + string);
         Datestamp ds = new Datestamp();
         if ( ! StringUtils.emptyOrNull(string)) {
             String[] parts = string.split("[/ -]");
