@@ -40,7 +40,7 @@ public class SdgHandler extends BaseSpreadSheetHandler {
     };
     private static final String[] multiLineFields = { 
             SdgElementType.DATA_SUBMITTER.key(), 
-            SdgElementType.CRUISE_ID.key(), 
+//            SdgElementType.CRUISE_ID.key(), 
             SdgElementType.DIC.key(),
             SdgElementType.TA.key(),
             SdgElementType.PH.key(),
