@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,6 +17,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -71,10 +73,15 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     public OcadsXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
                               Map<String, String> simpleItems,
                               SpreadSheetKeys keys, boolean omitEmptyElements) {
-        super(multiItems, simpleItems, keys); //
+        super(multiItems, forceNotNull(simpleItems), keys);
         this.omitEmptyElements = omitEmptyElements;
         sdi = new SDIMetadata();
     }
+    
+    static Map<String, String> forceNotNull(Map<String, String>items) {
+        return new NonNullHashMap<>(items);
+    }
+
 
     public static ElementType elementForKey(String key) {
         return OcadsElementType.fromSsRowName(key);
@@ -535,7 +542,8 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         Element standard = new Element("standard");
         maybeAdd(standard,"description",parts.get(ocKeys.pCO2DX_Standardization_technique_description));
         maybeAdd(standard,"frequency",parts.get(ocKeys.pCO2DX_Frequency_of_standardization));
-        Element standardGas = new Element("standardGas");
+        maybeAdd(standard,"temperature",parts.get(ocKeys.pCO2DX_Temperature_of_standardization));
+        Element standardGas = new Element("standardgas");
             maybeAdd(standardGas,"manufacturer",parts.get(ocKeys.pCO2DX_Manufacturer_of_standard_gas));
             maybeAdd(standardGas,"concentration",parts.get(ocKeys.pCO2DX_Concentrations_of_standard_gas));
             maybeAdd(standardGas,"uncertainty",parts.get(ocKeys.pCO2DX_Uncertainties_of_standard_gas));
@@ -545,6 +553,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         maybeAdd(var,"temperatureCorrection",parts.get(ocKeys.pCO2DX_Temperature_correction_method));
         maybeAdd(var,"co2ReportTemperature",parts.get(ocKeys.pCO2DX_at_what_temperature_was_pCO2_reported));
         maybeAdd(var,"uncertainty",parts.get(ocKeys.pCO2DX_Uncertainty));
+        maybeAdd(var,"replicate",parts.get(ocKeys.pCO2DX_Field_replicate_information));
         maybeAdd(var,"flag",parts.get(ocKeys.pCO2DX_Data_quality_flag_description));
         maybeAdd(var,"methodReference",parts.get(ocKeys.pCO2DX_Method_reference));
         maybeAdd(var,"researcherName",parts.get(ocKeys.pCO2DX_Researcher_Name));
@@ -877,6 +886,20 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
                             ds.setMonth(c.get(Calendar.MONTH)+1);
                             ds.setDay(c.get(Calendar.DAY_OF_MONTH));
                             ds.setYear(c.get(Calendar.YEAR));
+                        } catch (ParseException pex) {
+                            try {
+                                sdf = new SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss");
+                                sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                                Date d = sdf.parse(string);
+                                Calendar c = Calendar.getInstance();
+                                c.setTime(d);
+                                ds.setMonth(c.get(Calendar.MONTH)+1);
+                                ds.setDay(c.get(Calendar.DAY_OF_MONTH));
+                                ds.setYear(c.get(Calendar.YEAR));
+                            } catch (Exception e3) {
+                                logger.info("Absolute Final failure to parse date string " + 
+                                 string + ": " + pex.toString());
+                            }
                         } catch (Exception e2) {
                             logger.info("Final failure to parse date string " + string + ": " + e2.toString());
                         }

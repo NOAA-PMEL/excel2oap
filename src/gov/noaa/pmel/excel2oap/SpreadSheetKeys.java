@@ -568,6 +568,8 @@ public abstract class SpreadSheetKeys {
 	public String name_r_Abstract = "r_Abstract";
 	public String r_Purpose = "Purpose";
 	public String name_r_Purpose = "r_Purpose";
+    public String r_Methods_applied = "Method(s) applied";
+    public String name_r_Methods_applied = "r_Methods_applied";
 	public String r_Start_date = "Start date";
 	public String name_r_Start_date = "r_Start_date";
 	public String r_End_date = "End date";

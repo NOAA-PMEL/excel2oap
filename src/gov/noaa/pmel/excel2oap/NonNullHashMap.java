@@ -3,6 +3,7 @@
  */
 package gov.noaa.pmel.excel2oap;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -25,7 +26,7 @@ public class NonNullHashMap<K, V> extends TreeMap<String, String> {
 
 //    public NonNullHashMap(int initialCapacity) { super(initialCapacity); }
 
-//    public NonNullHashMap(Map<String, String> m) { super(m); }
+    public NonNullHashMap(Map<String, String> m) { super(m); }
 
     @Override
     public String get(Object key) {

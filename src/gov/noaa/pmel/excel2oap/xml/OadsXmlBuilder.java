@@ -157,6 +157,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
            .purpose(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Purpose)))
            .title(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Title)))
            .addReference(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_References)))
+           .methods(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Methods_applied)))
            .supplementalInfo(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Supplemental_information)))
            .temporalExtents(TemporalExtentsType.builder()
                             .startDate(startDatestamp)
