@@ -3,12 +3,9 @@
  */
 package gov.noaa.pmel.excel2oap;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,18 +19,6 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 
 import gov.noaa.pmel.excel2oap.ifc.SSParser;
-import gov.noaa.pmel.sdimetadata.Coverage;
-import gov.noaa.pmel.sdimetadata.MiscInfo;
-import gov.noaa.pmel.sdimetadata.MiscInfo.MiscInfoBuilder;
-import gov.noaa.pmel.sdimetadata.SDIMetadata;
-import gov.noaa.pmel.sdimetadata.instrument.Instrument;
-import gov.noaa.pmel.sdimetadata.person.Investigator;
-import gov.noaa.pmel.sdimetadata.person.Person;
-import gov.noaa.pmel.sdimetadata.person.Submitter;
-import gov.noaa.pmel.sdimetadata.platform.Platform;
-import gov.noaa.pmel.sdimetadata.util.Datestamp;
-import gov.noaa.pmel.sdimetadata.util.NumericString;
-import gov.noaa.pmel.sdimetadata.variable.Variable;
 import gov.noaa.pmel.tws.util.StringUtils;
 
 
@@ -90,7 +75,7 @@ public abstract class BaseSpreadSheetHandler
                                      SpreadSheetKeys keys, boolean omitEmptyItems) {
         _ssKeys = keys;
         _omitEmptyElements = omitEmptyItems;
-        generalFields = omitEmptyItems ? new ForceNullHashMap<>() : new NonNullHashMap<>();
+        generalFields = new NonNullHashMap<>(); //  ? new ForceNullHashMap<>() : new NonNullHashMap<>();
         
         multiLineFields = multiLine;
         multiItemFields = multiItem;
@@ -121,7 +106,7 @@ public abstract class BaseSpreadSheetHandler
         }
         sb.append(")");
         if ( isMultiItem ) {
-            sb.append("(?:.)?(\\d))(?:\\:?)");  // "(?:.*)?(\\d| ?)");
+            sb.append("(?:.)?(\\d+))(?:\\:?)");  // "(?:.*)?(\\d| ?)");
         } else {
             sb.append(")(?:.*?)( )");
         }
@@ -216,155 +201,11 @@ public abstract class BaseSpreadSheetHandler
             collection.add(parts);
             multiItems.put(type, collection);
         }
-//        try {
-//            Method m = BaseSpreadSheetHandler.class.getDeclaredMethod("add_"+type.name(), SDIMetadata.class, Map.class);
-//            m.invoke(this, sdi, parts);
-//        } catch (NoSuchMethodException ex) {
-//            logger.debug("No add method for " + type.name());
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
     }
 
-    /**
-     * @param generalFields
-     * @param sdi
-     */
-    private void putGeneralFields(SDIMetadata sdi, Map<String, String> generalFields) {
-        addMiscInfo(sdi, generalFields);
-        addCoverage(sdi, generalFields);
-    }
-    private void addMiscInfo(SDIMetadata sdi, Map<String, String> generalFields) {
-        Datestamp startDatestamp = tryDatestamp(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Start_date)));
-        Datestamp endDatestamp = tryDatestamp(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_End_date)));
-        String fundingAgency = generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_agency_name)) != "" ?
-                                generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_agency_name)) :
-                                generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_agency_name_ALT));
-        String fundingProjectId = generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_project_ID)) != "" ?
-                                   generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_project_ID)) :
-                                   generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_project_ID_ALT));
-        MiscInfoBuilder mib = new MiscInfo().toBuilder()
-                .datasetId(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_EXPOCODE)))
-                .datasetName(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Cruise_ID)))
-                .sectionName(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Section)))
-                .fundingAgency(fundingAgency)
-                .fundingId(fundingProjectId)
-                .fundingTitle(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Funding_project_title)))
-                .researchProject(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Research_projects)))
-//                .datasetDoi(generalFields.get(nothing))
-                .accessId(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Accession_no_of_related_data_sets)))
-                .citation(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Author_list_for_citation)))
-                .synopsis(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Abstract)))
-                .purpose(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Purpose)))
-                .title(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Title)))
-                .addReference(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_References)))
-                .addInfo(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Supplemental_information)))
-                .startDatestamp(startDatestamp)
-                .endDatestamp(endDatestamp);
-        String submissionDateStr = generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Submission_Date));
-        if ( !StringUtils.emptyOrNull(submissionDateStr)) {
-            Datestamp submissionDate = tryDatestamp(submissionDateStr);
-            mib.history(new ArrayList<Datestamp>() {{ add(submissionDate); }});
-        }
-        MiscInfo mi = mib.build();
-        sdi.setMiscInfo(mi);
-    }
-
-    private void addCoverage(SDIMetadata sdi, Map<String, String> generalFields) {
-        Datestamp miscStart = sdi.getMiscInfo().getStartDatestamp();
-        Datestamp miscEnd = sdi.getMiscInfo().getEndDatestamp();
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, miscStart.getYear().intValue());
-        cal.set(Calendar.MONTH, miscStart.getMonth().intValue()-1);
-        cal.set(Calendar.DAY_OF_MONTH, miscStart.getDay().intValue());
-        cal.set(Calendar.HOUR, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        Date cStart = cal.getTime();
-        cal.set(Calendar.YEAR, miscEnd.getYear().intValue());
-        cal.set(Calendar.MONTH, miscEnd.getMonth().intValue()-1);
-        cal.set(Calendar.DAY_OF_MONTH, miscEnd.getDay().intValue());
-        Date cEnd = cal.getTime();
-                
-        Coverage coverage = new Coverage().toBuilder()
-                .westernLongitude(new NumericString(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Westbd_longitude)), Coverage.LONGITUDE_UNITS))
-                .easternLongitude(new NumericString(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Eastbd_longitude)), Coverage.LONGITUDE_UNITS))
-                .northernLatitude(new NumericString(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Northbd_latitude)), Coverage.LATITUDE_UNITS))
-                .southernLatitude(new NumericString(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Southbd_latitude)), Coverage.LATITUDE_UNITS))
-                .earliestDataTime(cStart)
-                .latestDataTime(cEnd)
-                .spatialReference(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Spatial_reference_system)))
-                .addGeographicName(generalFields.get(_ssKeys.getKeyForName(_ssKeys.name_r_Geographic_names)))
-                .build();
-        sdi.setCoverage(coverage);
-    }
-        
-    /**
-     * @param sdi
-     * @return
-     */
-    @SuppressWarnings("unused")
-    public void add_PI(SDIMetadata sdi, Map<String, String> parts) {
-        add_INVESTIGATOR(sdi, parts);
-    }
-    /**
-     * @param sdi
-     * @return
-     */
-    @SuppressWarnings("unused") // used by reflection
-    public void add_INVESTIGATOR(SDIMetadata sdi, Map<String, String> parts) {
-        Person person = Person.personBuilder()
-                .firstName(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_name)))
-                .organization(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_institution)))
-                .id(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_researcher_ID)))
-                .idType(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_ID_type)))
-                .build();
-        Investigator investigator = new Investigator(person);
-        investigator.setEmail(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_email)));
-        investigator.setPhone(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_phone)));
-        investigator.addStreet(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_address)));
-        sdi.addInvestigator(investigator);
-    }
-
-    @SuppressWarnings("unused") // used by reflection
-    public void add_DATA_SUBMITTER(SDIMetadata sdi, Map<String, String> parts) {
-        Person person = Person.personBuilder()
-                .firstName(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_name)))
-                .organization(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_institution)))
-                .id(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_researcher_ID)))
-                .idType(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_ID_type)))
-                .build();
-        Submitter submitter = new Submitter(person);
-        submitter.setEmail(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_email)));
-        submitter.setPhone(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_phone)));
-        submitter.addStreet(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PersonX_address)));
-        sdi.setSubmitter(submitter);
-    }
-    @SuppressWarnings("unused") // used by reflection
-    public void add_PLATFORM(SDIMetadata sdi, Map<String, String> parts) {
-        String platformName = parts.get(_ssKeys.getKeyForName(_ssKeys.name_PlatformX_name));
-        String platformId = parts.get(_ssKeys.getKeyForName(_ssKeys.name_PlatformX_ID));
-        if ( (StringUtils.emptyOrNull(platformName) || "none".equalsIgnoreCase(platformName)) && 
-             (StringUtils.emptyOrNull(platformId) || "none".equalsIgnoreCase(platformId))) {
-            return;
-        }
-        Platform platform = new Platform();
-        platform.setPlatformName(platformName);
-        platform.setPlatformId(platformId);
-        platform.setPlatformTypeStr(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PlatformX_type)));
-        platform.setPlatformOwner(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PlatformX_owner)));
-        platform.setPlatformCountry(parts.get(_ssKeys.getKeyForName(_ssKeys.name_PlatformX_country)));
-        sdi.setPlatform(platform);
-    }
 
     @SuppressWarnings("unused")
-    private Instrument buildInstrument(String string, Map<String, String> parts) {
-        // unused
-        // TODO Auto-generated method stub
-        return null;
-    }
-    @SuppressWarnings("unused")
-    protected void add_VAR(Document doc, Map<String, String> parts) {
+    private void add_VAR(Document doc, Map<String, String> parts) {
         add_VAR(doc, parts, "0");
     }
     protected void add_VAR(Document doc, Map<String, String> parts, String internal) {
@@ -407,10 +248,6 @@ public abstract class BaseSpreadSheetHandler
 		maybeAdd(var,"researcherInstitution",parts.get(_ssKeys.getKeyForName(_ssKeys.name_VarX_Researcher_Institution)));
         maybeAdd(var,"internal",internal);
     }
-    @SuppressWarnings("unused")
-    public void add_FUNDING(SDIMetadata sdi, Map<String, String> parts) {
-        // unused
-    }
 
     public void add_VARs(Document doc) {
         Collection<Map<String, String>> vars = multiItems.get(elementForKey("Var")); // XXX String Constant!
@@ -420,13 +257,6 @@ public abstract class BaseSpreadSheetHandler
         for (Map<String, String> parts : vars) {
             add_VAR(doc, parts);
         }
-    }
-    public Variable buildSDIvariable(Map<String, String> parts) {
-        Variable v = new Variable();
-        v.setColName(parts.get(_ssKeys.getKeyForName(_ssKeys.name_VarX_Variable_abbreviation_in_data_files)));
-        v.setFullName(parts.get(_ssKeys.getKeyForName(_ssKeys.name_VarX_Full_variable_name)));
-        v.setVarUnit(parts.get(_ssKeys.getKeyForName(_ssKeys.name_VarX_Variable_unit)));
-        return v;
     }
 
     protected static String especiallyClean(String dirty) {
@@ -456,78 +286,6 @@ public abstract class BaseSpreadSheetHandler
             System.err.println("More than one item for getSingular " + type.name());
         }
         return c.iterator().next();
-    }
-
-    /**
-     * @param string
-     * @return
-     */
-    protected static Datestamp tryDatestamp(String string) {
-        logger.info("Trying datastamp for " + string);
-        Datestamp ds = new Datestamp();
-        if ( ! StringUtils.emptyOrNull(string)) {
-            String[] parts = string.split("[/ -]");
-            if ( parts.length == 3 ) {
-                String p0 = parts[0];
-                String p1 = parts[1];
-                String p2 = parts[2];
-                try {
-                    int i0 = Integer.parseInt(p0);
-                    int i1 = Integer.parseInt(p1);
-                    int i2 = Integer.parseInt(p2);
-                    int month, day, year = -1;
-                    month = day = year;
-                    if ( i0 > 12 ) { // assume not month
-                        if ( i0 > 31 ) { // assume year
-                            year = i0;   // then assume yyyy-mm-dd
-                            month = i1;
-                            day = i2;
-                        } else {
-                            day = i0;  // else assume dd-mm-yyyy
-                            month = i1;
-                            year = i2;
-                        }
-                    } else { // assume mm-dd-yyyy
-                        month = i0;
-                        day = i1;
-                        year = i2;
-                    } 
-                    
-                    if ( year < 1000 ) {
-                        if ( year < 42 ) { // because that's the answer
-                            year += 2000;
-                        } else {
-                            year += 1900;
-                        }
-                    }
-                    ds.setMonth(month);
-                    ds.setDay(day);
-                    ds.setYear(year);
-                }
-                catch (Exception ex) {
-                    logger.info("Excel2Oap Exception parsing date string:"+ string + ":"+ex.toString());
-                    if ( ex instanceof NumberFormatException ) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("MMMMM d y");
-                        try {
-                            Date d = sdf.parse(string);
-                            Calendar c = Calendar.getInstance();
-                            c.setTime(d);
-                            ds.setMonth(c.get(Calendar.MONTH)+1);
-                            ds.setDay(c.get(Calendar.DAY_OF_MONTH));
-                            ds.setYear(c.get(Calendar.YEAR));
-                        } catch (Exception e2) {
-                            logger.info("Final failure to parse date string " + string + ": " + e2.toString());
-                        }
-                    }
-                }
-            } else {
-                logger.info("Excel2Oap: Cannot parse date string:" + string);
-            }
-        }
-        if ( ds.getYear() <= 0 ) {
-            logger.info("Unable to parse date string: "+ string);
-        }
-        return ds;
     }
 
     protected boolean isEmpty(Element elem) {

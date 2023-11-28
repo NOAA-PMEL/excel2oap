@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2s" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <investigators>
+        <investigator>
+            <name>
+                <first>Thanos</first>
+                <last>Gkritzalis</last>
+            </name>
+            <organization>Flanders Marine Institute (VLIZ)</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="1">Wandelaarkaai 7, 8400, Ostend, BE</deliveryPoint>
+                    <deliveryPoint index="2"/>
+                </address>
+                <phone>+32-(0)59-34 13 04</phone>
+                <email>thanosg@vliz.be</email>
+            </contactInfo>
+            <identifier type="OceanExpert">44129</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Hannelore</first>
+                <last>Theetaert</last>
+            </name>
+            <organization>Flanders Marine Institute (VLIZ)</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="1">Wandelaarkaai 7, 8400, Ostend, BE</deliveryPoint>
+                    <deliveryPoint index="2"/>
+                </address>
+                <phone>+32-(0)59-34 13 04</phone>
+                <email>hannelore.theetaert@vliz.be</email>
+            </contactInfo>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Andre</first>
+                <last>Cattrijsse</last>
+            </name>
+            <organization>Flanders Marine Institute (VLIZ)</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="1">Wandelaarkaai 7, 8400, Ostend, BE</deliveryPoint>
+                    <deliveryPoint index="2"/>
+                </address>
+                <email>andre.cattrijsse@vliz.be</email>
+            </contactInfo>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>Steve</first>
+            <last>Jones</last>
+        </name>
+        <organization>University of Bergen</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="1">Allégaten 55, 5007 Bergen, Norway</deliveryPoint>
+                <deliveryPoint index="2"/>
+            </address>
+            <email>steve.jones@uib.no</email>
+        </contactInfo>
+        <identifier type="orcid">0000-0003-0522-9851</identifier>
+    </dataSubmitter>
+    <title>BE-FOS-Thornton Buoy (ICOS &amp; LifeWatch)</title>
+    <abstract>Moored surface buoy that serves both ERICs ICOS and LifeWatch. The buoy is equipped with sensors for pCO2, dissolved oxygen, temperature, salinity, fluorescence (chl-a), turbidity, passive acoustic receiver. Sensors are deployed approx 1m below sea surface. Station is visited on a monthly basis in order to collect samples for validation/calibration of sensors and maintain/replace equipment. Station has a secure and stable communication with VLIZ servers for NRT data transmission and overall interactive communication with in situ equipment. Temperature inside the sensor (gas recirculation) is regulated at 45 degC. Pressure before the membrane is measured via a propriatory pressure sensor. NDIR type is also propriatory. NDIR is calibrated once a year, when sensor is send back to supplier for CAL and service. NDIR is stable (can be tracked when sensor is performing atmospheric measurements) however the membrane is affected by biofouling. "Bad" data have not been filtered out. Good data are compared against CO2 (x/p/f) from the Simon Stevin (11SS...) and also against CO2 values calculated from DIC/TA and pH samples colelcted at regular intervals (monthly - bi monthly).</abstract>
+    <methods>Membrane based surface xCO2 measurements</methods>
+    <temporalExtents>
+        <startDate>2018-02-14</startDate>
+        <endDate>2020-07-10</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <location>
+            <latitude>51.57989</latitude>
+            <longitude>2.993217</longitude>
+        </location>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>FWO (Research Foundation - Flanders)</agency>
+            <title>Research Infrasctracture ICOS</title>
+            <identifier>I001019N</identifier>
+        </source>
+    </fundingInfo>
+    <platforms>
+        <platform>
+            <name>BE-FOSThornton Buoy</name>
+            <identifier type="ICES">1199</identifier>
+            <type>Mooring</type>
+            <owner>VLIZ</owner>
+            <country>Belgium</country>
+        </platform>
+    </platforms>
+    <authors>
+        <author>Gkritzalis, Thanos</author>
+        <author>Theetaert, Hannelore</author>
+        <author>Cattrijsse, Andre</author>
+    </authors>
+    <variables>
+        <variable xsi:type="co2_socat" name="xCO2_SST_wet">
+            <fullName>xCO2_SST_wet</fullName>
+            <datasetVarName>xCO2_SST_wet</datasetVarName>
+            <observationType>Surface Underway</observationType>
+            <units>ppm</units>
+            <uncertainty>10 uatm</uncertainty>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Pro-OCEANUS CO2-Pro ATM</analyzingInstrument>
+            <detailedAnalyzingInfo>No</detailedAnalyzingInfo>
+            <gasDetector/>
+            <calculationMethodFor_pCO2>Yes …. But this is based on information provided by proOceanus manual (page 24 of rev 1)</calculationMethodFor_pCO2>
+            <calculationMethodFor_fCO2>Yes</calculationMethodFor_fCO2>
+            <locationSeawaterIntake>0.6 - 1m below surface</locationSeawaterIntake>
+            <equilibrator>
+                <type>NA</type>
+                <volume>NA</volume>
+                <waterFlowRate>NA</waterFlowRate>
+                <temperatureMeasurement>
+                    <sensor>
+                        <calibration>NA</calibration>
+                    </sensor>
+                    <uncertainty>NA</uncertainty>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>NA</method>
+                    <sensor>
+                        <calibration>NA</calibration>
+                    </sensor>
+                </pressureMeasurement>
+            </equilibrator>
+            <totalMeasurementPressure>
+                <method>NA</method>
+                <uncertainty>NA</uncertainty>
+            </totalMeasurementPressure>
+        </variable>
+        <variable xsi:type="co2_socat" name="pCO2_SST_wet">
+            <fullName>pCO2_SST_wet</fullName>
+            <datasetVarName>pCO2_SST_wet</datasetVarName>
+            <units>μatm</units>
+            <qcFlag/>
+            <researcher/>
+            <gasDetector/>
+            <equilibrator>
+                <temperatureMeasurement>
+                    <sensor/>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <sensor/>
+                </pressureMeasurement>
+            </equilibrator>
+            <totalMeasurementPressure/>
+        </variable>
+        <variable name="SST">
+            <fullName>Temperature</fullName>
+            <datasetVarName>SST</datasetVarName>
+            <observationType>fixed coastal station</observationType>
+            <units>Celsius</units>
+            <uncertainty>0.005</uncertainty>
+            <qcFlag>
+                <scheme>WOCECTD</scheme>
+                <description>Yes</description>
+            </qcFlag>
+            <researcher/>
+            <samplingInstrument>sensor</samplingInstrument>
+            <analyzingInstrument>Seabird sensors</analyzingInstrument>
+            <detailedAnalyzingInfo>SBE37 SMP-ODO uCAT</detailedAnalyzingInfo>
+        </variable>
+        <variable name="Sal">
+            <fullName>Salinity</fullName>
+            <datasetVarName>Sal</datasetVarName>
+            <observationType>fixed coastal station</observationType>
+            <units>PSU</units>
+            <uncertainty>0.05</uncertainty>
+            <qcFlag>
+                <scheme>WOCECTD</scheme>
+                <description>Yes</description>
+            </qcFlag>
+            <researcher/>
+            <samplingInstrument>sensor</samplingInstrument>
+            <analyzingInstrument>Seabird sensors</analyzingInstrument>
+            <detailedAnalyzingInfo>SBE37 SMP-ODO uCAT</detailedAnalyzingInfo>
+        </variable>
+    </variables>
+</oads_metadata>

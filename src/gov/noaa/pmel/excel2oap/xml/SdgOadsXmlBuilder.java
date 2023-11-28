@@ -27,9 +27,9 @@ import gov.noaa.pmel.excel2oap.sdg.SdgElementType;
  * @author kamb
  *
  */
-public class SdgXmlBuilder extends OadsXmlBuilder {
+public class SdgOadsXmlBuilder extends OadsXmlBuilder {
 
-    private static final Logger logger = LogManager.getLogger(SdgXmlBuilder.class);
+    private static final Logger logger = LogManager.getLogger(SdgOadsXmlBuilder.class);
     
     private SDG_14_3_Keys sdgKeys;
     
@@ -39,7 +39,7 @@ public class SdgXmlBuilder extends OadsXmlBuilder {
      * @param keys
      * @param omitEmptyElements
      */
-    public SdgXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
+    public SdgOadsXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
             Map<String, String> simpleItems, SpreadSheetKeys keys, boolean omitEmptyElements) {
         super(multiItems, simpleItems, keys, omitEmptyElements);
         sdgKeys = (SDG_14_3_Keys)keys;

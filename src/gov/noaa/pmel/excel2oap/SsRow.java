@@ -31,7 +31,7 @@ public class SsRow {
         String t_value = rowValue;
         if ( rowValue != null ) {
             if ( rowValue.contains(nbsp)) {
-                logger.info("Found nbsp.");
+                logger.debug("Found nbsp at row:" + rowNum);
                 t_value = rowValue.replaceAll(nbsp, " ");
             }
             t_value = t_value.trim();

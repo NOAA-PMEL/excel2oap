@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2021-12-23T08:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Ian</first>
+                <last>Enochs</last>
+            </name>
+            <organization>OAR/AOML/CIMAS</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">4301 Rickenbacker Causeway, Key Biscayne, FL 33149</deliveryPoint>
+                </address>
+                <phone>305-361-4399</phone>
+                <email>ian.enochs@noaa.gov</email>
+            </contactInfo>
+            <identifier type="A-8661-2014"/>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Chris</first>
+                <last>Kelble</last>
+            </name>
+            <organization>OAR/AOML</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">4301 Rickenbacker Causeway, Key Biscayne, FL 33149</deliveryPoint>
+                </address>
+                <phone>305-361-4330</phone>
+                <email>chris.kelble@noaa.gov</email>
+            </contactInfo>
+            <identifier type="B-8051-2014"/>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Nicole</first>
+                <last>Besemer</last>
+            </name>
+            <organization>OAR/AOML/CIMAS</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">4301 Rickenbacker Causeway, Key Biscayne, FL 33149</deliveryPoint>
+                </address>
+                <phone>484-505-6949</phone>
+                <email>nicole.besemer@noaa.gov</email>
+            </contactInfo>
+            <identifier/>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>Nicole</first>
+            <last>Besemer</last>
+        </name>
+        <organization>OAR/AOML/CIMAS</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">4301 Rickenbacker Causeway, Key Biscayne, FL 33149</deliveryPoint>
+            </address>
+            <phone>484-505-6949</phone>
+            <email>nicole.besemer@noaa.gov</email>
+        </contactInfo>
+        <identifier/>
+    </dataSubmitter>
+    <title>National Coral Reef Monitoring Program - Ocean Acidification Enterprise 2019</title>
+    <abstract>This archival package contains carbonate chemistry data collected at both random locations and existing long-term sites in the Florida Keys and Southeast Florida as part of the NOAA National Coral Reef Monitoring Program (NCRMP). These data are collected and analyzed to assess spatial and temporal variation in the seawater carbonate systems of coral reef ecosystems and include two types of sampling methods. The first method is collected by hand at the surface, either from the boat or by SCUBA divers. The second method uses subsurface autosamplers where water samples provided in this dataset were collected at a depth of 15m. Samples are either collected singularly or as part of a diurnal set. The samples are processed by the Atlantic Oceanographic Meteorological Laboratory (AOML) where they are analyzed for total alkalinity (TA), dissolved inorganic carbon (DIC) and Spectrophotometric pH. Using the analyzed TA and DIC, alongside temperature, salinity and depth data, AOML staff calculated other important carbonate chemistry system parameters such as pH, pCO2, and aragonite saturation and reported the results in this dataset.</abstract>
+    <purpose>Provide high-quality carbonate chemistry data (dissolved inorganic carbonand total alkalinity) for US coral reef areas at a several spatial and temporal scales, in close partnership with the larger CRCP NCRMP and OAP/PMEL NOA-ON efforts.</purpose>
+    <methods></methods>
+    <temporalExtents/>
+    <spatialExtents>
+        <bounds>
+            <westernBounds>-81.831501</westernBounds>
+            <easternBounds>-80.03236</easternBounds>
+            <northernBounds>26.52592</northernBounds>
+            <southernBounds>24.396144</southernBounds>
+        </bounds>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>NOAA's Ocean Acidification Program</agency>
+            <title>National Coral Reef Monitoring Program - Ocean Acidification Enterprise</title>
+            <identifier></identifier>
+        </source>
+    </fundingInfo>
+    <researchProjects>
+        <project></project>
+    </researchProjects>
+    <expocodes>
+        <expocode></expocode>
+    </expocodes>
+    <cruiseIds>
+        <cruiseId type=""></cruiseId>
+    </cruiseIds>
+    <sections>
+        <section></section>
+    </sections>
+    <authors>
+        <author>Enochs IC, Besemer NI, Boyd A</author>
+    </authors>
+    <references>
+        <reference></reference>
+    </references>
+    <supplementalInfo></supplementalInfo>
+    <variables>
+        <variable xsi:type="dic_variable_type">
+            <datasetVarName>DIC_umol/kg</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>discrete water sample</observationType>
+            <units>umol/kg</units>
+            <uncertainty>�2 umol/kg</uncertainty>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Dickson, A.G., Sabine, C.L. and Christian, J.R. (Eds.) 2007. Guide to best practices for ocean CO2 measurements. PICES Special Publication 3, 191 pp.</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <analyzingInstrument>Apollo Sci-tech DIC Analyzer, model no. AS-C3</analyzingInstrument>
+            <detailedAnalyzingInfo>Measurements drawn according to procedures in the Guide to best practices for ocean CO2 measurements (Dickson et al., 2007). Borosilicate bottle were rinsed and filled from bottom, leaving a minimal amount of headspace while making sure no bubbles were introduced. Then 200uL of saturated HgCl2 solution was added, bottles were sealed with glass stoppers lightly covered with Apiezon-L grease, and were stored at room temperature to be sent back to the lab for analysis on the Apollo Sci-tech DIC Analyzer.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>duplicate samples analyzed</fieldReplicateHandling>
+            <standardization>
+                <description>Duplicate samples are run in addition to Certified Reference Material (CRM), supplied by Dr. A. Dickson of UCSD</description>
+                <frequency>Along with duplicate samples being run throughout, CRMs are run at the beginning  to generate offset value and at the end to assess drift</frequency>
+                <crm>
+                    <manufacturer>Andrew Dickson's lab at Scripps Institute of Oceanography</manufacturer>
+                    <batch>CRM 140, 150, 157, 164</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>saturated Mercury (II) Chloride (HgCl2)</name>
+                <volume>200uL</volume>
+            </poison>
+        </variable>
+        <variable xsi:type="ta_variable_type">
+            <datasetVarName>TA_umol/kg</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>discrete water sample</observationType>
+            <units>umol/kg</units>
+            <uncertainty>� 1-2 umol/kg</uncertainty>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Dickson, A.G., Sabine, C.L. and Christian, J.R. (Eds.) 2007. Guide to best practices for ocean CO2 measurements. PICES Special Publication 3, 191 pp.</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <analyzingInstrument>Apollo Sci-tech Alkalinity Titrator, model no. AS-ALK2</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples run using remaining water from the same sample bottles used for DIC. Refer to DIC for more information on sampling and conservation of samples. Water samples were titrated with 0.11M HCl solution.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>500-ml sets of duplicate samples</fieldReplicateHandling>
+            <standardization>
+                <description>Duplicate samples are run in addition to Certified Reference Material (CRM), supplied by Dr. A. Dickson of UCSD</description>
+                <frequency>Along with duplicate samples being run throughout, CRMs are run at the beginning to generate offset value</frequency>
+                <crm>
+                    <manufacturer>Andrew Dickson's lab at Scripps Institute of Oceanography</manufacturer>
+                    <batch>CRM 140, 150, 157, 164</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>saturated Mercury (II) Chloride (HgCl2)</name>
+                <volume>200uL</volume>
+            </poison>
+            <titrationType>Gran titration</titrationType>
+            <cellType>Open</cellType>
+        </variable>
+        <variable xsi:type="ph_variable_type">
+            <datasetVarName>pH_calculated</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>discrete water sample</observationType>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <detailedAnalyzingInfo>Same sample bottle for pH, DIC and TA analyses. Refer to DIC for more information on sampling and conservation of samples.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>500-ml sets of duplicate samples</fieldReplicateHandling>
+            <standardization/>
+            <phScale>Total</phScale>
+            <measurementTemperature>25</measurementTemperature>
+            <phReportTemperature>temperature during analysis (25C)</phReportTemperature>
+        </variable>
+        <variable xsi:type="co2_discrete">
+            <datasetVarName>pCO2_uatm</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>discrete water sample</observationType>
+            <units>uatm</units>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <detailedAnalyzingInfo>Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>500-ml sets of duplicate samples</fieldReplicateHandling>
+            <standardization>
+                <standardGas/>
+            </standardization>
+            <gasDetector/>
+            <storageMethod>Borosilicate bottle</storageMethod>
+            <seawaterVolume>500</seawaterVolume>
+            <headspaceVolume>10</headspaceVolume>
+        </variable>
+        <variable>
+            <fullName>Temperature measured during sample collection in degrees Celsius</fullName>
+            <datasetVarName>Temperature_C</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>surface measurement</observationType>
+            <units>oC</units>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <samplingInstrument>Borosilicate bottle</samplingInstrument>
+            <analyzingInstrument>YSI EcoSense EC300A portable conductivity, salinity, and temperature instrument</analyzingInstrument>
+            <detailedAnalyzingInfo>Model EC300A</detailedAnalyzingInfo>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Salinity calculated from denisty measurement</fullName>
+            <datasetVarName>Salinity_Bottle</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <observationType>surface measurement</observationType>
+            <units>psu</units>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <analyzingInstrument>Densitometer, Anton Paar DMA XXX</analyzingInstrument>
+            <detailedAnalyzingInfo>1mL of original seawater sample used for density analysis. Salinity then calculated using density and temperature of sample at time of density measurement through use of the UNESCO Equation of State of Seawater</detailedAnalyzingInfo>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Depth in meters</fullName>
+            <datasetVarName>Sample_Depth_m</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <units>m</units>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <samplingInstrument>depth gauge</samplingInstrument>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Aragonite saturation state</fullName>
+            <datasetVarName>Aragonite_Sat_W</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <detailedAnalyzingInfo>Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>500-ml sets of duplicate samples</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Spectrophotometric pH</fullName>
+            <datasetVarName>pH_measured</datasetVarName>
+            <variableType>in-situ observation</variableType>
+            <units>Total Scale pH units</units>
+            <uncertainty>�0.005 pH units</uncertainty>
+            <qcFlag/>
+            <researcher>
+                <name>Ian Enochs</name>
+                <organization>Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration</organization>
+            </researcher>
+            <methodReference>Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a</methodReference>
+            <samplingInstrument>Niskin bottle, stored in borosilicate bottle (125mL, 600mL)</samplingInstrument>
+            <analyzingInstrument>Agilent Cary 8454 UV-Vis Spectrophotometer</analyzingInstrument>
+            <detailedAnalyzingInfo>Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples.</detailedAnalyzingInfo>
+            <fieldReplicateHandling>500-ml sets of duplicate samples</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>

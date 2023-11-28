@@ -66,15 +66,12 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     private SDIMetadata sdi;
     private Document xmlJdoc;
 
-    protected boolean omitEmptyElements = true;
-    
     public static SpreadSheetType getSpreadSheetType() { return SpreadSheetType.OCADS; }
     
     public OcadsXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
                               Map<String, String> simpleItems,
                               SpreadSheetKeys keys, boolean omitEmptyElements) {
-        super(multiItems, forceNotNull(simpleItems), keys);
-        this.omitEmptyElements = omitEmptyElements;
+        super(multiItems, forceNotNull(simpleItems), keys, omitEmptyElements);
         sdi = new SDIMetadata();
     }
     
@@ -576,7 +573,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         putGeneralFields(simpleItems);
         add_INVESTIGATORs();
         add_DATA_SUBMITTER(getSingularItem("Data submitter"));
-        add_PLATFORM(getSingularItem("Platform"));
+        add_PLATFORMs();
         add_FUNDING(getSingularItem("Funding"));
         try {
             xmlJdoc = writeSdiMetadata(sdi);
@@ -640,7 +637,16 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
         xout.output(xmlJdoc, outputXmlStream);
     }
     private void add_INVESTIGATORs() {
-        Collection<Map<String, String>> investigators = getMultiItem("Investigator");
+        ElementType investigatorKey = ssKeys.getElementForKey("Investigator");
+        if ( ! multiItems.containsKey(investigatorKey)) {
+            logger.info("no Investigator elements found.");
+            investigatorKey = ssKeys.getElementForKey("PI");
+            if ( ! multiItems.containsKey(investigatorKey)) {
+                logger.info("No investigator or PI elements found!");
+                return;
+            }
+        }
+        Collection<Map<String, String>> investigators = multiItems.get(investigatorKey);
         if ( investigators == null || investigators.size() == 0 ) {
             logger.info("No investigators found.");
             return;
@@ -649,6 +655,22 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
             add_INVESTIGATOR(investigator);
         }
     }
+    
+    private void add_PLATFORMs() {
+        ElementType platformKey = ssKeys.getElementForKey("Platform");
+        Collection<Map<String, String>> platforms = multiItems.get(platformKey);
+        if ( platforms == null || platforms.size() == 0 ) {
+            logger.info("No platforms found.");
+            return;
+        }
+        for (Map<String, String> platform : platforms) {
+            add_PLATFORM(platform);
+        }
+    }
+    
+//    private void add_FUNDINGs() {
+        // Not supported yet...
+//    }
     
     /* (non-Javadoc)
      * @see gov.noaa.pmel.excel2oap.ifc.XmlBuilder#outputXml(java.io.OutputStream)

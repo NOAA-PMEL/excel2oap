@@ -26,16 +26,6 @@ public interface SpreadSheetFlavor {
     public Map<String, String> getSingleFields();
     public Map<ElementType, Collection<Map<String, String>>> getMultiItemFields();
 
-//    public SDIMetadata processRows(List<SsRow> rows);
-    
-    public void addOtherStuff(Document doc);
-    
-    public void add_PI(SDIMetadata sdi, Map<String, String> parts);
-    public void add_INVESTIGATOR(SDIMetadata sdi, Map<String, String> parts);
-    public void add_DATA_SUBMITTER(SDIMetadata sdi, Map<String, String> parts);
-    public void add_PLATFORM(SDIMetadata sdi, Map<String, String> parts);
-    public void add_FUNDING(SDIMetadata sdi, Map<String, String> parts);
-    
     public default void add_DIC(Document doc) {}
     public default void add_TA(Document doc) {}
     public default void add_PH(Document doc) {}

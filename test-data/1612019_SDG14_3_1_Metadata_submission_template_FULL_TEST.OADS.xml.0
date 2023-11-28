@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2021-07-08T19:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Investigator 1</first>
+                <last>name</last>
+            </name>
+            <organization>Investigator 1 org</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Investigaor 1 address</deliveryPoint>
+                </address>
+                <phone>111-222-3333</phone>
+                <email>investigator1@email.com</email>
+            </contactInfo>
+            <identifier type="ORCID">Investigator 1 ID</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Investigator 2</first>
+                <last>name</last>
+            </name>
+            <organization>Investigator 2 org</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Investigaor 2 address</deliveryPoint>
+                </address>
+                <phone>2223334444</phone>
+                <email>investigator2@email.com</email>
+            </contactInfo>
+            <identifier type="OceanExpert">Investigator 2 ID</identifier>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>data submitter</first>
+            <last>name</last>
+        </name>
+        <organization>data submitter org</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">data submitter address</deliveryPoint>
+            </address>
+            <phone>333.444.5555</phone>
+            <email>datasubmitter@email.com</email>
+        </contactInfo>
+        <identifier type="ResearcherID">data submitter  ID</identifier>
+    </dataSubmitter>
+    <title>name of sampling site</title>
+    <abstract>short description and purpose</abstract>
+    <methods>methods applied</methods>
+    <temporalExtents>
+        <startDate>2020-02-17</startDate>
+        <endDate>2020-04-02</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <location>
+            <latitude>42.42</latitude>
+            <longitude>-124.42</longitude>
+        </location>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>funding agency name</agency>
+            <title>funding project title</title>
+            <identifier>funding project ID</identifier>
+        </source>
+    </fundingInfo>
+    <researchProjects/>
+    <platforms>
+        <platform>
+            <name>platform1 name</name>
+            <identifier type="WMO">platform1 ID</identifier>
+            <type>Ship-based time series (vessel)</type>
+            <owner>platform1 owner</owner>
+            <country>Albania</country>
+        </platform>
+        <platform>
+            <name>platform2 name</name>
+            <identifier type="WMO">platform2 ID</identifier>
+            <type>Repeat Hydrography (vessel)</type>
+            <owner>platform2 owner</owner>
+            <country>Bahamas</country>
+        </platform>
+    </platforms>
+    <expocodes>
+        <expocode>expocode</expocode>
+    </expocodes>
+    <cruiseIds>
+        <cruiseId type="ICES">cruise ID</cruiseId>
+    </cruiseIds>
+    <sections/>
+    <authors>
+        <author>Doe, Jack; Doette, Jill; Doolittle, Johnny</author>
+    </authors>
+    <references>
+        <reference>references</reference>
+    </references>
+    <supplementalInfo>supplemental info</supplementalInfo>
+    <variables>
+        <variable xsi:type="dic_variable_type">
+            <datasetVarName>DIC_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>µmol kg-1</units>
+            <uncertainty>dic uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>IODE</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>DIC_QC_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>dic method reference</methodReference>
+            <variationsFromMethod>dic shanges to SOB</variationsFromMethod>
+            <samplingInstrument>water collection with bucket</samplingInstrument>
+            <analyzingInstrument>Apollo SciTech Inc. DIC Analyser AS-C3</analyzingInstrument>
+            <detailedAnalyzingInfo>analyzing information</detailedAnalyzingInfo>
+            <fieldReplicateHandling>dic field replicate</fieldReplicateHandling>
+            <standardization>
+                <description>dic calibration method</description>
+                <frequency>dic calib frequency</frequency>
+                <crm>
+                    <manufacturer>Dickson CRM</manufacturer>
+                    <batch>dic batch numbers</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>dic poison</name>
+                <volume>dic poison volume</volume>
+                <correction>dic poison correction</correction>
+            </poison>
+        </variable>
+        <variable xsi:type="ta_variable_type">
+            <datasetVarName>ta_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>µmol kg-1</units>
+            <uncertainty>ta uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>ODV</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>ta_QC_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>ta method reference</methodReference>
+            <variationsFromMethod>ta shanges to SOB</variationsFromMethod>
+            <samplingInstrument>water collection with bucket</samplingInstrument>
+            <analyzingInstrument>Marianda Company VINDTA 3S system</analyzingInstrument>
+            <detailedAnalyzingInfo>ta analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>ta field replicate</fieldReplicateHandling>
+            <standardization>
+                <description>ta calibration</description>
+                <frequency>ta frequence</frequency>
+                <crm>
+                    <manufacturer>ta crm</manufacturer>
+                    <batch>ta batch numbers</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>ta poison</name>
+                <volume>ta poison volume</volume>
+                <correction>ta poison correction</correction>
+            </poison>
+            <titrationType>type of titration</titrationType>
+            <cellType>cell type</cellType>
+            <curveFitting>curve fitting</curveFitting>
+            <blankCorrection>magnitude of blank correction</blankCorrection>
+        </variable>
+        <variable xsi:type="ph_variable_type">
+            <datasetVarName>ph_abbrev</datasetVarName>
+            <observationType>time series</observationType>
+            <uncertainty>ph uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>GTSPP</scheme>
+                <description>No</description>
+                <qcFlagVarName>ph_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>ph method</methodReference>
+            <variationsFromMethod>ph change to SOP</variationsFromMethod>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Sunburst iSAMI pH sensor</analyzingInstrument>
+            <detailedAnalyzingInfo>ph analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>3</fieldReplicateHandling>
+            <standardization>
+                <description>ph calibration</description>
+                <frequency>ph frequency</frequency>
+                <temperature>ph calibration temp</temperature>
+                <phOfStandards>ph of standards</phOfStandards>
+            </standardization>
+            <phScale>free scale</phScale>
+            <measurementTemperature>ph measurement temp</measurementTemperature>
+            <temperatureCorrectionMethod>ph temp correction</temperatureCorrectionMethod>
+            <phReportTemperature>ph report temp</phReportTemperature>
+        </variable>
+        <variable xsi:type="co2_autonomous">
+            <datasetVarName>pco2_abbrev</datasetVarName>
+            <observationType>underway</observationType>
+            <units>μatm</units>
+            <uncertainty>pco2 uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>PANGAEA</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>pco2_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>pco2 method reference</methodReference>
+            <variationsFromMethod>pco2 changes to SOB</variationsFromMethod>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Contros-Kongsberg HydroC CO2 FT</analyzingInstrument>
+            <detailedAnalyzingInfo>pco2 analyzing info</detailedAnalyzingInfo>
+            <standardization>
+                <description>pco2 calibration</description>
+                <frequency>every 10 samples</frequency>
+                <standardGas>
+                    <manufacturer>pco2 standard gas manufacturer</manufacturer>
+                    <concentration>pco2 standard gas concentrations</concentration>
+                    <uncertainty>pco2 standard gas uncertainties</uncertainty>
+                </standardGas>
+            </standardization>
+            <gasDetector>
+                <manufacturer>pco2 gas detector manufacturer</manufacturer>
+                <model>pco2 gas detector model</model>
+                <resolution>pco2 gas detector resolution</resolution>
+                <uncertainty>pco2 gas detector uncertainty</uncertainty>
+            </gasDetector>
+            <waterVaporCorrection>pco2 water vapor correction</waterVaporCorrection>
+            <temperatureCorrectionMethod>pco2 temperature correction</temperatureCorrectionMethod>
+            <co2ReportTemperature>pco2 report temperature</co2ReportTemperature>
+            <locationSeawaterIntake>pco2 intake location</locationSeawaterIntake>
+            <depthSeawaterIntake>pc02 depth intake</depthSeawaterIntake>
+            <equilibrator>
+                <type>pco2 equilibrator type</type>
+                <volume>pco2 equilibrator volume</volume>
+                <vented>Vented</vented>
+                <waterFlowRate>pco2 equilibrator headspace flow rate</waterFlowRate>
+                <gasFlowRate>pco2 equilibrator headspace flow rate</gasFlowRate>
+                <temperatureMeasurement>
+                    <method>pco2 how was temp inside equilibrator measured</method>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>pco2 how was pressure inside equilibrator measured</method>
+                </pressureMeasurement>
+            </equilibrator>
+            <co2GasDryingMethod>pco2 drying method</co2GasDryingMethod>
+        </variable>
+        <variable xsi:type="co2_autonomous">
+            <datasetVarName>fco2_abbrev</datasetVarName>
+            <observationType>underway</observationType>
+            <units>μatm</units>
+            <uncertainty>fco2 uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>PANGAEA</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>fco2_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>fco2 method reference</methodReference>
+            <variationsFromMethod>fco2 changes to SOB</variationsFromMethod>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Contros-Kongsberg HydroC CO2 FT</analyzingInstrument>
+            <detailedAnalyzingInfo>fco2 analyzing info</detailedAnalyzingInfo>
+            <standardization>
+                <description>fco2 calibration</description>
+                <frequency>every 10 samples</frequency>
+                <standardGas>
+                    <manufacturer>fco2 standard gas manufacturer</manufacturer>
+                    <concentration>fco2 standard gas concentrations</concentration>
+                    <uncertainty>fco2 standard gas uncertainties</uncertainty>
+                </standardGas>
+            </standardization>
+            <gasDetector>
+                <manufacturer>fco2 gas detector manufacturer</manufacturer>
+                <model>fco2 gas detector model</model>
+                <resolution>fco2 gas detector resolution</resolution>
+                <uncertainty>fco2 gas detector uncertainty</uncertainty>
+            </gasDetector>
+            <waterVaporCorrection>fco2 water vapor correction</waterVaporCorrection>
+            <temperatureCorrectionMethod>fco2 temperature correction</temperatureCorrectionMethod>
+            <co2ReportTemperature>fco2 report temperature</co2ReportTemperature>
+            <locationSeawaterIntake>fco2 intake location</locationSeawaterIntake>
+            <depthSeawaterIntake>pc02 depth intake</depthSeawaterIntake>
+            <equilibrator>
+                <type>fco2 equilibrator type</type>
+                <volume>fco2 equilibrator volume</volume>
+                <vented>Vented</vented>
+                <waterFlowRate>fco2 equilibrator headspace flow rate</waterFlowRate>
+                <gasFlowRate>fco2 equilibrator headspace flow rate</gasFlowRate>
+                <temperatureMeasurement>
+                    <method>fco2 how was temp inside equilibrator measured</method>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>fco2 how was pressure inside equilibrator measured</method>
+                </pressureMeasurement>
+            </equilibrator>
+            <co2GasDryingMethod>fco2 drying method</co2GasDryingMethod>
+        </variable>
+        <variable>
+            <fullName>Depth</fullName>
+            <datasetVarName>depth abbrev</datasetVarName>
+            <units>m</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Temperature</fullName>
+            <datasetVarName>temp_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>temp units</units>
+            <uncertainty>temp uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>SEADATANET</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>temp_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>temp method</methodReference>
+            <variationsFromMethod>temp changes to method</variationsFromMethod>
+            <samplingInstrument>water collection with a water sampler (e.g. Niskin)</samplingInstrument>
+            <analyzingInstrument>temp analyzer</analyzingInstrument>
+            <detailedAnalyzingInfo>temp analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>1</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Salinity</fullName>
+            <datasetVarName>salinity_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>salinity units</units>
+            <uncertainty>salinity uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>SEADATANET</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>salinity_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>salinity method</methodReference>
+            <variationsFromMethod>salinity changes to method</variationsFromMethod>
+            <samplingInstrument>water collection with a water sampler (e.g. Niskin)</samplingInstrument>
+            <analyzingInstrument>salinity analyzer</analyzingInstrument>
+            <detailedAnalyzingInfo>salinity analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>1</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>

@@ -19,13 +19,17 @@ import gov.noaa.pmel.excel2oap.ifc.XmlBuilder;
  */
 public abstract class XmlBuilderBase extends SpreadSheetHandlerBase implements XmlBuilder {
 
-//    protected boolean omitEmptyElements = true;
+    protected boolean omitEmptyElements = true;
     
     protected XmlBuilderBase(Map<ElementType, Collection<Map<String, String>>> multiItems,
                               Map<String, String> simpleItems,
-                              SpreadSheetKeys keys) { //, boolean omitEmptyElements) {
+                              SpreadSheetKeys keys, boolean omitEmptyElements) {
         super(multiItems, simpleItems, keys);
-//        this.omitEmptyElements = omitEmptyElements;
+        this.omitEmptyElements = omitEmptyElements;
     }
+    
+//    protected String notNull(String value) {
+//        if ( value == null ) 
+//    }
     
 }

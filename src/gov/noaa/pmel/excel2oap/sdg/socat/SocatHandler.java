@@ -39,7 +39,7 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
     };
     private static final String[] multiLineFields = { 
             SocatElementType.DATA_SUBMITTER.key(), 
-            SocatElementType.CRUISE_ID.key(), 
+//            SocatElementType.CRUISE_ID.key(), 
             SocatElementType.CO2.key(), 
             SocatElementType.FCO2.key(),
             SocatElementType.PCO2.key(),
@@ -52,7 +52,8 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
     SpreadSheetKeys socatKeys;//  = new SocatKeys();
     
     private StringBuilder co2vars = new StringBuilder();
-    private String co2comma = "";
+    private String co2varsep = "";
+    private static final String CO2_SEPARATOR = ";";
     
     /**
      * @param omitEmpty
@@ -81,10 +82,10 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
     @Override
     public void processRows(List<SsRow> rows) {
         if (checkForMisplacedRow(rows)) {
-            System.out.println("Found out-of-order fpxCO2 row.");
+            logger.info("Found out-of-order fpxCO2 row.");
         }
         if (checkForProblemRows(rows)) {
-            System.out.println("Found typo fpxCO2 row.");
+            logger.info("Found typo fpxCO2 row.");
         }
         super.processRows(rows);
     }
@@ -130,19 +131,14 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
         return false;
     }
        
-    @Override
     public void addOtherStuff(Document doc) {
         add_xCO2(doc);
-        add_fCO2(doc);
         add_pCO2(doc);
+        add_fCO2(doc);
         add_CO2common(doc);
         add_Depth(doc);
         add_Salinity(doc);
         add_Temperature(doc);
-    }
-    
-    void addVarCommon(Document doc, Map<String, String> parts) {
-        Element root = doc.getRootElement();
     }
     
     /* (non-Javadoc)
@@ -162,8 +158,10 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
         Map<String, String> parts = getSingularItem(SocatElementType.XCO2.key());
         if ( parts != null ) {
             add_VAR(doc, parts, null);
-            co2vars.append(co2comma).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
-            co2comma = ",";
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
+            co2vars.append(":");
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_unit)));
+            co2varsep = CO2_SEPARATOR;
         }
     }
 
@@ -175,8 +173,10 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
         Map<String, String> parts = getSingularItem(SocatElementType.FCO2.key());
         if ( parts != null ) {
             add_VAR(doc, parts, null);
-            co2vars.append(co2comma).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
-            co2comma = ",";
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
+            co2vars.append(":");
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_unit)));
+            co2varsep = CO2_SEPARATOR;
         }
     }
 
@@ -188,8 +188,10 @@ public class SocatHandler extends SdgHandler { // BaseSpreadSheetHandler {
         Map<String, String> parts = getSingularItem(SocatElementType.PCO2.key());
         if ( parts != null ) {
             add_VAR(doc, parts, null);
-            co2vars.append(co2comma).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
-            co2comma = ",";
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files)));
+            co2vars.append(":");
+            co2vars.append(co2varsep).append(parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_unit)));
+            co2varsep = CO2_SEPARATOR;
         }
     }
 

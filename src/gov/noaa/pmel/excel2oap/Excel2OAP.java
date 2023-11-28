@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.List;
 
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.OadsMetadataDocumentType;
@@ -40,12 +41,26 @@ public class Excel2OAP {
     
     private SpreadSheetFlavor _ssFlavor;
 
+    private Charset _charset = Charset.defaultCharset();
+    
     public Excel2OAP() {
     }
+    
+    public Excel2OAP(Charset charset) {
+        this();
+        this._charset = charset;
+    }
+    
     public Excel2OAP(boolean omitEmptyElements) {
         this();
         _omitEmptyElements = omitEmptyElements;
     }
+    public Excel2OAP(boolean omitEmptyElements, Charset charset) {
+        this();
+        _omitEmptyElements = omitEmptyElements;
+        _charset = charset;
+    }
+    
     @SuppressWarnings("serial")
     public Excel2OAP(SpreadSheetFlavor ssType) {
         this();
@@ -53,39 +68,41 @@ public class Excel2OAP {
     }
     
     public static void ConvertExcelToOADS_xml(InputStream excelInStream, OutputStream outputXmlStream) throws Exception {
-        new Excel2OAP().convert(excelInStream, outputXmlStream, XmlFlavor.OADS);
+        ConvertExcelToOADS_xml(excelInStream, outputXmlStream, Charset.defaultCharset());
+    }
+    public static void ConvertExcelToOADS_xml(InputStream excelInStream, OutputStream outputXmlStream, Charset charset) throws Exception {
+        new Excel2OAP(charset).convert(excelInStream, outputXmlStream, XmlFlavor.OADS);
     }
     
-    public static OadsMetadataDocumentType ConvertExcelToOADS_doc(InputStream excelInputStream) throws Exception {
-        return new Excel2OAP().convertToOADS_doc(excelInputStream);
+    public static OadsMetadataDocumentType ConvertExcelToOADS_doc(InputStream excelInputStream, Charset charset) throws Exception {
+        return new Excel2OAP(charset).convertToOADS_doc(excelInputStream);
     }
     
     @Deprecated
-    public static void ConvertExcelToOCADS_xml(InputStream excelInStream, OutputStream outputXmlStream) throws Exception {
-        new Excel2OAP().convert(excelInStream, outputXmlStream, XmlFlavor.OCADS);
+    public static void ConvertExcelToOCADS_xml(InputStream excelInStream, OutputStream outputXmlStream, Charset charset) throws Exception {
+        new Excel2OAP(charset).convert(excelInStream, outputXmlStream, XmlFlavor.OCADS);
     }
     
     public OadsMetadataDocumentType convertToOADS_doc(InputStream excelInStream) throws Exception {
-        SSReader reader = new SpreadSheetReader();
-        List<SsRow> rows = reader.extractFileRows(excelInStream);
-        SpreadSheetType ssType = guessSStype(rows);
-        SSParser parser = getSpreadSheetProcessor(ssType, _omitEmptyElements);
-        parser.processRows(rows);
-        OadsXmlBuilder xmlBuilder = (OadsXmlBuilder)getXmlBuilder(XmlFlavor.OADS, parser);
-        xmlBuilder.buildDocument(parser);
-        OadsMetadataDocumentType doc =  xmlBuilder.getDocuemnt();
+        XmlBuilder xmlBuilder = _convert(excelInStream, XmlFlavor.OADS);
+        OadsMetadataDocumentType doc =  ((OadsXmlBuilder)xmlBuilder).getDocuemnt();
         return doc;
     }
     
     public void convert(InputStream excelInStream, OutputStream outputXmlStream, XmlFlavor xmlFlavor) throws Exception {
-        SSReader reader = new SpreadSheetReader();
+        XmlBuilder xmlBuilder = _convert(excelInStream, xmlFlavor);
+        xmlBuilder.outputXml(outputXmlStream);
+    }
+    
+    private XmlBuilder _convert(InputStream excelInStream, XmlFlavor xmlFlavor) throws Exception {
+        SSReader reader = new SpreadSheetReader(_charset);
         List<SsRow> rows = reader.extractFileRows(excelInStream);
         SpreadSheetType ssType = guessSStype(rows);
         SSParser parser = getSpreadSheetProcessor(ssType, _omitEmptyElements);
         parser.processRows(rows);
         XmlBuilder xmlBuilder = getXmlBuilder(xmlFlavor, parser);
         xmlBuilder.buildDocument(parser);
-        xmlBuilder.outputXml(outputXmlStream);
+        return xmlBuilder;
     }
         
     private static SSParser getSpreadSheetProcessor(SpreadSheetType ssType, boolean omitEmpty) {
@@ -152,8 +169,8 @@ public class Excel2OAP {
     private static void usage() {
         System.out.println("Translate OADS Metadata Submission Excel Spreadsheet to OAP XML v0.");
         System.out.println("usage: excel2oap [excel_file] [output_file] [xml_flavor]");
-        System.out.println("       If not specified, input and output will be from/to Standard.in/out.");
-        System.out.println("       To read from Standard.in and output to a file, use '-' as input file name.");
+        System.out.println("       If not specified, output will be to Standard.in/out.");
+        System.out.println("       To read from Standard.in use '-' as input file name.");
         System.out.println("       If input file is specified, but output file is not, output will be [input_file_base].xml");
         System.out.println("       Use '--' as output file name if you want the above behavior but want to specify the xml flavor.");
         System.out.println("       XML flavors are: oads (default) and ocads.");
@@ -163,8 +180,9 @@ public class Excel2OAP {
      * @param args
      */
     public static void main(String[] args) {
-        if ( args.length == 1 &&
-             ( args[0].contains("-h") || args[0].equals("-?"))) {
+        if ( args.length == 0 ||
+            ( args.length == 1 &&
+             ( args[0].contains("-h") || args[0].equals("-?")))) {
             usage();
             System.exit(1);
         }
@@ -189,13 +207,15 @@ public class Excel2OAP {
         } else if ( outFileName != null ) {
             outputFile = new File(outFileName);
         }
+        logger.debug("Default character set: " + Charset.defaultCharset());
         boolean preserveEmpty = args.length >= 4 ? getBoolean(args[3]) : false;
         try ( InputStream in = inputFile != null ? new FileInputStream(inputFile) : System.in;
               OutputStream out = outputFile != null && ! "-".equals(outFileName)? 
                       new FileOutputStream(outputFile) : 
                       System.out; ) {
             new Excel2OAP( ! preserveEmpty).convert(in, out, xFlavor);
-//            OadsMetadataDocumentType doc = Excel2OAP.ConvertExcelToOADS_doc(in);
+//            OadsMetadataDocumentType doc = Excel2OAP.ConvertExcelToOADS_doc(in, Charset.forName("UTF-8"));
+//            System.out.println(doc);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

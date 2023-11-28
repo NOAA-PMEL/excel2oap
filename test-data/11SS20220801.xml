@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2023-01-13T20:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Dr. Thanos</first>
+                <last>Gkritzalis</last>
+            </name>
+            <organization>Flanders Marine Institute-Vlaams instituut voor de zee</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Jacobsenstraat 1, 8400, Ostend, BE</deliveryPoint>
+                </address>
+                <phone>+3259336190</phone>
+                <email>thanosg@vliz.be</email>
+            </contactInfo>
+            <identifier type="OceanExpert">44129</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Hannelore</first>
+                <last>Theetaert</last>
+            </name>
+            <organization>Flanders Marine Institute-Vlaams instituut voor de zee</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Jacobsenstraat 1, 8400, Ostend, BE</deliveryPoint>
+                </address>
+                <email>hannelore.theetaert@vliz.be</email>
+            </contactInfo>
+            <identifier type="OceanExpert">44669</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Michiel</first>
+                <last>T'Jampens</last>
+            </name>
+            <organization>Flanders Marine Institute (VLIZ)</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Jacobsenstraat 1, 8400, Ostend, BE</deliveryPoint>
+                </address>
+                <email>michiel.tjampens@vliz.be</email>
+            </contactInfo>
+            <identifier/>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>Thanos</first>
+            <last>Gkritzalis</last>
+        </name>
+        <organization>Flanders Marine Institute (VLIZ)</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">Jacobsenstraat 1, 8400, Ostend, BE</deliveryPoint>
+            </address>
+            <phone>+3259336190</phone>
+            <email>thanosg@vliz.be</email>
+        </contactInfo>
+        <identifier type="OceanExpert">44129</identifier>
+    </dataSubmitter>
+    <title>BE-SOOP-SIMON STEVIN ; ICOS</title>
+    <abstract>Uw measurements of surface CO2 in the Belgian Coast and adjacent seas, within the scope of ICOS.</abstract>
+    <purpose></purpose>
+    <methods>surface XCO2 measurments Equilibrator based coupled to OF-CEAS (LI7815)</methods>
+    <temporalExtents>
+        <startDate>2022-08-01</startDate>
+        <endDate>2022-08-30</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <bounds>
+            <westernBounds>2.442</westernBounds>
+            <easternBounds>3.345</easternBounds>
+            <northernBounds>51.964</northernBounds>
+            <southernBounds>51.15</southernBounds>
+        </bounds>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>FWO (Research Foundation - Flanders)</agency>
+            <title>Research Infrasctracture ICOS</title>
+            <identifier>I001019N</identifier>
+        </source>
+    </fundingInfo>
+    <researchProjects>
+        <project></project>
+    </researchProjects>
+    <platforms>
+        <platform>
+            <name>RV Simon Stevin</name>
+            <identifier type="IMO">9622681</identifier>
+            <type>Voluntary Observing Ship</type>
+            <owner>DAB-VLOOT</owner>
+            <country>Belgium</country>
+        </platform>
+    </platforms>
+    <expocodes>
+        <expocode>11SS</expocode>
+    </expocodes>
+    <sections>
+        <section></section>
+    </sections>
+    <authors>
+        <author>Gkritzalis, Thanos; Theetaert ,Hannelore; Cattrijsse, Andre</author>
+    </authors>
+    <references>
+        <reference></reference>
+    </references>
+    <supplementalInfo></supplementalInfo>
+    <variables>
+        <variable xsi:type="co2_socat" name="CO2_Common">
+            <fullName>CO2 Common</fullName>
+            <datasetVarName>CO2_Common</datasetVarName>
+            <observationType>underway</observationType>
+            <uncertainty>±2</uncertainty>
+            <qcFlag>
+                <description>No</description>
+            </qcFlag>
+            <researcher/>
+            <methodReference>D. Pierrot et al. / Deep-Sea Research II 56 (2009) 512–522 519</methodReference>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>flask equilibrator coupled to GC or NDIR</analyzingInstrument>
+            <detailedAnalyzingInfo>Dickson et al 2007 SOP6</detailedAnalyzingInfo>
+            <standardization>
+                <description>Standard gases</description>
+                <frequency>every 12 hours</frequency>
+                <standardGas>
+                    <id>std_1</id>
+                    <manufacturer>ICOS CAL</manufacturer>
+                    <uncertainty>0.011, 0.015, 0.017</uncertainty>
+                    <traceabilityToWmoStandards>Yes</traceabilityToWmoStandards>
+                </standardGas>
+                <standardGas>
+                    <id>std_1</id>
+                    <manufacturer>ICOS CAL</manufacturer>
+                    <uncertainty>0.011, 0.015, 0.017</uncertainty>
+                    <traceabilityToWmoStandards>Yes</traceabilityToWmoStandards>
+                </standardGas>
+                <standardGas>
+                    <id>std_1</id>
+                    <manufacturer>ICOS CAL</manufacturer>
+                    <uncertainty>0.011, 0.015, 0.017</uncertainty>
+                    <traceabilityToWmoStandards>Yes</traceabilityToWmoStandards>
+                </standardGas>
+            </standardization>
+            <gasDetector>
+                <manufacturer>LICOR</manufacturer>
+                <model>7815</model>
+                <resolution>0.01</resolution>
+                <uncertainty>0.1</uncertainty>
+            </gasDetector>
+            <waterVaporCorrection>Sensor reports dry fraction. Broadening and spectral interference is performed within the analyzer</waterVaporCorrection>
+            <temperatureCorrectionMethod>Pierrot et al 2009; Takahashi et al. 1993</temperatureCorrectionMethod>
+            <calculationMethodFor_pCO2>Pierrot et al 2009</calculationMethodFor_pCO2>
+            <calculationMethodFor_fCO2>Pierrot et al 2009</calculationMethodFor_fCO2>
+            <co2ReportTemperature>eq and SST</co2ReportTemperature>
+            <locationSeawaterIntake>Bow</locationSeawaterIntake>
+            <depthSeawaterIntake>3</depthSeawaterIntake>
+            <equilibrator>
+                <type>Marble/Trickle down (Frankignoulle et al. 2001)</type>
+                <volume>3</volume>
+                <vented>Vented</vented>
+                <waterFlowRate>2.8</waterFlowRate>
+                <gasFlowRate>0.25</gasFlowRate>
+                <temperatureMeasurement>
+                    <method>pt100 with custom made A/D board</method>
+                    <sensor>
+                        <calibration>Pt100s are calibrated against a SBE38 in a thermostated bath. This is performed yearly</calibration>
+                    </sensor>
+                    <uncertainty>±0.01</uncertainty>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>Vaisala PTB210</method>
+                    <sensor>
+                        <calibration>Every two years</calibration>
+                    </sensor>
+                </pressureMeasurement>
+            </equilibrator>
+            <co2GasDryingMethod>Peltier/Classic cooler and Nafion</co2GasDryingMethod>
+            <totalMeasurementPressure>
+                <method>Absolute</method>
+                <uncertainty>0.1 hPa</uncertainty>
+            </totalMeasurementPressure>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>X12CO2_dry</fullName>
+            <datasetVarName>X12CO2_dry</datasetVarName>
+            <units>ppm</units>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>pCO2water_SST_wet</fullName>
+            <datasetVarName>pCO2water_SST_wet</datasetVarName>
+            <units>μatm</units>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>fCO2_water_SST_wet</fullName>
+            <datasetVarName>fCO2_water_SST_wet</datasetVarName>
+            <units>μatm</units>
+        </variable>
+        <variable name="Depth">
+            <fullName>Depth</fullName>
+            <datasetVarName>Depth</datasetVarName>
+            <units>m</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable name="SST">
+            <fullName>Temperature</fullName>
+            <datasetVarName>SST</datasetVarName>
+            <observationType>underway</observationType>
+            <units>Celsius</units>
+            <uncertainty>0.001</uncertainty>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Seabird sensors</analyzingInstrument>
+            <standardization/>
+        </variable>
+        <variable name="Salinity">
+            <fullName>Salinity</fullName>
+            <datasetVarName>Salinity</datasetVarName>
+            <observationType>underway</observationType>
+            <units>PSU</units>
+            <uncertainty>0.01</uncertainty>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Seabird sensors</analyzingInstrument>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>

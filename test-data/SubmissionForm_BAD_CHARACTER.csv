@@ -1,0 +1,313 @@
+No,Metadata element name,Your input,Help reference no.
+1,Submission Date,12/23/2021,1
+2,Accession no. of related data sets,,2
+3,Investigator-1 name,Ian Enochs,3.1
+4,Investigator-1 institution,OAR/AOML/CIMAS,3.2
+5,Investigator-1 address,"4301 Rickenbacker Causeway, Key Biscayne, FL 33149",3.3
+6,Investigator-1 phone,305-361-4399,3.4
+7,Investigator-1 email,ian.enochs@noaa.gov,3.5
+8,Investigator-1 researcher ID,,3.6
+9,"Investigator-1 ID type  (ORCID, Researcher ID, etc.)",A-8661-2014,3.7
+10,Investigator-2 name,Chris Kelble,3.1
+11,Investigator-2 institution,OAR/AOML,3.2
+12,Investigator-2 address,"4301 Rickenbacker Causeway, Key Biscayne, FL 33149",3.3
+13,Investigator-2 phone,305-361-4330,3.4
+14,Investigator-2 email,chris.kelble@noaa.gov,3.5
+15,Investigator-2 researcher ID,,3.6
+16,"Investigator-2 ID type  (ORCID, Researcher ID, etc.)",B-8051-2014,3.7
+17,Investigator-3 name,Nicole Besemer,3.1
+18,Investigator-3 institution,OAR/AOML/CIMAS,3.2
+19,Investigator-3 address,"4301 Rickenbacker Causeway, Key Biscayne, FL 33149",3.3
+20,Investigator-3 phone,484-505-6949,3.4
+21,Investigator-3 email,nicole.besemer@noaa.gov,3.5
+22,Investigator-3 researcher ID,,3.6
+23,"Investigator-3 ID type  (ORCID, Researcher ID, etc.)",,3.7
+24,Data submitter name,Nicole Besemer,4.1
+25,Data submitter institution,OAR/AOML/CIMAS,4.2
+26,Data submitter address,"4301 Rickenbacker Causeway, Key Biscayne, FL 33149",4.3
+27,Data submitter phone,484-505-6949,4.4
+28,Data submitter email,nicole.besemer@noaa.gov,4.5
+29,Data submitter researcher ID,,4.6
+30,"Data submitter ID type  (ORCID, Researcher ID, etc.)",,4.7
+31,Title,National Coral Reef Monitoring Program - Ocean Acidification Enterprise 2019,5
+32,Abstract,"This archival package contains carbonate chemistry data collected at both random locations and existing long-term sites in the Florida Keys and Southeast Florida as part of the NOAA National Coral Reef Monitoring Program (NCRMP). These data are collected and analyzed to assess spatial and temporal variation in the seawater carbonate systems of coral reef ecosystems and include two types of sampling methods. The first method is collected by hand at the surface, either from the boat or by SCUBA divers. The second method uses subsurface autosamplers where water samples provided in this dataset were collected at a depth of 15m. Samples are either collected singularly or as part of a diurnal set. The samples are processed by the Atlantic Oceanographic Meteorological Laboratory (AOML) where they are analyzed for total alkalinity (TA), dissolved inorganic carbon (DIC) and Spectrophotometric pH. Using the analyzed TA and DIC, alongside temperature, salinity and depth data, AOML staff calculated other important carbonate chemistry system parameters such as pH, pCO2, and aragonite saturation and reported the results in this dataset.",6
+33,Purpose,"Provide high-quality carbonate chemistry data (dissolved inorganic carbonand total alkalinity) for US coral reef areas at a several spatial and temporal scales, in close partnership with the larger CRCP NCRMP and OAP/PMEL NOA-ON efforts.",7
+34,Start date,,8.1
+35,End date,,8.2
+36,Westbd longitude,-81.831501,9.1
+37,Eastbd longitude,-80.03236,9.2
+38,Northbd latitude,26.52592,9.3
+39,Southbd latitude,24.396144,9.4
+40,Spatial reference system,,10
+41,Geographic names,"Florida Keys, Southeast Florida",11
+42,Location of organism collection,n/a,12
+43,Funding agency name,NOAA's Ocean Acidification Program,13.1
+44,Funding project title,National Coral Reef Monitoring Program - Ocean Acidification Enterprise,13.2
+45,Funding project ID (Grant no.),,13.3
+46,Research projects,,14
+47,Platform-1 name,,15.1
+48,Platform-1 ID,,15.2
+49,Platform-1 type,,15.3
+50,Platform-1 owner,,15.4
+51,Platform-1 country,,15.5
+52,EXPOCODE,,16
+53,Cruise ID,,17
+54,Section,,18
+55,Author list for citation,"Enochs IC, Besemer NI, Boyd A",19
+56,References,,20
+57,Supplemental information,,21
+58,DIC: Variable abbreviation in data files,DIC_umol/kg,22.1
+59,DIC: Observation type,discrete water sample,22.2
+60,DIC: In-situ observation / manipulation condition / response variable,in-situ observation,22.3
+61,DIC: Manipulation method,,22.4
+62,DIC: Variable unit,umol/kg,22.5
+63,DIC: Measured or calculated,Measured,22.6
+64,"DIC: Calculation method, software, and parameters",,22.7
+65,DIC: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",22.8
+66,DIC: Analyzing instrument,"Apollo Sci-tech DIC Analyzer, model no. AS-C3",22.9
+67,DIC: Detailed sampling and analyzing information,"Measurements drawn according to procedures in the Guide to best practices for ocean CO2 measurements (Dickson et al., 2007). Borosilicate bottle were rinsed and filled from bottom, leaving a minimal amount of headspace while making sure no bubbles were introduced. Then 200uL of saturated HgCl2 solution was added, bottles were sealed with glass stoppers lightly covered with Apiezon-L grease, and were stored at room temperature to be sent back to the lab for analysis on the Apollo Sci-tech DIC Analyzer.",22.1
+68,DIC: Field replicate information,duplicate samples analyzed,22.11
+69,DIC: Standardization technique description,"Duplicate samples are run in addition to Certified Reference Material (CRM), supplied by Dr. A. Dickson of UCSD",22.12.1
+70,DIC: Frequency of standardization,"Along with duplicate samples being run throughout, CRMs are run at the beginning  to generate offset value and at the end to assess drift",22.12.2
+71,DIC: CRM manufacturer,Andrew Dickson's lab at Scripps Institute of Oceanography,22.12.3.1
+72,DIC: Batch number,"CRM 140, 150, 157, 164",22.12.3.2
+73,DIC: Poison used to kill the sample,saturated Mercury (II) Chloride (HgCl2),22.13.1
+74,DIC: Poison volume,200uL,22.13.2
+75,DIC Poisoning correction description,,22.13.3
+76,DIC: Uncertainty,±2 umol/kg,22.14
+77,DIC: Data quality flag description,,22.15
+78,DIC: Method reference (citation),"Dickson, A.G., Sabine, C.L. and Christian, J.R. (Eds.) 2007. Guide to best practices for ocean CO2 measurements. PICES Special Publication 3, 191 pp.",22.16
+79,DIC: Researcher Name,Ian Enochs,22.17.1
+80,DIC: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",22.17.2
+81,TA: Variable abbreviation in data files,TA_umol/kg,23.1
+82,TA: Observation type,discrete water sample,23.2
+83,TA: In-situ observation / manipulation condition / response variable,in-situ observation,23.3
+84,TA: Manipulation method,,23.4
+85,TA: Variable unit,umol/kg,23.5
+86,TA: Measured or calculated,Measured,23.6
+87,"TA: Calculation method, software, and parameters",,23.7
+88,TA: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",23.8
+89,TA: Analyzing instrument,"Apollo Sci-tech Alkalinity Titrator, model no. AS-ALK2",23.9
+90,TA: Type of titration,Gran titration,23.1
+91,TA: Cell type (open or closed),Open,23.11
+92,TA: Curve fitting method,,23.12
+93,TA: Detailed sampling and analyzing information,Samples run using remaining water from the same sample bottles used for DIC. Refer to DIC for more information on sampling and conservation of samples. Water samples were titrated with 0.11M HCl solution.,23.13
+94,TA: Field replicate information,500-ml sets of duplicate samples,23.14
+95,TA: Standardization technique description,"Duplicate samples are run in addition to Certified Reference Material (CRM), supplied by Dr. A. Dickson of UCSD",23.15.1
+96,TA: Frequency of standardization,"Along with duplicate samples being run throughout, CRMs are run at the beginning to generate offset value",23.15.2
+97,TA: CRM manufacturer,Andrew Dickson's lab at Scripps Institute of Oceanography,23.15.3.1
+98,TA: Batch Number,"CRM 140, 150, 157, 164",23.15.3.2
+99,TA: Poison used to kill the sample,saturated Mercury (II) Chloride (HgCl2),23.16.1
+100,TA: Poison volume,200uL,23.16.2
+101,TA: Poisoning correction description,,23.16.3
+102,TA: Magnitude of blank correction,,23.17
+103,TA: Uncertainty,± 1-2 umol/kg,23.18
+104,TA: Data quality flag description,,23.19
+105,TA: Method reference (citation),"Dickson, A.G., Sabine, C.L. and Christian, J.R. (Eds.) 2007. Guide to best practices for ocean CO2 measurements. PICES Special Publication 3, 191 pp.",23.2
+106,TA: Researcher Name,Ian Enochs,23.21.1
+107,TA: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",23.21.2
+108,pH: Variable abbreviation in data files,pH_calculated,24.1
+109,pH: Observation type,discrete water sample,24.2
+110,pH: In-situ observation / manipulation condition / response variable,in-situ observation,24.3
+111,pH: Manipulation method,,24.4
+112,pH: Measured or calculated,Calculated,24.5
+113,"pH: Calculation method, software, and parameters",CO2SYS version 2.1,24.6
+114,pH: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",24.7
+115,pH: Analyzing instrument,,24.8
+116,pH: pH scale,Total,24.9
+117,pH: Temperature of measurement,25,24.1
+118,pH: Detailed sampling and analyzing information,"Same sample bottle for pH, DIC and TA analyses. Refer to DIC for more information on sampling and conservation of samples. ",24.11
+119,pH: Field replicate information,500-ml sets of duplicate samples,24.12
+120,pH: Standardization technique description,,24.13.1
+121,pH: Frequency of standardization,,24.13.2
+122,pH: pH values of the standards,,24.13.3
+123,pH: Temperature of standardization,,24.13.4
+124,pH: Temperature correction method,,24.14
+125,pH: at what temperature was pH reported,temperature during analysis (25C),24.15
+126,pH: Uncertainty,,24.16
+127,pH: Data quality flag description,,24.17
+128,pH: Method reference (citation),"Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a",24.18
+129,pH: Researcher Name,Ian Enochs,24.19.1
+130,pH: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",24.19.2
+131,pCO2A: Variable abbreviation in data files,,25.1
+132,pCO2A: Observation type,,25.2
+133,pCO2A: In-situ observation / manipulation condition / response variable,,25.3
+134,pCO2A: Manipulation method,,25.4
+135,pCO2A: Variable unit,,25.5
+136,pCO2A: Measured or calculated,,25.6
+137,"pCO2A: Calculation method, software, and parameters",,25.7
+138,pCO2A: Sampling instrument,,25.8
+139,pCO2A: Location of seawater intake,,25.9
+140,pCO2A: Depth of seawater intake,,25.1
+141,pCO2A: Analyzing instrument,,25.11
+142,pCO2A: Detailed sampling and analyzing information,,25.12
+143,pCO2A: Equilbrator type,,25.13.1
+144,pCO2A: Equilibrator volume (L),,25.13.2
+145,pCO2A: Vented or not,,25.13.3
+146,pCO2A: Water flow rate (L/min),,25.13.4
+147,pCO2A: Headspace gas flow rate (L/min),,25.13.5
+148,pCO2A: How was temperature inside the equilibrator measured .,,25.13.6
+149,pCO2A: How was pressure inside the equilibrator measured.,,25.13.7
+150,pCO2A: Drying method for CO2 gas,,25.14
+151,pCO2A: Manufacturer of the gas detector,,25.15.1
+152,pCO2A: Model of the gas detector,,25.15.2
+153,pCO2A: Resolution of the gas detector,,25.15.3
+154,pCO2A: Uncertainty of the gas detector,,25.15.4
+155,pCO2A: Standardization technique description,,25.16.1
+156,pCO2A: Frequency of standardization,,25.16.2
+157,pCO2A: Manufacturer of standard gas,,25.16.3.1
+158,pCO2A: Concentrations of standard gas,,25.16.3.2
+159,pCO2A: Uncertainties of standard gas,,25.16.3.3
+160,pCO2A: Water vapor correction method,,25.17
+161,pCO2A: Temperature correction method,,25.18
+162,pCO2A: at what temperature was pCO2 reported,,25.19
+163,pCO2A: Uncertainty,,25.2
+164,pCO2A: Data quality flag description,,25.21
+165,pCO2A: Method reference (citation),,25.22
+166,pCO2A: Researcher Name,,25.23.1
+167,pCO2A: Researcher Institution,,25.23.2
+168,pCO2D: Variable abbreviation in data files,pCO2_uatm,26.1
+169,pCO2D: Observation type,discrete water sample,26.2
+170,pCO2D: In-situ observation / manipulation condition / response variable,in-situ observation,26.3
+171,pCO2D: Manipulation method,,26.4
+172,pCO2D: Variable unit,uatm,26.5
+173,pCO2D: Measured or calculated,calculated,26.6
+174,"pCO2D: Calculation method, software, and parameters",CO2SYS version 2.1,26.7
+175,pCO2D: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",26.8
+176,pCO2D: Analyzing instrument,,26.9
+177,pCO2D: Storage method,Borosilicate bottle,26.1
+178,pCO2D: Seawater volume (mL),500,26.11
+179,pCO2D: Headspace volume (mL),10,26.12
+180,pCO2D: Temperature of measurement,,26.13
+181,pCO2D: Detailed sampling and analyzing information,"Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples. ",26.14
+182,pCO2D: Field replicate information,500-ml sets of duplicate samples,26.15
+183,pCO2D: Manufacturer of the gas detector,,26.16.1
+184,pCO2D: Model of the gas detector,,26.16.2
+185,pCO2D: Resolution of the gas detector,,26.16.3
+186,pCO2D: Uncertainty of the gas detector,,26.16.4
+187,pCO2D: Standardization technique description,,26.17.1
+188,pCO2D: Frequency of standardization,,26.17.2
+189,pCO2D: Temperature of standardization,,26.17.3
+190,pCO2D: Manufacturer of standard gas,,26.17.4.1
+191,pCO2D: Concentrations of standard gas,,26.17.4.2
+192,pCO2D: Uncertainties of standard gas,,26.17.4.3
+193,pCO2D: Water vapor correction method,,26.18
+194,pCO2D: Temperature correction method,,26.19
+195,pCO2D: at what temperature was pCO2 reported,,26.2
+196,pCO2D: Uncertainty,,26.21
+197,pCO2D: Data quality flag description,,26.22
+198,pCO2D: Method reference (citation),"Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a",26.23
+199,pCO2D: Researcher Name,Ian Enochs,26.24.1
+200,pCO2D: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",26.24.2
+201,Var1: Variable abbreviation in data files,Temperature_C,27.1
+202,Var1: Full variable name,Temperature measured during sample collection in degrees Celsius,27.2
+203,Var1: Observation type,surface measurement,27.4
+204,Var1: In-situ observation / manipulation condition / response variable,in-situ observation,27.5
+205,Var1: Variable unit,oC,27.7
+206,Var1: Measured or calculated,measured,27.8
+207,"Var1: Calculation method, software, and parameters",,27.9
+208,Var1: Sampling instrument,Borosilicate bottle,27.1
+209,Var1: Analyzing instrument,"YSI EcoSense EC300A portable conductivity, salinity, and temperature instrument",27.11
+210,Var1: Duration (for settlement/colonization methods),one-time measurement,27.12
+211,Var1: Detailed sampling and analyzing information,Model EC300A,27.13
+212,Var1: Field replicate information,,27.14
+213,Var1: Uncertainty,,27.15
+214,Var1: Data quality flag description,,27.16
+215,Var1: Method reference (citation),,27.17
+216,Var1: Biological subject,,27.18
+217,Var1: Species Identification code,,27.19
+218,Var1: Life stage of the biological subject,,27.2
+219,Var1: Researcher Name,Ian Enochs,27.21.1
+220,Var1: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",27.21.2
+221,Var2: Variable abbreviation in data files,Salinity_Bottle,27.1
+222,Var2: Full variable name,Salinity calculated from denisty measurement,27.2
+223,Var2: Observation type,surface measurement,27.4
+224,Var2: In-situ observation / manipulation condition / response variable,in-situ observation,27.5
+225,Var2: Variable unit,psu,27.7
+226,Var2: Measured or calculated,calculated,27.8
+227,"Var2: Calculation method, software, and parameters",UNESCO Equation of State of Seawater,27.9
+228,Var2: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",27.1
+229,Var2: Analyzing instrument,"Densitometer, Anton Paar DMA XXX",27.11
+230,Var2: Duration (for settlement/colonization methods),one-time measurement,27.12
+231,Var2: Detailed sampling and analyzing information,1mL of original seawater sample used for density analysis. Salinity then calculated using density and temperature of sample at time of density measurement through use of the UNESCO Equation of State of Seawater,27.13
+232,Var2: Field replicate information,,27.14
+233,Var2: Uncertainty,,27.15
+234,Var2: Data quality flag description,,27.16
+235,Var2: Method reference (citation),,27.17
+236,Var2: Biological subject,,27.18
+237,Var2: Species Identification code,,27.19
+238,Var2: Life stage of the biological subject,,27.2
+239,Var2: Researcher Name,Ian Enochs,27.21.1
+240,Var2: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",27.21.2
+241,Var3: Variable abbreviation in data files,Sample_Depth_m,27.1
+242,Var3: Full variable name,Depth in meters,27.2
+243,Var3: Observation type,,27.4
+244,Var3: In-situ observation / manipulation condition / response variable,in-situ observation,27.5
+245,Var3: Variable unit,m,27.7
+246,Var3: Measured or calculated,measured,27.8
+247,"Var3: Calculation method, software, and parameters",,27.9
+248,Var3: Sampling instrument,depth gauge,27.1
+249,Var3: Analyzing instrument,,27.11
+250,Var3: Duration (for settlement/colonization methods),one-time measurement,27.12
+251,Var3: Detailed sampling and analyzing information,,27.13
+252,Var3: Field replicate information,,27.14
+253,Var3: Uncertainty,,27.15
+254,Var3: Data quality flag description,,27.16
+255,Var3: Method reference (citation),,27.17
+256,Var3: Biological subject,,27.18
+257,Var3: Species Identification code,,27.19
+258,Var3: Life stage of the biological subject,,27.2
+259,Var3: Researcher Name,Ian Enochs,27.21.1
+260,Var3: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",27.21.2
+261,Var4: Variable abbreviation in data files,Aragonite_Sat_W,27.1
+262,Var4: Full variable name,Aragonite saturation state,27.2
+263,Var4: Observation type,,27.4
+264,Var4: In-situ observation / manipulation condition / response variable,in-situ observation,27.5
+265,Var4: Variable unit,,27.7
+266,Var4: Measured or calculated,calculated,27.8
+267,"Var4: Calculation method, software, and parameters",CO2SYS version 2.1,27.9
+268,Var4: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",27.1
+269,Var4: Analyzing instrument,,27.11
+270,Var4: Duration (for settlement/colonization methods),one-time measurement,27.12
+271,Var4: Detailed sampling and analyzing information,"Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples. ",27.13
+272,Var4: Field replicate information,500-ml sets of duplicate samples,27.14
+273,Var4: Uncertainty,,27.15
+274,Var4: Data quality flag description,,27.16
+275,Var4: Method reference (citation),"Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a",27.17
+276,Var4: Biological subject,,27.18
+277,Var4: Species Identification code,,27.19
+278,Var4: Life stage of the biological subject,,27.2
+279,Var4: Researcher Name,Ian Enochs,27.21.1
+280,Var4: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",27.21.2
+281,Var5: Variable abbreviation in data files,pH_measured,27.1
+282,Var5: Full variable name,Spectrophotometric pH,27.2
+283,Var5: Observation type,,27.4
+284,Var5: In-situ observation / manipulation condition / response variable,in-situ observation,27.5
+285,Var5: Variable unit,Total Scale pH units,27.7
+286,Var5: Measured or calculated,measured,27.8
+287,"Var5: Calculation method, software, and parameters",,27.9
+288,Var5: Sampling instrument,"Niskin bottle, stored in borosilicate bottle (125mL, 600mL)",27.1
+289,Var5: Analyzing instrument,Agilent Cary 8454 UV-Vis Spectrophotometer,27.11
+290,Var5: Duration (for settlement/colonization methods),one-time measurement,27.12
+291,Var5: Detailed sampling and analyzing information,"Same sample bottle for pCO2, pH, DIC, and TA analyses. Refer to DIC for more information on sampling and conservation of samples. ",27.13
+292,Var5: Field replicate information,500-ml sets of duplicate samples,27.14
+293,Var5: Uncertainty,±0.005 pH units,27.15
+294,Var5: Data quality flag description,,27.16
+295,Var5: Method reference (citation),"Pierrot, D. E. Lewis,and D. W. R. Wallace. 2006. MS Excel Program Developed for 
+CO2 System Calculations. ORNL/CDIAC-105a. Carbon Dioxide Information Analysis Center, 
+Oak Ridge National Laboratory, U.S. Department of Energy, Oak Ridge, Tennessee. 
+doi: 10.3334/CDIAC/otg.CO2SYS_XLS_CDIAC105a",27.17
+296,Var5: Biological subject,,27.18
+297,Var5: Species Identification code,,27.19
+298,Var5: Life stage of the biological subject,,27.2
+299,Var5: Researcher Name,Ian Enochs,27.21.1
+300,Var5: Researcher Institution,"Atlantic Oceanographic and Meteorological Laboratory, National Oceanic and Atmospheric Administration",27.21.2

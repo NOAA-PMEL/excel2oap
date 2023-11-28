@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2021-07-08T19:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Investigator 1</first>
+                <last>name</last>
+            </name>
+            <organization>Investigator 1 org</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Investigaor 1 address</deliveryPoint>
+                </address>
+                <phone>111-222-3333</phone>
+                <email>investigator1@email.com</email>
+            </contactInfo>
+            <identifier type="ORCID">Investigator 1 ID</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Investigator 2</first>
+                <last>name</last>
+            </name>
+            <organization>Investigator 2 org</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Investigaor 2 address</deliveryPoint>
+                </address>
+                <phone>2223334444</phone>
+                <email>investigator2@email.com</email>
+            </contactInfo>
+            <identifier type="OceanExpert">Investigator 2 ID</identifier>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>data submitter</first>
+            <last>name</last>
+        </name>
+        <organization>data submitter org</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">data submitter address</deliveryPoint>
+            </address>
+            <phone>333.444.5555</phone>
+            <email>datasubmitter@email.com</email>
+        </contactInfo>
+        <identifier type="ResearcherID">data submitter  ID</identifier>
+    </dataSubmitter>
+    <title>name of sampling site</title>
+    <abstract>short description and purpose</abstract>
+    <purpose></purpose>
+    <methods>methods applied</methods>
+    <temporalExtents>
+        <startDate>2020-02-17</startDate>
+        <endDate>2020-04-02</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <bounds>
+            <westernBounds>-142.42</westernBounds>
+            <easternBounds>-123.45</easternBounds>
+            <northernBounds>42.42</northernBounds>
+            <southernBounds>38.39</southernBounds>
+        </bounds>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>funding agency name</agency>
+            <title>funding project title</title>
+            <identifier>funding project ID</identifier>
+        </source>
+    </fundingInfo>
+    <researchProjects>
+        <project></project>
+    </researchProjects>
+    <platforms>
+        <platform>
+            <name>platform name</name>
+            <identifier type="WMO">platform ID</identifier>
+            <type>Ship-based time series (vessel)</type>
+            <owner>platform owner</owner>
+            <country>Albania</country>
+        </platform>
+    </platforms>
+    <expocodes>
+        <expocode>expocode</expocode>
+    </expocodes>
+    <cruiseIds>
+        <cruiseId type="ICES">cruise ID</cruiseId>
+    </cruiseIds>
+    <sections>
+        <section></section>
+    </sections>
+    <authors>
+        <author>Doe, Jack; Doette, Jill; Doolittle, Johnny</author>
+    </authors>
+    <references>
+        <reference>references</reference>
+    </references>
+    <supplementalInfo>supplemental info</supplementalInfo>
+    <variables>
+        <variable>
+            <fullName>Depth</fullName>
+            <datasetVarName>depth abbrev</datasetVarName>
+            <units>m</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable>
+            <datasetVarName>xco2_abbrev</datasetVarName>
+            <units>xco2 unit</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable>
+            <datasetVarName>pco2_abbrev</datasetVarName>
+            <units>μatm</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable>
+            <datasetVarName>fc02_abbrev</datasetVarName>
+            <units>ppt</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>CO2 Common</fullName>
+            <datasetVarName>xCO2,pCO2,fCO2</datasetVarName>
+            <observationType>profile</observationType>
+            <uncertainty>fpxC uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>BODC</scheme>
+                <description>No</description>
+                <qcFlagVarName>fpxC2_qc_qbbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>fpxCo2 method reference</methodReference>
+            <variationsFromMethod>fpxCo2 changes to SOB</variationsFromMethod>
+            <samplingInstrument>water collection with bucket</samplingInstrument>
+            <analyzingInstrument>Pro-OCEANUS Systems: CO2-Pro CV™</analyzingInstrument>
+            <detailedAnalyzingInfo>fpxCo2 analyzing info</detailedAnalyzingInfo>
+            <standardization>
+                <description>fpxCo2 calibration</description>
+                <frequency>every 10 samples</frequency>
+                <standardGas>
+                    <manufacturer>fpxCo2 standard gas manufacturer</manufacturer>
+                    <concentration>fpxCo2 standard gas concentrations</concentration>
+                    <uncertainty>fpxCo2 standard gas uncertainties</uncertainty>
+                    <traceabilityToWmoStandards>fpxCo2 gas traceability</traceabilityToWmoStandards>
+                </standardGas>
+            </standardization>
+            <gasDetector>
+                <manufacturer>fpxCo2 gas detector manufacturer</manufacturer>
+                <model>fpxCo2 gas detector model</model>
+                <resolution>fpxCo2 gas detector resolution</resolution>
+                <uncertainty>fpxCo2 gas detector uncertainty</uncertainty>
+            </gasDetector>
+            <waterVaporCorrection>fpxCo2 water vapor correction</waterVaporCorrection>
+            <temperatureCorrectionMethod>fpxCo2 temperature correction</temperatureCorrectionMethod>
+            <calculationMethodFor_pCO2>fpxCo2 method to calculate p_CO2</calculationMethodFor_pCO2>
+            <calculationMethodFor_fCO2>fpxCo2 method to calculate f_CO2</calculationMethodFor_fCO2>
+            <co2ReportTemperature>fpxCo2 report temperature</co2ReportTemperature>
+            <locationSeawaterIntake>fpxCo2 intake location</locationSeawaterIntake>
+            <depthSeawaterIntake>pc02 depth intake</depthSeawaterIntake>
+            <equilibrator>
+                <type>fpxCo2 equilibrator type</type>
+                <volume>fpxCo2 equilibrator volume</volume>
+                <vented>Vented</vented>
+                <waterFlowRate>fpxCo2 equilibrator headspace flow rate</waterFlowRate>
+                <gasFlowRate>fpxCo2 equilibrator headspace flow rate</gasFlowRate>
+                <temperatureMeasurement>
+                    <method>fpxCo2 how was temp inside equilibrator measured</method>
+                    <sensor>
+                        <calibration>fpxCo2 calibration of eq temp sensor</calibration>
+                    </sensor>
+                    <uncertainty>fpxCo2 eq temp uncertainty</uncertainty>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>fpxCo2 how was pressure inside eq measured</method>
+                    <sensor>
+                        <calibration>fpxCo2 calibration of pressure sensor</calibration>
+                    </sensor>
+                </pressureMeasurement>
+            </equilibrator>
+            <co2GasDryingMethod>fpxCo2 drying method</co2GasDryingMethod>
+            <totalMeasurementPressure>
+                <method>fpxCo2 how was total pressure measured</method>
+                <uncertainty>fpxCo2 total pressure uncertainty</uncertainty>
+            </totalMeasurementPressure>
+        </variable>
+        <variable>
+            <fullName>Temperature</fullName>
+            <datasetVarName>temp_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>temp units</units>
+            <uncertainty>temp uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>SEADATANET</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>temp_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>temp method</methodReference>
+            <variationsFromMethod>temp changes to method</variationsFromMethod>
+            <samplingInstrument>water collection with a water sampler (e.g. Niskin)</samplingInstrument>
+            <analyzingInstrument>temp analyzer</analyzingInstrument>
+            <detailedAnalyzingInfo>temp analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>1</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Salinity</fullName>
+            <datasetVarName>salinity_abbrev</datasetVarName>
+            <observationType>profile</observationType>
+            <units>salinity units</units>
+            <uncertainty>salinity uncertainty</uncertainty>
+            <qcFlag>
+                <scheme>SEADATANET</scheme>
+                <description>Yes</description>
+                <qcFlagVarName>salinity_qc_abbrev</qcFlagVarName>
+            </qcFlag>
+            <researcher/>
+            <methodReference>salinity method</methodReference>
+            <variationsFromMethod>salinity changes to method</variationsFromMethod>
+            <samplingInstrument>water collection with a water sampler (e.g. Niskin)</samplingInstrument>
+            <analyzingInstrument>salinity analyzer</analyzingInstrument>
+            <detailedAnalyzingInfo>salinity analyzing info</detailedAnalyzingInfo>
+            <fieldReplicateHandling>1</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>

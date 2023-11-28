@@ -7,11 +7,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.JAXBException;
 
@@ -27,6 +31,7 @@ import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonContactInfoType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonNameType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonReferenceType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonType.PersonTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PhVariableType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PhVariableType.PhVariableTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PlatformType;
@@ -36,6 +41,7 @@ import gov.noaa.ncei.oads.xml.v_a0_2_2s.SpatialExtentsType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.SpatialLocationType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.StandardGasType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.StandardizationType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.StandardizationType.StandardizationTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.TaVariableType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.TaVariableType.TaVariableTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.TemporalExtentsType;
@@ -85,12 +91,12 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                                           parser.getSpreadSheetKeys(),
                                           omitEmptyElements);
             case SDG_14_3_1:
-                return new SdgXmlBuilder(parser.getMultiItemFields(),
+                return new SdgOadsXmlBuilder(parser.getMultiItemFields(),
                                           parser.getSingleFields(),
                                           parser.getSpreadSheetKeys(),
                                           omitEmptyElements);
             case SOCAT:
-                return new SocatXmlBuilder(parser.getMultiItemFields(),
+                return new SocatOadsXmlBuilder(parser.getMultiItemFields(),
                                           parser.getSingleFields(),
                                           parser.getSpreadSheetKeys(),
                                           omitEmptyElements);
@@ -103,7 +109,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
     public OadsXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
                              Map<String, String> simpleItems,
                              SpreadSheetKeys keys, boolean omitEmptyElements) {
-        super(multiItems, simpleItems, keys);
+        super(multiItems, simpleItems, keys, omitEmptyElements);
         // omitEmpty not working with JAXB
 //        this.multiItems = multiItems;
 //        this.simpleItems = simpleItems;
@@ -143,11 +149,9 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         Date endDatestamp = tryDatestamp(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_End_date)));
         add_PLATFORM(doc); // , simpleItems); // getSingularItem("Platform")); // XXX TODO:
         add_FUNDING(doc); // , simpleItems);
-        doc.addExpocode(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_EXPOCODE)))
-           .addCruiseId(TypedIdentifierType.builder()
-                        .value(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Cruise_ID)))
-                        .type(simpleItems.get(ssKeys.r_Cruise_ID_type))
-                        .build())
+        add_Expocodes(doc);
+        add_CruiseIds(doc);
+        doc
            .addSection(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Section)))
            .addResearchProject(simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Research_projects)))
 //                .datasetDoi(simpleItems.get(nothing))
@@ -179,6 +183,35 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             doc.submissionDate(submissionDate);
         }
         addPeople(doc);
+    }
+
+    /**
+     * @param doc
+     */
+    private void add_Expocodes(OadsMetadataDocumentTypeBuilder doc) {
+        String expocodes = simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_EXPOCODE));
+        String[] expos = expocodes.split("[,;: ]");
+        for (String code : expos) {
+            if ( ! code.trim().isEmpty()) {
+                doc.addExpocode(code);
+            }
+        }
+    }
+
+    /**
+     * @param doc
+     */
+    private void add_CruiseIds(OadsMetadataDocumentTypeBuilder doc) {
+        String cruises = simpleItems.get(ssKeys.getKeyForName(ssKeys.name_r_Cruise_ID));
+        String[] ids = cruises.split("[,;: ]");
+        for (String id : ids) {
+            if ( ! id.trim().isEmpty()) {
+                doc.addCruiseId(TypedIdentifierType.builder()
+                                .value(id)
+                                .type(simpleItems.get(ssKeys.r_Cruise_ID_type))
+                                .build());
+            }
+        }
     }
 
     /**
@@ -255,18 +288,51 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
      */
     private void addSpatialBounds(OadsMetadataDocumentTypeBuilder doc, Map<String, String> generalFields) {
         try {
+            String northStr = generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Northbd_latitude));
+            String southStr = generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Southbd_latitude));
+            String westStr = generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Westbd_longitude));
+            String eastStr = generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Eastbd_longitude));
+            BigDecimal northVal = getDecimalLocation(northStr, "NS");
+            BigDecimal southVal = getDecimalLocation(southStr, "NS");
+            BigDecimal westVal = getDecimalLocation(westStr, "EW");
+            BigDecimal eastVal = getDecimalLocation(eastStr, "EW");
             doc.spatialExtents(GeospatialExtentsType.builder()
                                .bounds(SpatialExtentsType.builder()
-                                         .northernBounds(new BigDecimal(generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Northbd_latitude))))
-                                         .southernBounds(new BigDecimal(generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Southbd_latitude))))
-                                         .westernBounds(new BigDecimal(generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Westbd_longitude))))
-                                         .easternBounds(new BigDecimal(generalFields.get(ssKeys.getKeyForName(ssKeys.name_r_Eastbd_longitude))))
+                                         .northernBounds(northVal)
+                                         .southernBounds(southVal)
+                                         .westernBounds(westVal)
+                                         .easternBounds(eastVal)
                                          .build()
                                          )
                                .build());
         } catch (NumberFormatException nfe) {
             logger.warn(nfe);
         }
+    }
+
+    /**
+     * @param northStr
+     * @param string
+     * @return
+     */
+    private BigDecimal getDecimalLocation(String locStr, String dirOptions) {
+        String locRegx = "([+-]?\\d+.\\d+)[\\s]*[°]?[\\s]*(["+dirOptions+"]?)";
+        Pattern p = Pattern.compile(locRegx);
+        Matcher m = p.matcher(locStr);
+        BigDecimal decVal;
+        if (m.matches()) {
+            String value = m.group(1);
+            decVal = new BigDecimal(value);
+            if ( m.groupCount() > 1 ) {
+                String dir = m.group(2);
+                if (dirOptions.indexOf(dir) > 0) {
+                    decVal = decVal.multiply(new BigDecimal(-1));
+                }
+            }
+        } else {
+            decVal = new BigDecimal(locStr);
+        }
+        return decVal;
     }
 
     /**
@@ -292,7 +358,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             fname.append(space).append(nameParts[i]);
             space = " ";
         }
-        PersonType person = PersonType.builder()
+        PersonTypeBuilder personBldr = PersonType.builder()
                 .name(PersonNameType.builder()
                       .first(fname.toString().trim())
                       .last(lname)
@@ -308,12 +374,24 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                              .phone(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_phone)))
                              .build()
                              )
-                .organization(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_institution)))
-                .addIdentifier(TypedIdentifierType.builder()
-                               .value(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_researcher_ID)))
-                               .type(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_ID_type)))
-                               .build())
-                .build();
+                .organization(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_institution)));
+        String resIdStr = parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_researcher_ID));
+        String typeStr = parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_ID_type));
+//        String[] types = typeStr.split("[, ;]", 0);
+//        if ( types.length > 1 ) {
+//            String conj = typeStr.contains(";") ? ";" :
+//                            typeStr.contains(",") ? "," :
+//                                " ";
+//            String[] resIds = resIdStr.split(conj, 0);
+//            if ( resIds.length != types.length ) {
+//                logger.info("researcherIds and idTypes not same length.");
+//            }
+//        }
+        personBldr.addIdentifier(TypedIdentifierType.builder()
+                               .value(resIdStr)
+                               .type(typeStr)
+                               .build());
+         PersonType person = personBldr.build();
          return person;
     }
     
@@ -634,23 +712,67 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
      * @param parts
      */
     protected void fillCO2common(Co2BaseBuilder<?, ?> var, Map<String, String> parts) {
-        // manufacture of std gas
-        // concentration of std gas
-        // uncertainties of std gas
-        var.standardization(StandardizationType.builder()
-                            .description(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Standardization_technique_description)))
-                            .frequency(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Frequency_of_standardization)))
-                            .addStandardGas(StandardGasType.builder()
-                                            .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas)))
-                                            .concentration(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Concentrations_of_standard_gas)))
-                                            .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas)))
-                                            .build())
-                            .build())
-        // manuf gas detector
-        // model gas detector
-        // reso gas detector
-        // uncertainty gas detector
-            .gasDetector(GasDetectorType.builder()
+/*
+                    } else {
+                        System.err.println("wrong expected number of parts (" + parts2.length + ") concentration substring \"" + part + "\"");
+                    }
+                }
+            }
+*/
+        StandardizationTypeBuilder stdBldr = 
+            StandardizationType.builder()
+                .description(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Standardization_technique_description)))
+                .frequency(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Frequency_of_standardization)));
+        String concStr = parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Concentrations_of_standard_gas));
+        String sep = null;
+        String id = "standards";
+        String conc = null;
+        // Note that traceability to WMO standards (a SOCAT addition) is added to the gases in SocatXmlBuilder.
+        List<StandardGasType> standards = new ArrayList<>();
+        if ( concStr != null ) {
+            if ( concStr.contains(";")) { sep = ";"; }
+            else if ( concStr.contains(",")) { sep = ","; }
+            if ( sep == null ) {
+                standards.add(StandardGasType.builder()
+                              .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas)))
+                              .id(id)
+                              .concentration(conc)
+                              .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas)))
+                              .build());
+            } else {
+                String[] splitConc = concStr.trim().split(sep);
+                String sep2 = null;
+                int nStd = 1;
+                id = "std_"+nStd;
+                for ( String concBit : splitConc ) {
+                    if ( concBit.contains(",")) { sep2 = ","; }
+                    else if ( concBit.contains("=") ) { sep2 = "="; }
+                    if ( sep2 != null ) {
+                        String[] parts2 = concBit.split(sep2);
+                        if ( parts2.length == 2 ) {
+                            id = parts2[0].trim();
+                            conc = parts2[1].trim();
+                        } else {
+                            conc = concBit.trim();
+                        }
+                    }
+                    standards.add(StandardGasType.builder()
+                                  .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas)))
+                                  .id(id)
+                                  .concentration(conc)
+                                  .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas)))
+                                  .build());
+                    nStd += 1;
+                }
+            }
+            for (StandardGasType std : standards) {
+                stdBldr.addStandardGas(std);
+            }
+        } else {
+            logger.info("No standarization gas information.");
+        }
+        var.standardization(stdBldr.build())
+           .gasDetector(GasDetectorType.builder()
                          .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_the_gas_detector)))
                          .model(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Model_of_the_gas_detector)))
                          .resolution(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Resolution_of_the_gas_detector)))
@@ -661,8 +783,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         // co2 reported temp
             .waterVaporCorrection(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Water_vapor_correction_method)))
             .temperatureCorrectionMethod(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Temperature_correction_method)))
-            .co2ReportTemperature(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_at_what_temperature_was_pCO2_reported)))
-        ;
+            .co2ReportTemperature(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_at_what_temperature_was_pCO2_reported)));
     }
 
     /**
@@ -687,7 +808,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                           .volume(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Equilibrator_volume)))
                           .vented(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Vented_or_not)))
                           .gasFlowRate(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Headspace_gas_flow_rate)))
-                          .waterFlowRate(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Headspace_gas_flow_rate)))
+                          .waterFlowRate(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Water_flow_rate)))
                           .temperatureMeasurement(EquilibratorMeasurementType.builder()
                                                   .method(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_How_was_temperature_inside_the_equilibrator_measured)))
                                                   .build())
@@ -735,7 +856,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
      * @param doc
      */
     protected void addVARs(OadsMetadataDocumentTypeBuilder doc) {
-        Collection<Map<String, String>> vars = multiItems.get(OcadsElementType.fromSsRowName("Var")); // XXX String Constant! Subclass!
+        Collection<Map<String, String>> vars = multiItems.get(ssKeys.getElementForKey("Var")); // OcadsElementType.fromSsRowName("Var")); // XXX String Constant! Subclass!
         if ( vars == null || vars.isEmpty()) {
             return;
         }
@@ -763,11 +884,13 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             logger.debug("null variable parts");
             return var;
         }
-        var.datasetVarName(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Variable_abbreviation_in_data_files)))
+        var.name(getVarName(parts))
+           .datasetVarName(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Variable_abbreviation_in_data_files)))
            .fullName(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Full_variable_name)))
            .units(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Variable_unit)))
            .observationType(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Observation_type)))
            .variableType(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_In_situ_observation_X_manipulation_condition_X_response_variable)))
+           .measuredOrCalculated(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Measured_or_calculated)))
            .samplingInstrument(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Sampling_instrument)))
            .analyzingInstrument(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Analyzing_instrument)))
            .detailedAnalyzingInfo(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Detailed_sampling_and_analyzing_information)))
@@ -789,6 +912,14 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                    .build())
            ;
         return var;
+    }
+
+    /**
+     * @param parts
+     * @return
+     */
+    private String getVarName(Map<String, String> parts) {  // TODO: real controlled vocabulary "name"
+        return parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Variable_abbreviation_in_data_files)); // XXX 
     }
 
     /**
@@ -846,7 +977,11 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
      * @return
      */
     protected static Date tryDatestamp(String string) {
-        logger.info("Trying datastamp for " + string);
+        Calendar tried = _tryDatestamp(string);
+        return ( tried != null ) ? tried.getTime() : null;
+    }
+    protected static Calendar _tryDatestamp(String string) {
+        logger.debug("Trying datestamp for " + string);
         if ( StringUtils.emptyOrNull(string)) {
             return null;
         }
@@ -912,7 +1047,10 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                         }
                     }
                 }
-            } else {
+            } else if ( string.split("[ T]").length == 2 ) {
+                logger.info("Trying to parse possible dateTime: " + string);
+                cal = _tryDatestamp(string.split("[ T]")[0]);
+            } else {     
                 logger.info("Excel2Oap: Cannot parse date string:" + string);
             }
 //        }
@@ -923,7 +1061,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         cal.set(Calendar.HOUR, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
-        return cal.getTime();
+        return cal;
     }
 
 

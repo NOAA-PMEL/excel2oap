@@ -51,5 +51,5 @@ public abstract class SpreadSheetHandlerBase {
         this.multiItems = multiItems;
         this.simpleItems = simpleItems;
     }
-
+    
 }

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2021-11-05T19:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Jessica</first>
+                <last>Cross</last>
+            </name>
+            <organization>NOAA PMEL</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">7600 Sand Point Way NE, Seattle, WA 98115</deliveryPoint>
+                </address>
+                <phone>206-526-4314</phone>
+                <email>jessica.cross@nooa.gov</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0002-6650-9905</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Natalie</first>
+                <last>Monacci</last>
+            </name>
+            <organization>University of Alaska Fairbanks</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">2150 Koyukuk Drive, 245 O'Neill Building</deliveryPoint>
+                </address>
+                <phone>907-474-7956</phone>
+                <email>nmonacci@alaska.edu</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0002-0704-5776</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Shaun</first>
+                <last>Bell</last>
+            </name>
+            <organization>NOAA PMEL</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">7600 Sand Point Way NE, Seattle, WA 98115</deliveryPoint>
+                </address>
+                <phone>206-526-6556</phone>
+                <email>Shaun.Bell@noaa.gov</email>
+            </contactInfo>
+            <identifier type="ORCID"/>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Jacqueline</first>
+                <last>Grebmeir</last>
+            </name>
+            <organization>University of Maryland Chesapeake Biological Laboratory</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">146 Williams Street, Solomons, MD, 20688</deliveryPoint>
+                </address>
+                <phone>410-326-7334</phone>
+                <email>jgrebmei@umces.edu</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0001-7624-3568</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Calvin</first>
+                <last>Mordy</last>
+            </name>
+            <organization>NOAA PMEL</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">7600 Sand Point Way NE, Seattle, WA 98115</deliveryPoint>
+                </address>
+                <phone>206-526-6870</phone>
+                <email>calvin.w.mordy@noaa.gov</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0002-3674-7072</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Robert S.</first>
+                <last>Pickart</last>
+            </name>
+            <organization>WHOI</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">266 Woods Hole Road, MS #21</deliveryPoint>
+                </address>
+                <phone>508*289-2858</phone>
+                <email>rpickart@whoi.edu</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0002-7826-911X</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Phyllis J.</first>
+                <last>Stabeno</last>
+            </name>
+            <organization>NOAA PMEL</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">7600 Sand Point Way NE, Seattle, WA 98115</deliveryPoint>
+                </address>
+                <phone>206-526-6556</phone>
+                <email>Phyllis.Stabeno@noaa.gov</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0003-3128-4934</identifier>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>Natalie</first>
+            <last>Monacci</last>
+        </name>
+        <organization>University of Alaska Fairbanks</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">2150 Koyukuk Drive, 245 O'Neill Building</deliveryPoint>
+            </address>
+            <phone>907-474-7956</phone>
+            <email>nmonacci@alaska.edu</email>
+        </contactInfo>
+        <identifier type="ORCID">0000-0002-0704-5776</identifier>
+    </dataSubmitter>
+    <title>Dissolved inorganic carbon (DIC) and total alkalinity (TA) collected from discrete sample and profile observations from HEALY in the Bering and Chukchi Sea along transect lines in the Distributed Biological Observatory (DBO) from 2019-08-06 to 2019-08-22.  Water temperature, salinity, oxygen, and nutrients are included for the same depths and locations.</title>
+    <abstract>This carbon data set includes chemical data from discrete samples and physical data from a profiling CTD collected on USCGC HEALY cruise 1901.  Data was collected in the Bering and Chukchi Sea along transect lines in the Distributed Biological Observatory (DBO) areas DB01, 03, 04, and 05 from 2019-08-06 to 2019-08-22. These data include WATER CTD TEMPERATURE, CTD SALINITY, DISSOLVED INORGANIC CARBON (DIC), TOTAL ALKALINITY (TA), CTD Dissolved OXYGEN, and nurients (Nitrate, Nitrite, Phosphate, Silicate, and Ammonium). The cruise was funded by the National Oceanic and Atmospheric Adminitration (NOAA) Arctic Research Program (ARP) and supported by numerous agencies and institutions including the Natiional Science Foundation (NSF). The carbon data were collected by Jessica Cross of the Pacific Marine Environmental Laboratory (PMEL) and run using equipment from the Ocean Acidification Research Center (OARC) at the University of Alaska Fairbanks (UAF).  Cross was funded by NOAA's Arctic Research Program and Monacci was funded by the Alaska Ocean Observing System . The CTD operations on the cruise were managed by personnel from the Woods Hole Oceanographic Research Institute (WHOI).  Nutrient data were analyzed by Calvin Mordy at the University of Washington Joint Institute for the Study of the Atmosphere (JISAO).  Mordy was funded by the Ecosystems Fisheries Oceanography Coordinated Investigations (EcoFOCI) Program and NOAA's ARP.  Phyllis Stabeno is co-Principal Investigator of the EcoFOCI program.</abstract>
+    <purpose>The Distributed Biological Observatory (DBO) is envisioned as a change detection array along a latitudinal gradient extending from the northern Bering Sea to the Barrow Arc. DBO sampling is focused on transects centered on locations of high productivity, biodiversity and rates of biological change.</purpose>
+    <temporalExtents>
+        <startDate>2018-08-06</startDate>
+        <endDate>2018-08-22</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <bounds>
+            <westernBounds>-174.9308</westernBounds>
+            <easternBounds>-152.1667</easternBounds>
+            <northernBounds>74.7514</northernBounds>
+            <southernBounds>62.0048</southernBounds>
+        </bounds>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>National Oceanic and Atmospheric Administration (NOAA)</agency>
+            <title>Distributed Biological Observatory (DBO): Linking Physics and Biology</title>
+            <identifier/>
+        </source>
+    </fundingInfo>
+    <researchProjects/>
+    <platforms>
+        <platform>
+            <name>USCGC Healy</name>
+            <identifier>33HQ</identifier>
+            <type>Research Vessel</type>
+            <owner>United States Coast Guard</owner>
+            <country>USA</country>
+        </platform>
+    </platforms>
+    <expocodes>
+        <expocode>33HQ20190806</expocode>
+    </expocodes>
+    <cruiseIds>
+        <cruiseId>HLY1901</cruiseId>
+    </cruiseIds>
+    <sections/>
+    <authors>
+        <author>Cross, J.N. 1, Monacci, N.M. 2, Bell, S. 3, Grebmeir, J. 4, Mordy, C. 5, Pickart, R.S. 6, Stabeno, P.J. 7</author>
+    </authors>
+    <references/>
+    <supplementalInfo>Primary processing of CTD data was performed at Woods Hole Oceanographic Institution (WHOI) and is referenced in the cruise report. Data can be downloaded, and cruise report and station locations can be found at https://web.whoi.edu/healy-1801/</supplementalInfo>
+    <variables>
+        <variable xsi:type="dic_variable_type">
+            <datasetVarName>TCARBN</datasetVarName>
+            <observationType>Discrete sample</observationType>
+            <units>UMOL/KG</units>
+            <uncertainty>2 umol kg-1</uncertainty>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Jessica N. Cross</name>
+                <organization>NOAA PMEL</organization>
+            </researcher>
+            <methodReference>Mathis, J.T., J.N. Cross, W. Evans, and S.C. Doney. 2015. Ocean acidification in the surface waters of the Pacific-Arctic boundary regions. Oceanography 28(2):122–135, http://dx.doi.org/10.5670/ oceanog.2015.36.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on an AIRICA</analyzingInstrument>
+            <detailedAnalyzingInfo>The Automated Infra Red Inorganic Carbon Analyzer (AIRICA) by Marianda paired with a LiCOR LI-7000 Automated CO2 Analyzer was used to conduct an IR-detection of carbon dioxide with a carrier gas.</detailedAnalyzingInfo>
+            <standardization>
+                <description>The samples were standardized using Certified Reference Materials (CRMs) provided by Dr. A. Dickson of Scripps Institution of Oceanography.</description>
+                <frequency>Daily</frequency>
+                <crm>
+                    <manufacturer>Dr. A. Dickson of Scripps Institution of Oceanography</manufacturer>
+                    <batch>180, 183, 185</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>Mercuric chloride</name>
+                <volume>200 uL</volume>
+            </poison>
+        </variable>
+        <variable xsi:type="ta_variable_type">
+            <datasetVarName>ALKALI</datasetVarName>
+            <observationType>Discrete sample</observationType>
+            <units>UMOL/KG</units>
+            <uncertainty>2 umol kg-1</uncertainty>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Jessica N. Cross</name>
+                <organization>NOAA PMEL</organization>
+            </researcher>
+            <methodReference>Mathis, J. T., Cross, J. N., Bates, N. R., Bradley Moran, S., Lomas, M. W., Mordy, C. W., and Stabeno, P. J. 2010. Seasonal distribution of dissolved inorganic carbon and net community production on the Bering and Chukchi Sea shelf, Biogeosciences, 7, 1769-1787, https://doi.org/10.5194/bg-7-1769-2010.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a VINDTA 3S</analyzingInstrument>
+            <detailedAnalyzingInfo>The Versatile INstrument for the Determination of Total inorganic and titration of Alkalinity (VINDTA) by Marianda was used to conduct a potentiometric alkalinity titration with an open cell.</detailedAnalyzingInfo>
+            <standardization>
+                <description>The samples were standardized using Certified Reference Materials (CRMs) provided by Dr. A. Dickson of Scripps Institution of Oceanography.</description>
+                <frequency>Daily</frequency>
+                <crm>
+                    <manufacturer>Dr. A. Dickson of Scripps Institution of Oceanography</manufacturer>
+                    <batch>180, 183, 185</batch>
+                </crm>
+            </standardization>
+            <poison>
+                <name>Mercuric chloride</name>
+                <volume>200 uL</volume>
+            </poison>
+            <titrationType>Potentiometric</titrationType>
+            <cellType>Open</cellType>
+            <curveFitting>GRAN plot</curveFitting>
+        </variable>
+        <variable>
+            <fullName>Temperature</fullName>
+            <datasetVarName>CTDTMP_ITS90_DEG_C</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>DEG C (ITS-90)</units>
+            <uncertainty>0.002</uncertainty>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Robert S. Pickart</name>
+                <organization>WHOI</organization>
+            </researcher>
+            <analyzingInstrument>Seabird CTD</analyzingInstrument>
+            <detailedAnalyzingInfo>A profiling CTD 911 was used to collect the conductivity, temperature, and depth data at each station.  Data are processed using Seabird CTD software and calibration file. Post-processing at WHOI includes filtering extreme outliers, extrapolation of values from the top value collected at ~3-5m to the surface. Each cast is visually reviewed for reasonableness and density inversions (greater than 0.02 sigma-t) caused by spurious measurements. This process is facilitated by comparison of the outputs of the 2 temperature and conductivity sensors. Profile data are bin-averaged to 1 meter.</detailedAnalyzingInfo>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Salinity</fullName>
+            <datasetVarName>CTDSAL_PSS78</datasetVarName>
+            <observationType>Calculated</observationType>
+            <units>PSU (PSS-78)</units>
+            <uncertainty>0.002</uncertainty>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Robert S. Pickart</name>
+                <organization>WHOI</organization>
+            </researcher>
+            <analyzingInstrument>Seabird CTD</analyzingInstrument>
+            <detailedAnalyzingInfo>A profiling CTD 911 was used to collect the conductivity, temperature, and depth data at each station.  Data are processed using Seabird CTD software and calibration file. Post-processing at WHOI includes filtering extreme outliers, extrapolation of values from the top value collected at ~3-5m to the surface. Each cast is visually reviewed for reasonableness and density inversions (greater than 0.02 sigma-t) caused by spurious measurements. This process is facilitated by comparison of the outputs of the 2 temperature and conductivity sensors. Profile data are bin-averaged to 1 meter.</detailedAnalyzingInfo>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Dissolved Oxygen</fullName>
+            <datasetVarName>CTDOXY_UMOL_KG</datasetVarName>
+            <observationType>Calculated</observationType>
+            <units>UMOL/KG</units>
+            <uncertainty>1 UMOL/KG</uncertainty>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <analyzingInstrument>Seabird 43</analyzingInstrument>
+            <detailedAnalyzingInfo>In situ data was collected from a profiling CTD 911 paied with a SBE 43 to collect dissolved oxygen data at each depth.  Data were originally proceseed to filter out extreme outliers and reviewed for reasonableness, along with other profile data.  Oxygen was recorded in ml/l, and was corrected and converted into units of umol/kg. Calibration/conversion equation for &lt;500m was (ml/l )*44.661 / (SigmaT+1000 / 1000) *1.020</detailedAnalyzingInfo>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Silicic acid</fullName>
+            <datasetVarName>SILCAT_UMOL_KG</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>UMOL/KG</units>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <methodReference>Gordon, I., Jennings, J.C., Ross, J.A., Krest, J. 1993. A Suggested Protocol for Continuous Flow Automated Analysis of Seawater Nutrients (Phosphate, Nitrate, Nitrite and Silicic Acid) in the WOCE Hydrographic Program and the Joint Global Ocean Fluxes Study. Methods Manual WHPO. 91-1.  Mantoura, R.F.C., Woodward, E.M.S., 1983. Optimization of the indophenol blue method for the automated determination of ammonia in estuarine waters. Estuar. Coast. Shelf Sci. 17, 219–224.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a continuous flow analyzer.</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples were collected in 50 ml high-density polyethylene bottles that were rinsed first with 10% HCl prior to each station, and rinsed at least three times with sample before filling. Some samples were refrigerated for 3-12 hours prior to analysis.  Nutrient samples were analyzed according to the methods of Gordon, et al (1993). Ammonium was measured using an indophenol blue method modified from Mantoura and Woodward (1983).</detailedAnalyzingInfo>
+            <fieldReplicateHandling>In a direct comparison of EcoFOCI and BASIS methods, replicate frozen samples from the Bering and Chukchi Sea were analyzed with each method and found to be within 0.5 μM nitrate, 0.04 μM nitrite, and 0.7 μM ammonium (SD, n = 13).</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Nitrate</fullName>
+            <datasetVarName>NITRAT_UMOL_KG</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>UMOL/KG</units>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <methodReference>Gordon, I., Jennings, J.C., Ross, J.A., Krest, J. 1993. A Suggested Protocol for Continuous Flow Automated Analysis of Seawater Nutrients (Phosphate, Nitrate, Nitrite and Silicic Acid) in the WOCE Hydrographic Program and the Joint Global Ocean Fluxes Study. Methods Manual WHPO. 91-1.  Mantoura, R.F.C., Woodward, E.M.S., 1983. Optimization of the indophenol blue method for the automated determination of ammonia in estuarine waters. Estuar. Coast. Shelf Sci. 17, 219–224.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a continuous flow analyzer.</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples were collected in 50 ml high-density polyethylene bottles that were rinsed first with 10% HCl prior to each station, and rinsed at least three times with sample before filling. Some samples were refrigerated for 3-12 hours prior to analysis.  Nutrient samples were analyzed according to the methods of Gordon, et al (1993). Ammonium was measured using an indophenol blue method modified from Mantoura and Woodward (1983).</detailedAnalyzingInfo>
+            <fieldReplicateHandling>In a direct comparison of EcoFOCI and BASIS methods, replicate frozen samples from the Bering and Chukchi Sea were analyzed with each method and found to be within 0.5 μM nitrate, 0.04 μM nitrite, and 0.7 μM ammonium (SD, n = 13).</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Nitrite</fullName>
+            <datasetVarName>NITRIT_UMOL_KG</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>UMOL/KG</units>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <methodReference>Gordon, I., Jennings, J.C., Ross, J.A., Krest, J. 1993. A Suggested Protocol for Continuous Flow Automated Analysis of Seawater Nutrients (Phosphate, Nitrate, Nitrite and Silicic Acid) in the WOCE Hydrographic Program and the Joint Global Ocean Fluxes Study. Methods Manual WHPO. 91-1.  Mantoura, R.F.C., Woodward, E.M.S., 1983. Optimization of the indophenol blue method for the automated determination of ammonia in estuarine waters. Estuar. Coast. Shelf Sci. 17, 219–224.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a continuous flow analyzer.</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples were collected in 50 ml high-density polyethylene bottles that were rinsed first with 10% HCl prior to each station, and rinsed at least three times with sample before filling. Some samples were refrigerated for 3-12 hours prior to analysis.  Nutrient samples were analyzed according to the methods of Gordon, et al (1993). Ammonium was measured using an indophenol blue method modified from Mantoura and Woodward (1983).</detailedAnalyzingInfo>
+            <fieldReplicateHandling>In a direct comparison of EcoFOCI and BASIS methods, replicate frozen samples from the Bering and Chukchi Sea were analyzed with each method and found to be within 0.5 μM nitrate, 0.04 μM nitrite, and 0.7 μM ammonium (SD, n = 13).</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Phosphate</fullName>
+            <datasetVarName>PHSPHT_UMOL_KG</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>UMOL/KG</units>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <methodReference>Gordon, I., Jennings, J.C., Ross, J.A., Krest, J. 1993. A Suggested Protocol for Continuous Flow Automated Analysis of Seawater Nutrients (Phosphate, Nitrate, Nitrite and Silicic Acid) in the WOCE Hydrographic Program and the Joint Global Ocean Fluxes Study. Methods Manual WHPO. 91-1.  Mantoura, R.F.C., Woodward, E.M.S., 1983. Optimization of the indophenol blue method for the automated determination of ammonia in estuarine waters. Estuar. Coast. Shelf Sci. 17, 219–224.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a continuous flow analyzer.</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples were collected in 50 ml high-density polyethylene bottles that were rinsed first with 10% HCl prior to each station, and rinsed at least three times with sample before filling. Some samples were refrigerated for 3-12 hours prior to analysis.  Nutrient samples were analyzed according to the methods of Gordon, et al (1993). Ammonium was measured using an indophenol blue method modified from Mantoura and Woodward (1983).</detailedAnalyzingInfo>
+            <fieldReplicateHandling>In a direct comparison of EcoFOCI and BASIS methods, replicate frozen samples from the Bering and Chukchi Sea were analyzed with each method and found to be within 0.5 μM nitrate, 0.04 μM nitrite, and 0.7 μM ammonium (SD, n = 13).</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable>
+            <fullName>Ammonium</fullName>
+            <datasetVarName>AMMONIUM_UMOL_KG</datasetVarName>
+            <observationType>Measured</observationType>
+            <units>UMOL/KG</units>
+            <qcFlag>
+                <description>Data flags: 1 = Shipboard, 2 = good, 3 = questionable, 4 = bad, 5 = no sample taken</description>
+            </qcFlag>
+            <researcher>
+                <name>Calvin Mordy</name>
+                <organization>NOAA-PMEL</organization>
+            </researcher>
+            <methodReference>Gordon, I., Jennings, J.C., Ross, J.A., Krest, J. 1993. A Suggested Protocol for Continuous Flow Automated Analysis of Seawater Nutrients (Phosphate, Nitrate, Nitrite and Silicic Acid) in the WOCE Hydrographic Program and the Joint Global Ocean Fluxes Study. Methods Manual WHPO. 91-1.  Mantoura, R.F.C., Woodward, E.M.S., 1983. Optimization of the indophenol blue method for the automated determination of ammonia in estuarine waters. Estuar. Coast. Shelf Sci. 17, 219–224.</methodReference>
+            <samplingInstrument>Discrete samples were drawn from a CTD Niskin</samplingInstrument>
+            <analyzingInstrument>Discrete samples were run on a continuous flow analyzer.</analyzingInstrument>
+            <detailedAnalyzingInfo>Samples were collected in 50 ml high-density polyethylene bottles that were rinsed first with 10% HCl prior to each station, and rinsed at least three times with sample before filling. Some samples were refrigerated for 3-12 hours prior to analysis.  Nutrient samples were analyzed according to the methods of Gordon, et al (1993). Ammonium was measured using an indophenol blue method modified from Mantoura and Woodward (1983).</detailedAnalyzingInfo>
+            <fieldReplicateHandling>In a direct comparison of EcoFOCI and BASIS methods, replicate frozen samples from the Bering and Chukchi Sea were analyzed with each method and found to be within 0.5 μM nitrate, 0.04 μM nitrite, and 0.7 μM ammonium (SD, n = 13).</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>

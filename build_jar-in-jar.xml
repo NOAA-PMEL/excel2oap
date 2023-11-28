@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project excel2oap with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="${dir.workspace}/excel2oap"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/excel2oap_build_jar-in-jar.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="gov.noaa.pmel.excel2oap.Excel2OAP"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ lombok-1.18.12.jar tws_util.jar activation-1.1.1.jar commons-codec-1.11.jar commons-collections4-4.2.jar commons-logging-1.2.jar commons-math3-3.6.1.jar jaxb-api-2.3.0.jar jaxb-core-2.3.0.1.jar jaxb-impl-2.3.0.1.jar junit-4.12.jar log4j-1.2.17.jar commons-compress-1.18.jar SDIMetadata.jar commons-csv-1.4.jar jdom-2.0.6.jar poi-4.1.2.jar poi-excelant-4.1.2.jar poi-ooxml-4.1.2.jar poi-ooxml-schemas-4.1.2.jar poi-scratchpad-4.1.2.jar ooxml-strict-converter.jar xmlbeans-3.1.0.jar oads_v_a0.2.2s.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.jarfile}/classes"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="tws_util.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="activation-1.1.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-codec-1.11.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-collections4-4.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-logging-1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-math3-3.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="jaxb-api-2.3.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="jaxb-core-2.3.0.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="jaxb-impl-2.3.0.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="junit-4.12.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="log4j-1.2-api-2.17.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="log4j-api-2.17.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="log4j-core-2.17.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-compress-1.18.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="SDIMetadata.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="commons-csv-1.4.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="jdom-2.0.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="poi-4.1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="poi-excelant-4.1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="poi-ooxml-4.1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="poi-ooxml-schemas-4.1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="poi-scratchpad-4.1.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="ooxml-strict-converter.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="xmlbeans-3.1.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/lib" includes="oads_v_a0.2.2s.jar"/>
+        </jar>
+    </target>
+</project>

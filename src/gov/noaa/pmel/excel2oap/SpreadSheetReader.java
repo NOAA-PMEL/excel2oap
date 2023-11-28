@@ -6,6 +6,8 @@ package gov.noaa.pmel.excel2oap;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,6 +61,16 @@ public class SpreadSheetReader implements SSReader {
 
     private static final Logger logger = LogManager.getLogger(SpreadSheetReader.class);
 
+    private static final int MAX_ERRORS = 20;
+
+    private Charset _charset;
+    
+    public SpreadSheetReader() {
+        this(Charset.defaultCharset());
+    }
+    public SpreadSheetReader(Charset charset) {
+        _charset = charset;
+    }
     public List<SsRow> extractFileRows(InputStream inStream) throws Exception, IOException {
         List<SsRow> rows;
         ByteArrayOutputStream copyOut = new ByteArrayOutputStream();
@@ -127,6 +139,7 @@ public class SpreadSheetReader implements SSReader {
             }
             Sheet sheet = workbook.getSheetAt(0);
             int rowNum = 0;
+            int numErrors = 0;
             for (Row row : sheet) {
                 rowNum += 1;
                 int itemNo = -999;
@@ -137,10 +150,15 @@ public class SpreadSheetReader implements SSReader {
                         itemNo = (int)numCell.getNumericCellValue(); 
                     }
                 } catch (IllegalStateException ex) {
-                    logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
                     String rawValue = numCell.getStringCellValue();
-                    if ( !"SOCAT".equals(rawValue)) {
+                    if ( !"SOCAT".equals(rawValue.toUpperCase())) {
+                        logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
+                        if ( ++numErrors > MAX_ERRORS ) {
+                            throw new IllegalStateException("Too many errors. Aborting file read.");
+                        }
                         continue;
+                    } else {
+                        logger.info("Processing SOCAT row at " + rowNum);
                     }
                     itemNo = -1;
                 } catch (NullPointerException npe) {
@@ -192,6 +210,11 @@ public class SpreadSheetReader implements SSReader {
                         }
                     }
                     logger.trace(rowValue);
+                    String encoded = new String(rowValue.getBytes(), "utf-8");
+                    if ( ! rowValue.equals(encoded)) {
+                        System.out.println(rowNum + "== " + rowValue);
+                        System.out.println("++ " + encoded);
+                    }
                 }
                 SsRow orow = new SsRow(itemNo,
                                            row.getCell(1).getStringCellValue(), 
@@ -278,9 +301,10 @@ public class SpreadSheetReader implements SSReader {
 //                        .withCommentMarker('#')
                     .withDelimiter(spacer);
 //            String charset = "CP1252";
-    		try ( InputStreamReader isr = new InputStreamReader(inStream, Charset.defaultCharset());
+    		try ( InputStreamReader isr = new InputStreamReader(inStream, _charset); 
     		        CSVParser dataParser = new CSVParser(isr, format); ) {
                 int rowNum = 0;
+                int numErrors = 0;
                 for (CSVRecord record : dataParser) {
                     rowNum += 1;
                     int itemNo;
@@ -288,8 +312,13 @@ public class SpreadSheetReader implements SSReader {
                     try {
                         itemNo = Integer.parseInt(numCell);
                     } catch (Exception ex) {
-                        logger.info("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
-                        if ( !"SOCAT".equals(numCell)) continue;
+                        logger.debug("Not a valid metadata row at " + rowNum + " with cell 0 value: " + numCell);
+                        if ( !"SOCAT".equals(numCell)) {
+                            if ( ++numErrors > MAX_ERRORS ) {
+                                throw new IllegalStateException("Too many errors. Aborting file read.");
+                            }
+                            continue;
+                        }
                         itemNo = -1;
                     }
                     String rowName = record.get(1);
@@ -299,6 +328,11 @@ public class SpreadSheetReader implements SSReader {
                     }
                     String vcell = record.get(2);
                     String rowValue = vcell;
+                    String encoded = new String(rowValue.getBytes(), "utf-8");
+                    if ( ! rowValue.equals(encoded)) {
+                        System.out.println("== " + rowValue);
+                        System.out.println("++ " + encoded);
+                    }
                     SsRow orow = new SsRow(itemNo,
                                                rowName,
                                                rowValue);
@@ -351,11 +385,31 @@ public class SpreadSheetReader implements SSReader {
         return dateStr;
     }
     
+    private static void test(File inputFile, Charset charset) throws Exception {
+        try ( InputStream in = new FileInputStream(inputFile); ) {
+            SpreadSheetReader reader = new SpreadSheetReader(charset);
+            List<SsRow> rows = reader.extractFileRows(in);
+            System.out.println(rows.size());
+        }
+    }
     /**
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        try {
+            File macFile = new File("/Users/kamb/workspace/oa_dashboard_test_data/WCOA/WCOA2011/WCOA11-01-06-2015_metadata-FIXED_mac.csv");
+            File winFile = new File("/Users/kamb/workspace/oa_dashboard_test_data/WCOA/WCOA2011/WCOA11-01-06-2015_metadata-FIXED_win.csv");
+            Charset utf = Charset.defaultCharset();
+            Charset win = Charset.forName("windows-1252");
+         // Charset.forName("windows-1252")); // Charset.defaultCharset());           
+            test(macFile, utf);
+            test(macFile, win);
+            test(winFile, utf);
+            test(winFile, win);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            // TODO: handle exception
+        }
 
     }
 

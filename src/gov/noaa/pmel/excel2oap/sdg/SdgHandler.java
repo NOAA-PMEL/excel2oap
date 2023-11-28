@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -17,9 +18,6 @@ import gov.noaa.pmel.excel2oap.ElementType;
 import gov.noaa.pmel.excel2oap.SpreadSheetKeys;
 import gov.noaa.pmel.excel2oap.SpreadSheetType;
 import gov.noaa.pmel.excel2oap.SsRow;
-import gov.noaa.pmel.excel2oap.ocads.OcadsHandler;
-import gov.noaa.pmel.sdimetadata.SDIMetadata;
-import gov.noaa.pmel.tws.util.Logging;
 
 /**
  * @author kamb
@@ -27,7 +25,7 @@ import gov.noaa.pmel.tws.util.Logging;
  */
 public class SdgHandler extends BaseSpreadSheetHandler {
 
-    private static final Logger logger = Logging.getLogger(SdgHandler.class);
+    private static final Logger logger = LogManager.getLogger(SdgHandler.class);
     
     public SpreadSheetType getSpreadSheetType() { return SpreadSheetType.SDG_14_3_1; }
     
@@ -83,14 +81,17 @@ public class SdgHandler extends BaseSpreadSheetHandler {
     
     @Override
     public void processRows(List<SsRow> rows) {
+        if ( fixInvestigatorRows(rows)) {
+            logger.info("Fixed mis-numbered Investigator row.");
+        }
         if ( fixPlatformRows(rows)) {
-            logger.debug("Fixed platform rows.");
+            logger.info("Fixed platform rows.");
         }
         if ( fixDicRows(rows)) {
-            logger.debug("Fixed DIC rows.");
+            logger.info("Fixed DIC rows.");
         }
         if ( fixPhRows(rows)) {
-            logger.debug("Fixed pH rows.");
+            logger.info("Fixed pH rows.");
         }
         super.processRows(rows);
     }
@@ -169,8 +170,33 @@ public class SdgHandler extends BaseSpreadSheetHandler {
         return foundOne;
     }
     
-    @Override
-    public void addOtherStuff(Document doc) {
+    /**
+     * @param rows
+     * @return
+     */
+    private static boolean fixInvestigatorRows(List<SsRow> rows) {
+        SsRow thisRow;
+        boolean foundOne = false;
+        int rowIdx = 5;
+        do {
+            thisRow = rows.get(rowIdx);
+            String rowName = thisRow.name();
+            if (rowName.startsWith("Investigator-3")) {
+                SsRow checkRow = rows.get(rowIdx+2);
+                String checkRowName = checkRow.name();
+                if ( checkRowName.startsWith("Investigator-2")) {
+                    String newRowName = checkRowName.replace("-2", "-3");
+                    SsRow newRow = checkRow.toBuilder().name(newRowName).build();
+                    rows.set(rowIdx+2, newRow);
+                    foundOne = true;
+                }
+            }
+            rowIdx += 1;
+        } while (!foundOne && rowIdx < rows.size());
+        return foundOne;
+    }
+    
+    private void addOtherStuff(Document doc) {
         add_DIC(doc);
         add_TA(doc);
         add_PH(doc);
