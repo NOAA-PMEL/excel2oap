@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oads_metadata xmlns="http://ncei.noaa.gov/oads/v_a0_2_2s" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="a0.2.2s" xsi:schemaLocation="http://ncei.noaa.gov/oads/v_a0_2_2s https://www.pmel.noaa.gov/sdig/oap/a0.2.2/oads_metadata_a0.2.2.xsd">
+    <submissionDate>2022-12-16T20:00:00 Z</submissionDate>
+    <investigators>
+        <investigator>
+            <name>
+                <first>Meike</first>
+                <last>Becker</last>
+            </name>
+            <organization>Geophysical Institute, University of Bergen</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Allegaten 70, 5007 Bergen; Norway</deliveryPoint>
+                </address>
+                <phone>+47 55 58 26 72;</phone>
+                <email>meike.becker@uib.no;</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0001-7650-0923</identifier>
+        </investigator>
+        <investigator>
+            <name>
+                <first>Are</first>
+                <last>Olsen</last>
+            </name>
+            <organization>Geophysical Institute, University of Bergen</organization>
+            <contactInfo>
+                <address>
+                    <deliveryPoint index="0">Allegaten 70, 5007 Bergen; Norway</deliveryPoint>
+                </address>
+                <email>are.olsen@gfi.uib.no;</email>
+            </contactInfo>
+            <identifier type="ORCID">0000-0003-1696-9142</identifier>
+        </investigator>
+    </investigators>
+    <dataSubmitter>
+        <name>
+            <first>Meike</first>
+            <last>Becker</last>
+        </name>
+        <organization>Geophysical Institute, University of Bergen</organization>
+        <contactInfo>
+            <address>
+                <deliveryPoint index="0">Allegaten 70, 5007 NO-Bergen;</deliveryPoint>
+            </address>
+            <phone>+47 55 58 26 72;</phone>
+            <email>meike.becker@uib.no;</email>
+        </contactInfo>
+        <identifier type="ORCID">0000-0001-7650-0923</identifier>
+    </dataSubmitter>
+    <title>Tukuma Artica</title>
+    <abstract>Underway measurements of pCO2 on Tukuma Artica from 2022</abstract>
+    <purpose></purpose>
+    <methods>Shorwerhead equilibrator, NDIR detector</methods>
+    <temporalExtents>
+        <startDate>2022-11-26</startDate>
+        <endDate>2022-12-05</endDate>
+    </temporalExtents>
+    <spatialExtents>
+        <bounds>
+            <westernBounds>-50.359</westernBounds>
+            <easternBounds>11.857</easternBounds>
+            <northernBounds>66.602</northernBounds>
+            <southernBounds>56.502</southernBounds>
+        </bounds>
+    </spatialExtents>
+    <fundingInfo>
+        <source>
+            <agency>Research Council Norway (RCN)</agency>
+            <title>ICOS-2</title>
+            <identifier>296012</identifier>
+        </source>
+    </fundingInfo>
+    <researchProjects>
+        <project></project>
+    </researchProjects>
+    <platforms>
+        <platform>
+            <name>Tukuma Artica</name>
+            <identifier type="ICES">26RA</identifier>
+            <type>Voluntary Observing Ship</type>
+            <owner>Royal Arctic Line</owner>
+            <country>Denmark</country>
+        </platform>
+    </platforms>
+    <expocodes>
+        <expocode>26RA20210114</expocode>
+    </expocodes>
+    <cruiseIds>
+        <cruiseId xsi:type="typed_identifier_type" type="ICES">ICES</cruiseId>
+    </cruiseIds>
+    <sections>
+        <section></section>
+    </sections>
+    <authors>
+        <author>Becker, Meike; Olsen, Are</author>
+    </authors>
+    <references>
+        <reference></reference>
+    </references>
+    <supplementalInfo></supplementalInfo>
+    <variables>
+        <variable xsi:type="co2_socat" name="CO2_Common">
+            <fullName>CO2 Common</fullName>
+            <datasetVarName>CO2_Common</datasetVarName>
+            <observationType>underway</observationType>
+            <qcFlag>
+                <scheme>WOCE</scheme>
+                <description>Yes</description>
+            </qcFlag>
+            <researcher/>
+            <methodReference>Pierrot, D., C. Neill, K. Sullivan, R. Castle, R. Wanninkhof, H. Luger, T. Johannessen, A. Olsen, R. A. Feely, and C. E. Cosca (2009).  Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines.  Deep Sea Research II, 56: 512-522.</methodReference>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>General Oceanics GO pCO2 system</analyzingInstrument>
+            <detailedAnalyzingInfo>Pierrot et al., Deep Sea Res. II, 56, 512-522 (2009),  Olsen et al., Biogeosciences, 5, 535-547, (2008)</detailedAnalyzingInfo>
+            <standardization>
+                <description>Linearized by the manufacturer, regular calibration with 1 zero and 3 non-zero reference gases</description>
+                <frequency>every 3 hours</frequency>
+                <standardGas>
+                    <id>std_1</id>
+                    <manufacturer>ICOS CAL lab</manufacturer>
+                    <uncertainty>±0.3</uncertainty>
+                    <traceabilityToWmoStandards>Calibrated towards NOAA gases</traceabilityToWmoStandards>
+                </standardGas>
+                <standardGas>
+                    <id>std_1</id>
+                    <manufacturer>ICOS CAL lab</manufacturer>
+                    <uncertainty>±0.3</uncertainty>
+                    <traceabilityToWmoStandards>Calibrated towards NOAA gases</traceabilityToWmoStandards>
+                </standardGas>
+            </standardization>
+            <gasDetector>
+                <manufacturer>Licor</manufacturer>
+                <model>6262</model>
+                <resolution>±0.2</resolution>
+                <uncertainty>±1</uncertainty>
+            </gasDetector>
+            <waterVaporCorrection>100% humidity at equilibrator temperature</waterVaporCorrection>
+            <temperatureCorrectionMethod>Takahashi et al, 1993</temperatureCorrectionMethod>
+            <calculationMethodFor_pCO2>Pierrot, D., C. Neill, K. Sullivan, R. Castle, R. Wanninkhof, H. Luger, T. Johannessen, A. Olsen, R. A. Feely, and C. E. Cosca (2009).  Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines.  Deep Sea Research II, 56: 512-522.</calculationMethodFor_pCO2>
+            <calculationMethodFor_fCO2>Pierrot, D., C. Neill, K. Sullivan, R. Castle, R. Wanninkhof, H. Luger, T. Johannessen, A. Olsen, R. A. Feely, and C. E. Cosca (2009).  Recommendations for autonomous underway pCO2 measuring systems and data-reduction routines.  Deep Sea Research II, 56: 512-522.</calculationMethodFor_fCO2>
+            <co2ReportTemperature>SST</co2ReportTemperature>
+            <locationSeawaterIntake>midship</locationSeawaterIntake>
+            <depthSeawaterIntake>5m</depthSeawaterIntake>
+            <equilibrator>
+                <type>two stage showerhead (main equilibrator with water-jacket)</type>
+                <volume>approx  0.5 (vent equ) &amp; 2 to 2.5 (main equ) l</volume>
+                <vented>Vented</vented>
+                <waterFlowRate>approx 2.5-3.5</waterFlowRate>
+                <gasFlowRate>0.08</gasFlowRate>
+                <temperatureMeasurement>
+                    <method>Hart Scientific, Probe: 5610-9, thermometer:1524</method>
+                    <sensor>
+                        <calibration>Roughly once a year / every 1.5 years at a Norwegian facility (Kiwa Norge)</calibration>
+                    </sensor>
+                    <uncertainty>±0.01 °C</uncertainty>
+                </temperatureMeasurement>
+                <pressureMeasurement>
+                    <method>Setra 239 and Dps8100</method>
+                    <sensor>
+                        <calibration>Roughly once a year / every 1.5 years in a Norwegian facility (Kiwa Norge)</calibration>
+                    </sensor>
+                </pressureMeasurement>
+            </equilibrator>
+            <co2GasDryingMethod>Nafion and condenser</co2GasDryingMethod>
+            <totalMeasurementPressure>
+                <method>differential pressure sensor (Setra), where the equilibrator pressure was set to be
+equal to the sum of the Dps8100 pressure and the differential pressure.</method>
+                <uncertainty>±0.05 mbar</uncertainty>
+            </totalMeasurementPressure>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>XCO2DCEQ</fullName>
+            <datasetVarName>XCO2DCEQ</datasetVarName>
+            <units>null</units>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>pCO2_water_SST_wet [ uatm ]</fullName>
+            <datasetVarName>pCO2_water_SST_wet [ uatm ]</datasetVarName>
+            <units>μatm</units>
+        </variable>
+        <variable xsi:type="co2_socat">
+            <fullName>fCO2_water_SST_wet [ uatm ]</fullName>
+            <datasetVarName>fCO2_water_SST_wet [ uatm ]</datasetVarName>
+            <units>μatm</units>
+        </variable>
+        <variable name="Depth [m]">
+            <fullName>Depth</fullName>
+            <datasetVarName>Depth [m]</datasetVarName>
+            <units>m</units>
+            <qcFlag/>
+            <researcher/>
+            <standardization/>
+        </variable>
+        <variable name="SST [ deg C ]">
+            <fullName>Temperature</fullName>
+            <datasetVarName>SST [ deg C ]</datasetVarName>
+            <observationType>underway</observationType>
+            <units>Celsius</units>
+            <uncertainty>±0.01 °C</uncertainty>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>SBE 38</analyzingInstrument>
+            <fieldReplicateHandling>Roughly once a year / every 1.5 years at a Norwegian facility (Kiwa Norge)</fieldReplicateHandling>
+            <standardization/>
+        </variable>
+        <variable name="Salinity [ PSU ]">
+            <fullName>Salinity</fullName>
+            <datasetVarName>Salinity [ PSU ]</datasetVarName>
+            <observationType>underway</observationType>
+            <units>PSU</units>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>water collection with pump</samplingInstrument>
+            <analyzingInstrument>Calibrated, quality controlled salinity data of this transect will be available at https://sss.sedoo.fr/ from April 2023. As salinity has only very minor effect on the fCO2 calculation (through pH2O), we use a constant salinity of 35 for this Socat submission. We consider this as the better solution compared to publishing possibly biased salinity data here.</analyzingInstrument>
+            <standardization/>
+        </variable>
+        <variable name="xCO2_atm_dry_actual [ umol/mol ]">
+            <fullName>dry CO2 mole fraction</fullName>
+            <datasetVarName>xCO2_atm_dry_actual [ umol/mol ]</datasetVarName>
+            <observationType>underway</observationType>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>air collection with pump</samplingInstrument>
+            <analyzingInstrument>LI 6262</analyzingInstrument>
+            <standardization/>
+        </variable>
+        <variable name="pCO2_atm_wet_actual [ uatm ]">
+            <fullName>CO2 partial pressure at 100% humidity</fullName>
+            <datasetVarName>pCO2_atm_wet_actual [ uatm ]</datasetVarName>
+            <observationType>underway</observationType>
+            <units>uatm</units>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>air collection with pump</samplingInstrument>
+            <analyzingInstrument>LI 6262</analyzingInstrument>
+            <standardization/>
+        </variable>
+        <variable name="fCO2_atm_wet_actual [ uatm ]">
+            <fullName>CO2 fugacity at 100% humidity</fullName>
+            <datasetVarName>fCO2_atm_wet_actual [ uatm ]</datasetVarName>
+            <observationType>underway</observationType>
+            <units>uatm</units>
+            <qcFlag/>
+            <researcher/>
+            <samplingInstrument>air collection with pump</samplingInstrument>
+            <analyzingInstrument>LI 6262</analyzingInstrument>
+            <standardization/>
+        </variable>
+    </variables>
+</oads_metadata>
