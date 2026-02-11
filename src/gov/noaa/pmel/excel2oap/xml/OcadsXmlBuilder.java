@@ -66,7 +66,7 @@ public class OcadsXmlBuilder extends XmlBuilderBase implements XmlBuilder  {
     private SDIMetadata sdi;
     private Document xmlJdoc;
 
-    public static SpreadSheetType getSpreadSheetType() { return SpreadSheetType.OCADS; }
+    public static SpreadSheetType getSpreadSheetType() { return SpreadSheetType.OCADS_v1; }
     
     public OcadsXmlBuilder(Map<ElementType, Collection<Map<String, String>>> multiItems,
                               Map<String, String> simpleItems,

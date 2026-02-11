@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.Logger;
+
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.Co2Socat;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.Co2Socat.Co2SocatBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.EquilibratorMeasurementType;
@@ -62,8 +64,12 @@ public class SocatOadsXmlBuilder extends SdgOadsXmlBuilder {
     
     private void addCo2var(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
         String ssVarAbbrev = parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_abbreviation_in_data_files));
+        if ( StringUtils.emptyOrNull(ssVarAbbrev)) {
+            System.out.println("WARN: No variable abbreviation found for CO2 variable.");
+            return;
+        }
         String varUnits = parts.get(socatKeys.getKeyForName(socatKeys.name_VarX_Variable_unit));
-        String[] vars = ssVarAbbrev.split("[, ;]");
+        String[] vars = ssVarAbbrev.split("[,;]");
         for (String var : vars) {
             if (StringUtils.emptyOrNull(var)) { continue; }
             co2vars.append(co2varsep).append(var);

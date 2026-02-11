@@ -6,7 +6,6 @@ package gov.noaa.pmel.excel2oap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
@@ -107,12 +106,15 @@ public class Excel2OAP {
         
     private static SSParser getSpreadSheetProcessor(SpreadSheetType ssType, boolean omitEmpty) {
         switch (ssType) {
-            case OCADS:
+            case OCADS_v1:
                 return new OcadsHandler(omitEmpty, new OcadsKeys());
             case SDG_14_3_1:
                 return new SdgHandler(omitEmpty, new SDG_14_3_Keys());
             case SOCAT:
                 return new SocatHandler(omitEmpty, new SocatKeys());
+            case OCADS_v2:
+            case OCADS_v3:
+            	throw new RuntimeException("OCADS Metadata Spreadsheet Version 2+ is not supported.");
             default:
                 throw new RuntimeException("Unknown SpreadSheetType:" + ssType);
         }

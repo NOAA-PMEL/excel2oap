@@ -28,11 +28,15 @@ import gov.noaa.ncei.oads.xml.v_a0_2_2s.OadsMetadataDocumentType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.OadsMetadataDocumentType.OadsMetadataDocumentTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.OrderedStringElementType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonContactInfoType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonIdentifierType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonIdentifierTypes;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonNameType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonReferenceType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PersonType.PersonTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PhVariableType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.PlatformIdentifierType;
+import gov.noaa.ncei.oads.xml.v_a0_2_2s.PlatformIdentifierTypes;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PhVariableType.PhVariableTypeBuilder;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PlatformType;
 import gov.noaa.ncei.oads.xml.v_a0_2_2s.PoisonType;
@@ -85,7 +89,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
     
     public static XmlBuilder GetOadsXmlBuilder(SSParser parser, boolean omitEmptyElements) {
         switch (parser.getSpreadSheetType()) {
-            case OCADS:
+            case OCADS_v1:
                 return new OadsXmlBuilder(parser.getMultiItemFields(),
                                           parser.getSingleFields(),
                                           parser.getSpreadSheetKeys(),
@@ -377,20 +381,34 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
                 .organization(parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_institution)));
         String resIdStr = parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_researcher_ID));
         String typeStr = parts.get(ssKeys.getKeyForName(ssKeys.name_PersonX_ID_type));
-//        String[] types = typeStr.split("[, ;]", 0);
-//        if ( types.length > 1 ) {
-//            String conj = typeStr.contains(";") ? ";" :
-//                            typeStr.contains(",") ? "," :
-//                                " ";
-//            String[] resIds = resIdStr.split(conj, 0);
-//            if ( resIds.length != types.length ) {
-//                logger.info("researcherIds and idTypes not same length.");
-//            }
-//        }
-        personBldr.addIdentifier(TypedIdentifierType.builder()
-                               .value(resIdStr)
-                               .type(typeStr)
-                               .build());
+        if ( resIdStr != null && ! resIdStr.trim().isEmpty()) {
+	        String[] resIds = resIdStr.trim().split("[, ;]", 0);
+	        String[] types = null;
+	        String nullIdType = "";
+	        if ( typeStr != null && ! typeStr.trim().isEmpty()) {
+		        types = typeStr.trim().split("[, ;]", 0);
+	        }
+	        for ( int idx = 0; idx < resIds.length; idx++ ) {
+	        	String id = resIds[idx];
+	        	if ( StringUtils.emptyOrNull(id)) { 
+	        		continue;
+	        	}
+	        	String type = types != null && types.length > idx ?
+	        					types[idx] :
+	        					nullIdType;
+	        	PersonIdentifierTypes idType = null;
+	        	try {
+		        	idType = PersonIdentifierTypes.fromValue(type);
+	        	} catch (Exception iex) {
+	        		logger.warn("Unknown ID type: " + type);
+	        	}
+		        personBldr.addIdentifier(PersonIdentifierType.builder()
+		        						 .value(id)
+		        						 .type(idType)
+						        		 .build());
+	        	
+	        }
+         }
          PersonType person = personBldr.build();
          return person;
     }
@@ -431,12 +449,18 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
         String idTypeKey = ( ssKeys instanceof SDG_14_3_Keys ) ?
                             ssKeys.getKeyForName(((SDG_14_3_Keys)ssKeys).r_Platform1_ID_type) :
                              null;
-        String idType =  idTypeKey != null ?
+        String idTypeValue =  idTypeKey != null ?
                             parts.get(idTypeKey) :
                             null;
+        PlatformIdentifierTypes idType = null;
+        try {
+			idType = PlatformIdentifierTypes.fromValue(idTypeValue);
+    	} catch (Exception iex) {
+    		logger.warn("Unknown ID type: " + idTypeValue);
+		}
         PlatformType platform = PlatformType.builder()
                 .name(platformName)
-                .identifier(TypedIdentifierType.builder()
+                .identifier(PlatformIdentifierType.builder()
                             .type(idType)
                             .value(platformId)
                             .build())
@@ -458,12 +482,18 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             String idTypeKey = ( ssKeys instanceof SDG_14_3_Keys ) ?
                                 ((SDG_14_3_Keys)ssKeys).PlatformX_ID_type :
                                  null;
-            String idType =  idTypeKey != null ?
+            String idTypeValue =  idTypeKey != null ?
                                 parts.get(idTypeKey) :
                                 null;
+            PlatformIdentifierTypes idType = null;
+            try {
+				idType = PlatformIdentifierTypes.fromValue(idTypeValue);
+	    	} catch (Exception iex) {
+	    		logger.warn("Unknown ID type: " + idTypeValue);
+			}
             PlatformType platform = PlatformType.builder()
                     .name(platformName)
-                    .identifier(TypedIdentifierType.builder()
+                    .identifier(PlatformIdentifierType.builder()
                                 .type(idType)
                                 .value(platformId)
                                 .build())
@@ -505,7 +535,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
        doc.addFunding(FundingSourceType.builder()
                        .agency(fundingAgencyName)
                        .title(parts.get(ssKeys.getKeyForName(ssKeys.name_FundingX_project_title)))
-                       .identifier(TypedIdentifierType.builder().value(fundingProjectId).build())
+                       .identifier(fundingProjectId) // TypedIdentifierType.builder().value(fundingProjectId).build())
                        .build());
     }
     private void _add_FUNDING_simple(OadsMetadataDocumentTypeBuilder doc, Map<String, String> parts) {
@@ -519,7 +549,7 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
        doc.addFunding(FundingSourceType.builder()
                        .agency(fundingAgencyName)
                        .title(parts.get(ssKeys.getKeyForName(ssKeys.name_r_Funding_project_title)))
-                       .identifier(TypedIdentifierType.builder().value(fundingProjectId).build())
+                       .identifier(fundingProjectId) // TypedIdentifierType.builder().value(fundingProjectId).build())
                        .build());
     }
 
@@ -723,48 +753,8 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             StandardizationType.builder()
                 .description(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Standardization_technique_description)))
                 .frequency(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Frequency_of_standardization)));
-        String concStr = parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Concentrations_of_standard_gas));
-        String sep = null;
-        String id = "standards";
-        String conc = null;
-        // Note that traceability to WMO standards (a SOCAT addition) is added to the gases in SocatXmlBuilder.
-        List<StandardGasType> standards = new ArrayList<>();
-        if ( concStr != null ) {
-            if ( concStr.contains(";")) { sep = ";"; }
-            else if ( concStr.contains(",")) { sep = ","; }
-            if ( sep == null ) {
-                standards.add(StandardGasType.builder()
-                              .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas)))
-                              .id(id)
-                              .concentration(conc)
-                              .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas)))
-                              .build());
-            } else {
-                String[] splitConc = concStr.trim().split(sep);
-                String sep2 = null;
-                int nStd = 1;
-                id = "std_"+nStd;
-                for ( String concBit : splitConc ) {
-                    if ( concBit.contains(",")) { sep2 = ","; }
-                    else if ( concBit.contains("=") ) { sep2 = "="; }
-                    if ( sep2 != null ) {
-                        String[] parts2 = concBit.split(sep2);
-                        if ( parts2.length == 2 ) {
-                            id = parts2[0].trim();
-                            conc = parts2[1].trim();
-                        } else {
-                            conc = concBit.trim();
-                        }
-                    }
-                    standards.add(StandardGasType.builder()
-                                  .manufacturer(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas)))
-                                  .id(id)
-                                  .concentration(conc)
-                                  .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas)))
-                                  .build());
-                    nStd += 1;
-                }
-            }
+    	List<StandardGasType> standards = processStdGasses(parts);
+        if ( ! standards.isEmpty()) {
             for (StandardGasType std : standards) {
                 stdBldr.addStandardGas(std);
             }
@@ -784,6 +774,74 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
             .waterVaporCorrection(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Water_vapor_correction_method)))
             .temperatureCorrectionMethod(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Temperature_correction_method)))
             .co2ReportTemperature(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_at_what_temperature_was_pCO2_reported)));
+    }
+    
+    List<StandardGasType> processStdGasses(Map<String, String> parts) {
+        String id = "standards";
+        StandardizationTypeBuilder stdBldr = 
+                StandardizationType.builder()
+                    .description(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Standardization_technique_description)))
+                    .frequency(parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Frequency_of_standardization)));
+        String manuStr = parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Manufacturer_of_standard_gas));
+        String concStr = parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Concentrations_of_standard_gas));
+        String uncerStr = parts.get(ssKeys.getKeyForName(ssKeys.name_pCO2AX_Uncertainties_of_standard_gas));
+        List<StandardGasType> standards = new ArrayList<>();
+        String sep = null;
+        if ( ! StringUtils.emptyOrNull(concStr)) {
+            if ( StringUtils.emptyOrNull(uncerStr)) { uncerStr = "N/A"; }
+            if ( StringUtils.emptyOrNull(manuStr)) { manuStr = "N/A"; }
+            if ( concStr.contains(";")) { sep = ";"; }
+            else if ( concStr.contains(",")) { sep = ","; }
+            if ( sep == null ) {
+                standards.add(StandardGasType.builder()
+                              .id(id)
+                              .manufacturer(manuStr)
+                              .concentration(concStr)
+                              .uncertainty(uncerStr)
+                              .build());
+            } else {
+                String[] splitConc = concStr.trim().split(sep);
+                String[] splitUnc = uncerStr.trim().split(sep);
+                String[] splitMan = manuStr.trim().split(sep);
+                String sep2 = null;
+                String conc0 = splitConc[0];
+                if ( conc0.contains(":")) { sep2 = ":"; }
+                if ( conc0.contains("=")) { sep2 = "="; } // takes priority, I guess
+                String unc = splitUnc[0];
+                String manu = splitMan[0];
+                for ( int i = 0; i < splitConc.length; i++ ) {
+                    String conc = splitConc[i];
+                	unc = splitUnc.length > i ? splitUnc[i] : unc;
+                    manu = splitMan.length > i ? splitMan[i] : manu;
+                    if ( sep2 != null ) {
+                    	String[] conc2 = conc.split(sep2);
+                    	conc = conc2.length == 2 ? conc2[1] : conc;
+                    	String[] unc2 = unc.split(sep2);
+                    	unc = unc2.length == 2 ? unc2[1] : unc;
+                    	String[] manu2 = manu.split(sep2);
+                    	manu = manu2.length == 2 ? manu2[1] : manu;
+                    }
+                    standards.add(StandardGasType.builder()
+                              .id(id)
+                              .manufacturer(manu.trim())
+                              .concentration(conc.trim())
+                              .uncertainty(unc.trim())
+                              .build());
+                }
+            }
+        } else {
+        	if ( !StringUtils.emptyOrNull(uncerStr) || !StringUtils.emptyOrNull(manuStr)) {
+                logger.info("No concentrations given for stanardard gases.");
+                concStr = "N/A";
+                standards.add(StandardGasType.builder()
+                              .id(id)
+                              .manufacturer(manuStr)
+                              .concentration(concStr)
+                              .uncertainty(uncerStr)
+                              .build());
+        	}
+        }
+        return standards;
     }
 
     /**
@@ -896,7 +954,8 @@ public class OadsXmlBuilder extends XmlBuilderBase implements XmlBuilder {
            .detailedAnalyzingInfo(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Detailed_sampling_and_analyzing_information)))
 //           .qcFlag(buildQcInfo(parts)) // XXX TODO:
            .uncertainty(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Uncertainty)))
-           .fieldReplicateHandling(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Field_replicate_information)))
+           // XXX Removed from SOCAT continuous surface observations
+//           .fieldReplicateHandling(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Field_replicate_information)))
            .methodReference(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_Method_reference)))
            .variationsFromMethod(parts.get(ssKeys.getKeyForName(ssKeys.name_VarX_SOP_Changes)))
            .standardization(StandardizationType.builder()

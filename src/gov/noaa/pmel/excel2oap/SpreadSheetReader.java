@@ -140,6 +140,7 @@ public class SpreadSheetReader implements SSReader {
             Sheet sheet = workbook.getSheetAt(0);
             int rowNum = 0;
             int numErrors = 0;
+            boolean emptyRow = false;
             for (Row row : sheet) {
                 rowNum += 1;
                 int itemNo = -999;
@@ -211,13 +212,27 @@ public class SpreadSheetReader implements SSReader {
                     }
                     logger.trace(rowValue);
                     String encoded = new String(rowValue.getBytes(), "utf-8");
+                    if ( rowNum > 0 && itemNo == 0 && "".equals(rowName) && "".equals(rowValue)) {
+                    	logger.debug("Empty row at line " + rowNum);
+                    	if (emptyRow) {
+                    		logger.debug("exiting at line: " + rowNum);
+                            break;
+                    	} else {
+                    		emptyRow = true;
+                            continue;
+                    	}
+                    } else {
+                    	logger.debug("resetting emptyRow at line " + rowNum + 
+                    				 " with " + rowName + ":" + rowValue);
+                    	emptyRow = false;
+                    }
                     if ( ! rowValue.equals(encoded)) {
                         System.out.println(rowNum + "== " + rowValue);
                         System.out.println("++ " + encoded);
                     }
                 }
                 SsRow orow = new SsRow(itemNo,
-                                           row.getCell(1).getStringCellValue(), 
+                                           rowName,
                                            rowValue);
 //                logger.debug(rowNum + ": " + orow);
                 rows.add(orow);

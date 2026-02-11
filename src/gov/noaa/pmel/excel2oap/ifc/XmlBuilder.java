@@ -5,10 +5,7 @@ package gov.noaa.pmel.excel2oap.ifc;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Collection;
-import java.util.Map;
 
-import gov.noaa.ncei.oads.xml.v_a0_2_2s.OadsMetadataDocumentType;
 
 /**
  * @author kamb

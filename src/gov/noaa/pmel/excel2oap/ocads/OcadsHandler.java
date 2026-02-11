@@ -17,7 +17,7 @@ public class OcadsHandler extends BaseSpreadSheetHandler {
 
     private OcadsKeys ocKeys; //  = new OcadsKeys();
     
-    public SpreadSheetType getSpreadSheetType() { return SpreadSheetType.OCADS; }
+    public SpreadSheetType getSpreadSheetType() { return SpreadSheetType.OCADS_v1; }
     
     private static final String[] multiItemFields = { 
             OcadsElementType.INVESTIGATOR.key(), 
